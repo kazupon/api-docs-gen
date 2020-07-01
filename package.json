@@ -1,0 +1,51 @@
+{
+  "name": "api-docs-gen",
+  "description": "API Documentation generator for TypeScript projects with `api-extractor`",
+  "version": "0.0.0",
+  "author": {
+    "name": "kazuya kawaguchi",
+    "email": "kawakazu80@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/kazupon/api-docs-gen/issues"
+  },
+  "changelog": {
+    "labels": {
+      "Type: Feature": ":star: Features",
+      "Type: Bug": ":bug: Bug Fixes",
+      "Type: Security": ":lock: Security Fixes",
+      "Type: Performance": ":chart_with_upwards_trend: Performance Fixes",
+      "Type: Improvement": ":zap: Improvement Features",
+      "Type: Breaking": ":boom: Breaking Change",
+      "Type: Deprecated": ":warning: Deprecated Features",
+      "Type: I18n": ":globe_with_meridians: Internationalization",
+      "Type: A11y": ":wheelchair: Accessibility",
+      "Type: Documentation": ":pencil: Documentation"
+    }
+  },
+  "devDependencies": {
+    "lerna-changelog": "^1.0.1",
+    "shipjs": "^0.20.1"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "homepage": "https://github.com/kazupon/api-docs-gen#readme",
+  "keywords": [
+    "documentation",
+    "generator",
+    "typescript"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kazupon/api-docs-gen.git"
+  },
+  "scripts": {
+    "build": "echo \"build!\"",
+    "release:prepare": "shipjs prepare",
+    "release:trigger": "shipjs trigger",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
