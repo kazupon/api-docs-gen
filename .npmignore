@@ -2,4 +2,6 @@
 *.log
 *.swp
 test
+coverage
+test
 .vscode

@@ -24,8 +24,24 @@
     }
   },
   "devDependencies": {
+    "@types/jest": "^26.0.3",
+    "@types/node": "^14.0.14",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
+    "eslint": "^7.3.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-vue-libs": "^4.0.0",
+    "jest": "^26.1.0",
+    "jest-watch-typeahead": "^0.6.0",
     "lerna-changelog": "^1.0.1",
-    "shipjs": "^0.20.1"
+    "npm-run-all": "^4.1.5",
+    "opener": "^1.5.1",
+    "prettier": "^2.0.5",
+    "shipjs": "^0.20.1",
+    "ts-jest": "^26.1.1",
+    "typescript": "^3.9.5",
+    "typescript-eslint-language-service": "^3.0.0"
   },
   "engines": {
     "node": ">= 10"
@@ -37,15 +53,30 @@
     "typescript"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kazupon/api-docs-gen.git"
   },
   "scripts": {
-    "build": "echo \"build!\"",
+    "build": "tsc -p .",
+    "clean": "npm-run-all clean:*",
+    "clean:lib": "rm -rf ./lib/*.*",
+    "clean:cache:jest": "jest --clearCache",
+    "clean:coverage": "rm -rf ./coverage",
+    "coverage": "opener coverage/lcov-report/index.html",
+    "fix": "npm-run-all --parallel lint:fix format:fix",
+    "format": "prettier --config .prettierrc --ignore-path .prettierignore '**/*.{js,json,html}'",
+    "format:fix": "yarn format --write",
+    "lint": "eslint ./src ./test --ext .ts",
+    "lint:fix": "yarn lint --fix",
     "release:prepare": "shipjs prepare",
     "release:trigger": "shipjs trigger",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+    "test": "yarn lint && yarn test:cover",
+    "test:cover": "yarn test:unit --coverage",
+    "test:unit": "jest --env node",
+    "test:watch": "jest --env node --watch",
+    "watch": "tsc -p . --watch"
+  },
+  "types": "lib/index.d.ts"
 }
