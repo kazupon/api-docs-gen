@@ -6,6 +6,9 @@
     "name": "kazuya kawaguchi",
     "email": "kawakazu80@gmail.com"
   },
+  "bin": {
+    "api-doc-gen": "./bin/run.js"
+  },
   "bugs": {
     "url": "https://github.com/kazupon/api-docs-gen/issues"
   },
@@ -23,8 +26,17 @@
       "Type: Documentation": ":pencil: Documentation"
     }
   },
+  "dependencies": {
+    "@microsoft/api-extractor-model": "^7.8.11",
+    "chalk": "^4.1.0",
+    "debug": "^4.1.1",
+    "meow": "^7.0.1"
+  },
   "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.3",
+    "@types/meow": "^5.0.0",
     "@types/node": "^14.0.14",
     "@typescript-eslint/eslint-plugin": "^3.5.0",
     "@typescript-eslint/parser": "^3.5.0",
@@ -61,9 +73,9 @@
   "scripts": {
     "build": "tsc -p .",
     "clean": "npm-run-all clean:*",
-    "clean:lib": "rm -rf ./lib/*.*",
     "clean:cache:jest": "jest --clearCache",
     "clean:coverage": "rm -rf ./coverage",
+    "clean:lib": "rm -rf ./lib/*.*",
     "coverage": "opener coverage/lcov-report/index.html",
     "fix": "npm-run-all --parallel lint:fix format:fix",
     "format": "prettier --config .prettierrc --ignore-path .prettierignore '**/*.{js,json,html}'",
