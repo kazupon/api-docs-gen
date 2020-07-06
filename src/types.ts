@@ -1,11 +1,12 @@
 import { ApiItem } from '@microsoft/api-extractor-model'
+
 /**
  * Markdown reference resolver
  */
 export type Resolver = (item: ApiItem) => string
 
 /**
- * Markdonw content
+ * Markdown content
  */
 export interface MarkdownContent {
   /**

@@ -1,7 +1,7 @@
 import type { Resolver, Processor } from './types'
 
 /**
- * Configration
+ * Configuration
  */
 export interface Config {
   /**
@@ -9,7 +9,7 @@ export interface Config {
    */
   resolver?: Resolver
   /**
-   * processor
+   * model processor
    */
   processor: Processor
 }

@@ -1,19 +1,19 @@
 import meow from 'meow'
-import { flags } from './cli'
 import path from 'path'
-import fs from 'fs'
+import { promises as fs, constants as fsConstants } from 'fs'
 import chalk from 'chalk'
+import { ApiPackage, ApiModel } from '@microsoft/api-extractor-model'
 import { debug as Debug } from 'debug'
+import { flags } from './cli'
 import { resolve as resolver } from './resolver'
 import { process as processor } from './processor'
 import { transform } from './transformer'
 import type { Config } from './config'
-import { ApiPackage, ApiModel } from '@microsoft/api-extractor-model'
 import { isString } from './utils'
 
 const debug = Debug('api-docs-gen:generator')
 
-export async function generate(cli: meow.Result<typeof flags>) {
+export async function generate(cli: meow.Result<typeof flags>): Promise<void> {
   debug('cli', cli)
 
   if (!cli.input[0]) {
@@ -26,7 +26,7 @@ export async function generate(cli: meow.Result<typeof flags>) {
   const output = resolveOutput(cli.flags.output)
   debug(`output`, output)
 
-  const config = resolveConfig(cli.flags.config)
+  const config = await resolveConfig(cli.flags.config)
   debug(`config`, config)
 
   const apiModel = new ApiModel()
@@ -36,10 +36,10 @@ export async function generate(cli: meow.Result<typeof flags>) {
   const result = config.processor(model)
   if (isString(result)) {
     debug('result(string):', result)
-    fs.writeFileSync(path.resolve(output, 'index.md'), result, 'utf-8')
+    await fs.writeFile(path.resolve(output, 'index.md'), result, 'utf-8')
   } else if (Array.isArray(result)) {
     for (const { filename, body } of result) {
-      fs.writeFileSync(path.resolve(output, filename), body, 'utf-8')
+      await fs.writeFile(path.resolve(output, filename), body, 'utf-8')
     }
   } else {
     console.error(
@@ -53,7 +53,7 @@ function resolveOutput(output?: string): string {
   return output != null ? path.resolve(output) : process.cwd()
 }
 
-function resolveConfig(configPath?: string): Config {
+async function resolveConfig(configPath?: string): Promise<Config> {
   const cwd = process.cwd()
   let config: Config | undefined
   let resolvedPath: string | undefined
@@ -65,10 +65,11 @@ function resolveConfig(configPath?: string): Config {
   if (configPath) {
     resolvedPath = path.resolve(cwd, configPath)
   } else {
-    const jsConfigPath = path.resolve(cwd, 'api-docs-gen.config.js')
-    if (fs.existsSync(jsConfigPath)) {
-      resolvedPath = jsConfigPath
-    }
+    const configPath = path.resolve(cwd, 'docsgen.config.js')
+    try {
+      await fs.access(configPath, fsConstants.F_OK)
+      resolvedPath = configPath
+    } catch (e) {}
   }
 
   if (!resolvedPath) {

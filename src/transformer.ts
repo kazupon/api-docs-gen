@@ -4,7 +4,7 @@ import type { Resolver } from './types'
 export function transform(
   pkg: ApiPackage,
   model: ApiModel,
-  resolver: Resolver
+  resolve: Resolver
 ): unknown {
   // TODO:
   return pkg

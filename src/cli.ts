@@ -1,4 +1,5 @@
 import meow from 'meow'
+import chalk from 'chalk'
 import { generate } from './generator'
 
 export const flags = {
@@ -17,30 +18,33 @@ export const flags = {
 const cli = meow(
   `
   Usage
-    $ doc-api-gen <input>
+    $ api-docs-gen <input>
 
   Options
     --config, -c configuration file
-    --output, -o output of API docs markdown contents
+    --output, -o output dierectory that is markdown contents
 
   Examples
-    $ doc-api-gen my-library-api.json
-    $ doc-api-gen my-library-api.json --output ./docs
-    $ doc-api-gen my-library-api.json --config api-doc-gen.js
+    $ api-docs-gen my-library-api.json
+    $ api-docs-gen my-library-api.json --output ./docs
+    $ api-docs-gen my-library-api.json --config docsgen.config.js
 `,
   {
     flags
   }
 )
 
+// run
 generate(cli)
 
 process.on('uncaughtException', err => {
-  console.error(`uncaught exception: ${err}\n`)
+  console.error(chalk.red(`[api-docs-gen] Uncaught exception: ${err}\n`))
   process.exit(1)
 })
 
 process.on('unhandledRejection', (reason, p) => {
-  console.error('unhandled rejection at:', p, 'reason:', reason)
+  console.error(
+    chalk.red(`[api-docs-gen] Unhandled rejection at: ${p}, reason: ${reason}`)
+  )
   process.exit(1)
 })

@@ -7,7 +7,7 @@
     "email": "kawakazu80@gmail.com"
   },
   "bin": {
-    "api-doc-gen": "./bin/run.js"
+    "api-docs-gen": "./bin/run.js"
   },
   "bugs": {
     "url": "https://github.com/kazupon/api-docs-gen/issues"
