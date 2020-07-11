@@ -1,3 +1,5 @@
+import { isNumber } from './utils'
+
 /**
  * Content Builder options
  *
@@ -59,7 +61,10 @@ export interface ContentBuilder {
 export function createContentBuilder(
   options: ContentBuilderOptions = {}
 ): ContentBuilder {
-  let _indentLevel = options.indentLevel ?? 0
+  let _indentLevel =
+    options.indentLevel != null && isNumber(options.indentLevel)
+      ? options.indentLevel
+      : 0
   let _content = ''
 
   function push(content: string): void {
