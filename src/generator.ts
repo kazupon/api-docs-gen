@@ -69,7 +69,9 @@ async function resolveConfig(configPath?: string): Promise<Config> {
     try {
       await fs.access(configPath, fsConstants.F_OK)
       resolvedPath = configPath
-    } catch (e) {}
+    } catch (e) {
+      debug(`config access error: ${e.message}`)
+    }
   }
 
   if (!resolvedPath) {
