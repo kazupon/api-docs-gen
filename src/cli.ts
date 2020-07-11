@@ -1,6 +1,10 @@
+import path from 'path'
 import meow from 'meow'
 import chalk from 'chalk'
+import { debug as Debug } from 'debug'
 import { generate } from './generator'
+
+const debug = Debug('api-docs-gen:cli')
 
 export const flags = {
   output: {
@@ -34,8 +38,24 @@ const cli = meow(
   }
 )
 
+// check input
+const input = cli.input
+if (!input.length) {
+  console.error(chalk.red(`[api-docs-gen] not specified docs model`))
+  process.exit(1)
+}
+
+// resolve output
+const output =
+  cli.flags.output != null ? path.resolve(cli.flags.output) : process.cwd()
+debug(`output`, output)
+
+// config
+const config = cli.flags.config
+debug(`config`, config)
+
 // run
-generate(cli)
+generate(input, output, config)
 
 process.on('uncaughtException', err => {
   console.error(chalk.red(`[api-docs-gen] Uncaught exception: ${err}\n`))

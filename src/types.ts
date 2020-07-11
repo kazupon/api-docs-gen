@@ -1,9 +1,31 @@
-import { ApiItem } from '@microsoft/api-extractor-model'
+import type {
+  ApiModel,
+  ApiPackage,
+  ApiItem
+} from '@microsoft/api-extractor-model'
+
+/**
+ * Configuration
+ */
+export interface Config {
+  /**
+   * markdown link reference resolver
+   */
+  linkReferencer?: ReferenceResolver
+  /**
+   * markdown docs processor
+   */
+  processor: MarkdownProcessor
+}
 
 /**
  * Markdown reference resolver
+ *
+ * @param item the item of `api-extractor-model`
+ *
+ * @returns resolved reference path
  */
-export type Resolver = (item: ApiItem) => string
+export type ReferenceResolver = (item: ApiItem) => string
 
 /**
  * Markdown content
@@ -20,9 +42,16 @@ export interface MarkdownContent {
 }
 
 /**
- * model processor
+ * Markdown docs processor
  *
- * @param model the model of docs
+ * @param model the api model of `api-extractor-model`
+ * @param package the package of `api-extractor-model`
+ * @param resolver the markdown reference resolver. if you're specfified at {@link Config}, it's passed, else it's not specified passed internal refenrece resolver.
+ *
  * @returns markdown content
  */
-export type Processor = (model: unknown) => string | MarkdownContent[]
+export type MarkdownProcessor = (
+  model: ApiModel,
+  pkg: ApiPackage,
+  resolver: ReferenceResolver
+) => string | MarkdownContent[]

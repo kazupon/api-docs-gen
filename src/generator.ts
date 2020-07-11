@@ -1,65 +1,65 @@
-import meow from 'meow'
 import path from 'path'
 import { promises as fs, constants as fsConstants } from 'fs'
 import chalk from 'chalk'
 import { ApiPackage, ApiModel } from '@microsoft/api-extractor-model'
 import { debug as Debug } from 'debug'
-import { flags } from './cli'
-import { resolve as resolver } from './resolver'
-import { process as processor } from './processor'
-import { transform } from './transformer'
-import type { Config } from './config'
+import { resolve } from './resolver'
+import { process as mdProcessor } from './processor'
 import { isString } from './utils'
+
+import type { Config } from './types'
 
 const debug = Debug('api-docs-gen:generator')
 
-export async function generate(cli: meow.Result<typeof flags>): Promise<void> {
-  debug('cli', cli)
+/**
+ * generate markdown contents
+ *
+ * @param input input paths
+ * @param output output path
+ * @param config config path, if it's not spefified, use `process.cwd()` as default
+ */
+export async function generate(
+  input: string[],
+  output: string,
+  config?: string
+): Promise<void> {
+  const resolvedConfig = await resolveConfig(config)
+  debug(`resolvedConfig`, resolveConfig)
 
-  if (!cli.input[0]) {
-    console.error(chalk.red(`[api-docs-gen] not specified model`))
-    process.exit(1)
-  }
-  const modelPath = cli.input[0]
-  debug(`model`, modelPath)
+  for (const target of input) {
+    debug(`generate from ${target} ...`)
 
-  const output = resolveOutput(cli.flags.output)
-  debug(`output`, output)
+    const apiModel = new ApiModel()
+    const apiPackage = loadPackage(target, apiModel)
 
-  const config = await resolveConfig(cli.flags.config)
-  debug(`config`, config)
-
-  const apiModel = new ApiModel()
-  const apiPackage = loadPackage(modelPath, apiModel)
-  const model = transform(apiPackage, apiModel, config.resolver!)
-
-  const result = config.processor(model)
-  if (isString(result)) {
-    debug('result(string):', result)
-    await fs.writeFile(path.resolve(output, 'index.md'), result, 'utf-8')
-  } else if (Array.isArray(result)) {
-    for (const { filename, body } of result) {
-      await fs.writeFile(path.resolve(output, filename), body, 'utf-8')
-    }
-  } else {
-    console.error(
-      chalk.red(`[api-docs-gen] Not supported processor result type`)
+    const result = resolvedConfig.processor(
+      apiModel,
+      apiPackage,
+      resolvedConfig.linkReferencer!
     )
-    process.exit(1)
+    if (isString(result)) {
+      debug('result(string):', result)
+      await fs.writeFile(path.resolve(output, 'index.md'), result, 'utf-8')
+    } else if (Array.isArray(result)) {
+      for (const { filename, body } of result) {
+        await fs.writeFile(path.resolve(output, filename), body, 'utf-8')
+      }
+    } else {
+      console.error(
+        chalk.red(`[api-docs-gen] Not supported processor result type`)
+      )
+      process.exit(1)
+    }
   }
-}
-
-function resolveOutput(output?: string): string {
-  return output != null ? path.resolve(output) : process.cwd()
 }
 
 async function resolveConfig(configPath?: string): Promise<Config> {
   const cwd = process.cwd()
   let config: Config | undefined
   let resolvedPath: string | undefined
-  const defaultConfig = {
-    resolver,
-    processor
+  const defaultConfig: Config = {
+    linkReferencer: resolve,
+    processor: mdProcessor
   }
 
   if (configPath) {
@@ -88,7 +88,7 @@ async function resolveConfig(configPath?: string): Promise<Config> {
     }
 
     if (config) {
-      config.resolver = config.resolver || resolver
+      config.linkReferencer = config.linkReferencer || resolve
       return config
     } else {
       return defaultConfig
