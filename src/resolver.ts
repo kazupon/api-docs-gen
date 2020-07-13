@@ -1,6 +1,7 @@
 import type { ApiItem, ApiModel } from '@microsoft/api-extractor-model'
 import { getSafePathFromDisplayName } from './utils'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function resolve(item: ApiItem, model: ApiModel): string {
   if (item.kind === 'Model') {
     return './index'

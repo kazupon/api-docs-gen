@@ -55,7 +55,14 @@ const config = cli.flags.config
 debug(`config`, config)
 
 // run
-generate(input, output, config)
+try {
+  ;(async () => {
+    await generate(input, output, config)
+  })()
+} catch (e) {
+  console.error(chalk.red(`[api-docs-gen] ${e.message}`))
+  process.exit(1)
+}
 
 process.on('uncaughtException', err => {
   console.error(chalk.red(`[api-docs-gen] Uncaught exception: ${err}\n`))

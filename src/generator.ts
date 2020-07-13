@@ -1,6 +1,5 @@
 import path from 'path'
 import { promises as fs, constants as fsConstants } from 'fs'
-import chalk from 'chalk'
 import { ApiPackage, ApiModel } from '@microsoft/api-extractor-model'
 import { debug as Debug } from 'debug'
 import { resolve } from './resolver'
@@ -32,23 +31,27 @@ export async function generate(
     const apiModel = new ApiModel()
     const apiPackage = loadPackage(target, apiModel)
 
-    const result = resolvedConfig.processor(
+    let result = resolvedConfig.processor(
       apiModel,
       apiPackage,
-      resolvedConfig.linkReferencer!
+      resolvedConfig.linkReferencer! // eslint-disable-line @typescript-eslint/no-non-null-assertion
     )
+
     if (isString(result)) {
-      debug('result(string):', result)
-      await fs.writeFile(path.resolve(output, 'index.md'), result, 'utf-8')
-    } else if (Array.isArray(result)) {
-      for (const { filename, body } of result) {
-        await fs.writeFile(path.resolve(output, filename), body, 'utf-8')
-      }
-    } else {
-      console.error(
-        chalk.red(`[api-docs-gen] Not supported processor result type`)
-      )
-      process.exit(1)
+      result = [
+        {
+          filename: 'index.md',
+          body: result
+        }
+      ]
+    }
+
+    if (!Array.isArray(result)) {
+      throw new Error('Not supported processor result type')
+    }
+
+    for (const { filename, body } of result) {
+      await fs.writeFile(path.resolve(output, filename), body, 'utf-8')
     }
   }
 }
@@ -96,11 +99,7 @@ async function resolveConfig(configPath?: string): Promise<Config> {
       return defaultConfig
     }
   } catch (e) {
-    console.error(
-      chalk.red(`[api-docs-gen] failed to load config from ${resolvedPath}:`)
-    )
-    console.error(e)
-    process.exit(1)
+    throw new Error(`Failed to load config from ${resolvedPath}: ${e.message}`)
   }
 }
 
@@ -108,10 +107,6 @@ function loadPackage(modelPath: string, model: ApiModel): ApiPackage {
   try {
     return model.loadPackage(modelPath)
   } catch (e) {
-    console.error(
-      chalk.red(`[api-docs-gen] cannot load package model from ${modelPath}:`)
-    )
-    console.error(e)
-    process.exit(1)
+    throw new Error(`Cannot load package model from ${modelPath}: ${e.message}`)
   }
 }
