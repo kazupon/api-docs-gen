@@ -1,0 +1,306 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`processor: Class.md 1`] = `
+"# Class
+
+## Calculator
+
+Calculator class
+
+**Signature:**
+\`\`\`typescript
+export declare class Calculator implements Calculatable 
+\`\`\`
+
+### Remarks
+
+This is remarks of Calculator class
+
+### Examples
+
+
+\`\`\`javascript
+const c = new Calculator()
+const v1 = c.add(1, 1)
+const v2 = c.sub(1, 1)
+\`\`\`
+
+
+
+### Constructor
+
+Conssutructor of usage
+
+**Signature:**
+\`\`\`typescript
+constructor(type: string);
+\`\`\`
+
+
+### Methods
+
+#### add
+
+add method
+
+**Signature:**
+\`\`\`typescript
+add(a: number, b: number): number;
+\`\`\`
+
+*Parameters*
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| a | number | target 1 
+| b | number | target 2 
+
+#### sub
+
+sub method
+
+**Signature:**
+\`\`\`typescript
+sub(a: number, b: number): number;
+\`\`\`
+
+*Parameters*
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| a | number | target 1 
+| b | number | target 2 
+
+
+### Properties
+
+#### PI
+
+PI
+
+**Signature:**
+\`\`\`typescript
+PI: number;
+\`\`\`
+
+#### type
+
+calcurator types 'simple'
+
+**Signature:**
+\`\`\`typescript
+type: string;
+\`\`\`
+
+
+"
+`;
+
+exports[`processor: Enum.md 1`] = `
+"# Enum
+
+## ErrorCodes
+
+Error Code
+
+**Signature:**
+\`\`\`typescript
+export declare enum ErrorCodes 
+\`\`\`
+
+### Members
+
+| Member | Value| Description |
+| --- | --- | --- |
+| InvalidFormat | 1 | Invalid format 
+| Succcess | 0 | Success 
+
+## TokenChars
+
+Token Characters
+
+**Signature:**
+\`\`\`typescript
+export declare enum TokenChars 
+\`\`\`
+
+### Members
+
+| Member | Value| Description |
+| --- | --- | --- |
+| Modulo | \\"%\\" | Modulo charactor 
+| Pipe | \\"|\\" | Pipe charactor \`|\` 
+
+### Remarks
+
+This is remarks of Token Chararaceters
+
+"
+`;
+
+exports[`processor: Function.md 1`] = `
+"# Function
+
+## add
+
+add function : \`x\`
+
+**Signature:**
+\`\`\`typescript
+export declare function add(a: number, b: number): number;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| a | number | target \`1\` 
+| b | number | target 2 
+
+### Returns
+
+ result as \`a\` + \`b\`
+
+### Throws
+
+- \`SyntaxError\` this is syntax error
+- \`Error\` this is general error
+
+### Remarks
+
+This is add function remarks: [ErrorCodes](./enum#errorcodes). See [add](https://foo.bar.com/api/add).
+
+### Examples
+
+example of \`add\` function:
+\`\`\`javascript
+console.log(add(1, 1))
+\`\`\`
+
+
+"
+`;
+
+exports[`processor: Interface.md 1`] = `
+"# Interface
+
+## Calculatable
+
+Calculatable interface
+
+**Signature:**
+\`\`\`typescript
+export interface Calculatable 
+\`\`\`
+
+
+### Methods
+
+#### add
+
+add method
+
+**Signature:**
+\`\`\`typescript
+add(a: number, b: number): number;
+\`\`\`
+
+*Parameters*
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| a | number | target 1 
+| b | number | target 2 
+
+
+### Properties
+
+#### PI
+
+PI
+
+**Signature:**
+\`\`\`typescript
+PI: number;
+\`\`\`
+
+
+"
+`;
+
+exports[`processor: TypeAlias.md 1`] = `
+"# TypeAlias
+
+## FallbackLocale
+
+Falback Locale
+
+**Signature:**
+\`\`\`typescript
+export declare type FallbackLocale = Locale | Locale[] | {
+    [locale in string]: Locale[];
+} | false;
+\`\`\`
+
+### Remarks
+
+This is remarks of \`Fallback Locale\`
+
+## Locale
+
+Locale
+
+**Signature:**
+\`\`\`typescript
+export declare type Locale = string;
+\`\`\`
+
+## LocaleMessage
+
+Locale Message resources
+
+**Signature:**
+\`\`\`typescript
+export declare type LocaleMessage = string | LocaleMessage[];
+\`\`\`
+
+"
+`;
+
+exports[`processor: Variable.md 1`] = `
+"# Variable
+
+## Config
+
+Configrations 
+
+**Signature:**
+\`\`\`typescript
+Config: {
+    [name: string]: unknown;
+}
+\`\`\`
+
+## VERSION
+
+app version
+
+**Signature:**
+\`\`\`typescript
+VERSION = \\"1.0.0\\"
+\`\`\`
+
+### Remarks
+
+you can lookup application version that is semver format.
+
+### Examples
+
+
+\`\`\`javascript
+console.log(VERSION)
+\`\`\`
+
+
+"
+`;

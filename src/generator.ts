@@ -4,7 +4,7 @@ import chalk from 'chalk'
 import { ApiPackage, ApiModel } from '@microsoft/api-extractor-model'
 import { debug as Debug } from 'debug'
 import { resolve } from './resolver'
-import { process as mdProcessor } from './processor'
+import { process as markdownProcessor } from './processor'
 import { isString } from './utils'
 
 import type { Config } from './types'
@@ -59,7 +59,7 @@ async function resolveConfig(configPath?: string): Promise<Config> {
   let resolvedPath: string | undefined
   const defaultConfig: Config = {
     linkReferencer: resolve,
-    processor: mdProcessor
+    processor: markdownProcessor
   }
 
   if (configPath) {

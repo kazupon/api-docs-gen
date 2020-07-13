@@ -22,10 +22,11 @@ export interface Config {
  * Markdown reference resolver
  *
  * @param item the item of `api-extractor-model`
+ * @param model the model of `api-extractor-model`
  *
  * @returns resolved reference path
  */
-export type ReferenceResolver = (item: ApiItem) => string
+export type ReferenceResolver = (item: ApiItem, model: ApiModel) => string
 
 /**
  * Markdown content
