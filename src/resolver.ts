@@ -1,13 +1,22 @@
-import type { ApiItem, ApiModel } from '@microsoft/api-extractor-model'
+import type {
+  ApiItem,
+  ApiModel,
+  ApiPackage
+} from '@microsoft/api-extractor-model'
 import { getSafePathFromDisplayName } from './utils'
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function resolve(item: ApiItem, model: ApiModel): string {
+export function resolve(
+  item: ApiItem,
+  model: ApiModel, // eslint-disable-line @typescript-eslint/no-unused-vars
+  pkg: ApiPackage // eslint-disable-line @typescript-eslint/no-unused-vars
+): string {
   if (item.kind === 'Model') {
     return './index'
   }
 
   let baseName = ''
+  // const pakcageBase = pkg.displayName
+  const pakcageBase = ''
   for (const hierarchyItem of item.getHierarchy()) {
     const qualifiedName = getSafePathFromDisplayName(hierarchyItem.displayName)
     switch (hierarchyItem.kind) {
@@ -25,5 +34,6 @@ export function resolve(item: ApiItem, model: ApiModel): string {
         baseName += '.' + qualifiedName
     }
   }
-  return './' + baseName
+
+  return pakcageBase ? `./${pakcageBase}/${baseName}` : `./${baseName}`
 }

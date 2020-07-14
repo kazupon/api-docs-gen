@@ -2,7 +2,7 @@ import path from 'path'
 import { ApiModel } from '@microsoft/api-extractor-model'
 import { resolve } from '../src/resolver'
 import { process } from '../src/processor'
-import { MarkdownContent } from '../src/types'
+import { MarkdownContent } from '../src/config'
 
 test('processor', () => {
   const apiModel = new ApiModel()

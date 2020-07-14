@@ -20,9 +20,8 @@ import {
 } from '@microsoft/tsdoc'
 import type { DeclarationReference } from '@microsoft/tsdoc/lib/beta/DeclarationReference'
 import { debug as Debug } from 'debug'
-import type { MarkdownContent, ReferenceResolver } from './types'
-import { createContentBuilder } from './builder'
-import type { ContentBuilder } from './builder'
+import type { MarkdownContent, ReferenceResolver } from './config'
+import { ContentBuilder, createContentBuilder } from './builder'
 import { escapeText } from './utils'
 
 const debug = Debug('api-docs-gen:processor')
@@ -97,7 +96,7 @@ export function process(
     if (docs.summarySection) {
       builder.pushline(
         // @ts-ignore
-        getDocSectionContent(model, docs.summarySection, item, resolver)
+        getDocSectionContent(model, pkg, docs.summarySection, item, resolver)
       )
       builder.newline()
     }
@@ -126,6 +125,7 @@ export function process(
             p.tsdocParamBlock && p.tsdocParamBlock.content
               ? getDocSectionContent(
                   model,
+                  pkg,
                   // @ts-ignore TODO:
                   p.tsdocParamBlock.content,
                   item,
@@ -143,8 +143,14 @@ export function process(
       builder.pushline(`### Returns`)
       builder.newline()
       builder.pushline(
-        // @ts-ignore TODO:
-        getDocSectionContent(model, docs.returnsBlock.content, item, resolver)
+        getDocSectionContent(
+          model,
+          pkg,
+          // @ts-ignore TODO:
+          docs.returnsBlock.content,
+          item,
+          resolver
+        )
       )
       builder.newline()
     }
@@ -156,7 +162,13 @@ export function process(
       builder.pushline(`### Throws`)
       builder.newline()
       for (const t of throws) {
-        let text = `${getDocSectionContent(model, t.content, item, resolver)}`
+        let text = `${getDocSectionContent(
+          model,
+          pkg,
+          t.content,
+          item,
+          resolver
+        )}`
         if (throws.length > 1) {
           text = `- ` + text
         }
@@ -170,8 +182,14 @@ export function process(
       builder.pushline(`### Remarks`)
       builder.newline()
       builder.pushline(
-        // @ts-ignore TODO:
-        getDocSectionContent(model, docs.remarksBlock.content, item, resolver)
+        getDocSectionContent(
+          model,
+          pkg,
+          // @ts-ignore TODO:
+          docs.remarksBlock.content,
+          item,
+          resolver
+        )
       )
       builder.newline()
     }
@@ -188,7 +206,7 @@ export function process(
           builder.pushline(`#### Example ${count}`)
         }
         builder.pushline(
-          `${getDocSectionContent(model, e.content, item, resolver)}`
+          `${getDocSectionContent(model, pkg, e.content, item, resolver)}`
         )
         builder.newline()
         count++
@@ -212,7 +230,7 @@ export function process(
     if (docs.summarySection) {
       builder.pushline(
         // @ts-ignore
-        getDocSectionContent(model, docs.summarySection, item, resolver)
+        getDocSectionContent(model, pkg, docs.summarySection, item, resolver)
       )
       builder.newline()
     }
@@ -245,6 +263,7 @@ export function process(
             memberDeclared.tsdocComment.summarySection
               ? getDocSectionContent(
                   model,
+                  pkg,
                   // @ts-ignore TODO:
                   memberDeclared.tsdocComment.summarySection,
                   item,
@@ -262,8 +281,14 @@ export function process(
       builder.pushline(`### Remarks`)
       builder.newline()
       builder.pushline(
-        // @ts-ignore TODO:
-        getDocSectionContent(model, docs.remarksBlock.content, item, resolver)
+        getDocSectionContent(
+          model,
+          pkg,
+          // @ts-ignore TODO:
+          docs.remarksBlock.content,
+          item,
+          resolver
+        )
       )
       builder.newline()
     }
@@ -280,7 +305,7 @@ export function process(
           builder.pushline(`#### Example ${count}`)
         }
         builder.pushline(
-          `${getDocSectionContent(model, e.content, item, resolver)}`
+          `${getDocSectionContent(model, pkg, e.content, item, resolver)}`
         )
         builder.newline()
         count++
@@ -304,7 +329,7 @@ export function process(
     if (docs.summarySection) {
       builder.pushline(
         // @ts-ignore
-        getDocSectionContent(model, docs.summarySection, item, resolver)
+        getDocSectionContent(model, pkg, docs.summarySection, item, resolver)
       )
       builder.newline()
     }
@@ -333,6 +358,7 @@ export function process(
             p.tsdocParamBlock && p.tsdocParamBlock.content
               ? getDocSectionContent(
                   model,
+                  pkg,
                   // @ts-ignore TODO:
                   p.tsdocParamBlock.content,
                   item,
@@ -350,8 +376,14 @@ export function process(
       builder.pushline(`### Returns`)
       builder.newline()
       builder.pushline(
-        // @ts-ignore TODO:
-        getDocSectionContent(model, docs.returnsBlock.content, item, resolver)
+        getDocSectionContent(
+          model,
+          pkg,
+          // @ts-ignore TODO:
+          docs.returnsBlock.content,
+          item,
+          resolver
+        )
       )
       builder.newline()
     }
@@ -363,7 +395,13 @@ export function process(
       builder.pushline(`### Throws`)
       builder.newline()
       for (const t of throws) {
-        let text = `${getDocSectionContent(model, t.content, item, resolver)}`
+        let text = `${getDocSectionContent(
+          model,
+          pkg,
+          t.content,
+          item,
+          resolver
+        )}`
         if (throws.length > 1) {
           text = `- ` + text
         }
@@ -377,8 +415,14 @@ export function process(
       builder.pushline(`### Remarks`)
       builder.newline()
       builder.pushline(
-        // @ts-ignore TODO:
-        getDocSectionContent(model, docs.remarksBlock.content, item, resolver)
+        getDocSectionContent(
+          model,
+          pkg,
+          // @ts-ignore TODO:
+          docs.remarksBlock.content,
+          item,
+          resolver
+        )
       )
       builder.newline()
     }
@@ -395,7 +439,7 @@ export function process(
           builder.pushline(`#### Example ${count}`)
         }
         builder.pushline(
-          `${getDocSectionContent(model, e.content, item, resolver)}`
+          `${getDocSectionContent(model, pkg, e.content, item, resolver)}`
         )
         builder.newline()
         count++
@@ -487,7 +531,7 @@ export function process(
     if (docs.summarySection) {
       builder.pushline(
         // @ts-ignore
-        getDocSectionContent(model, docs.summarySection, item, resolver)
+        getDocSectionContent(model, pkg, docs.summarySection, item, resolver)
       )
       builder.newline()
     }
@@ -508,8 +552,14 @@ export function process(
       builder.pushline(`### Remarks`)
       builder.newline()
       builder.pushline(
-        // @ts-ignore TODO:
-        getDocSectionContent(model, docs.remarksBlock.content, item, resolver)
+        getDocSectionContent(
+          model,
+          pkg,
+          // @ts-ignore TODO:
+          docs.remarksBlock.content,
+          item,
+          resolver
+        )
       )
       builder.newline()
     }
@@ -526,7 +576,7 @@ export function process(
           builder.pushline(`#### Example ${count}`)
         }
         builder.pushline(
-          `${getDocSectionContent(model, e.content, item, resolver)}`
+          `${getDocSectionContent(model, pkg, e.content, item, resolver)}`
         )
         builder.newline()
         count++
@@ -550,7 +600,7 @@ export function process(
     if (docs.summarySection) {
       builder.pushline(
         // @ts-ignore
-        getDocSectionContent(model, docs.summarySection, item, resolver)
+        getDocSectionContent(model, pkg, docs.summarySection, item, resolver)
       )
       builder.newline()
     }
@@ -571,8 +621,14 @@ export function process(
       builder.pushline(`### Remarks`)
       builder.newline()
       builder.pushline(
-        // @ts-ignore TODO:
-        getDocSectionContent(model, docs.remarksBlock.content, item, resolver)
+        getDocSectionContent(
+          model,
+          pkg,
+          // @ts-ignore TODO:
+          docs.remarksBlock.content,
+          item,
+          resolver
+        )
       )
       builder.newline()
     }
@@ -589,7 +645,7 @@ export function process(
           builder.pushline(`#### Example ${count}`)
         }
         builder.pushline(
-          `${getDocSectionContent(model, e.content, item, resolver)}`
+          `${getDocSectionContent(model, pkg, e.content, item, resolver)}`
         )
         builder.newline()
         count++
@@ -603,7 +659,7 @@ export function process(
     for (const [kind, builder] of builders) {
       const content = builder.content
       contents.push({
-        filename: `${kind}.md`,
+        filename: `${kind.toLowerCase()}.md`,
         body: content
       })
     }
@@ -619,6 +675,7 @@ export function process(
 
 export function getDocSectionContent(
   model: ApiModel,
+  pkg: ApiPackage,
   content: DocSection,
   contextItem: ApiItem,
   resolver: ReferenceResolver
@@ -645,7 +702,7 @@ export function getDocSectionContent(
               contextItem
             )
             if (result.resolvedApiItem) {
-              const filepath = resolver(result.resolvedApiItem, model)
+              const filepath = resolver(result.resolvedApiItem, model, pkg)
               if (linkText) {
                 const encodedLinkText = escapeText(
                   linkText.replace(/\s+/g, ' ')

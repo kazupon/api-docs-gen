@@ -1,8 +1,10 @@
 import path from 'path'
+import fs from 'fs'
 import meow from 'meow'
 import chalk from 'chalk'
 import { debug as Debug } from 'debug'
 import { generate } from './generator'
+import { Config, resolveConfig, defaultConfig } from './config'
 
 const debug = Debug('api-docs-gen:cli')
 
@@ -50,8 +52,24 @@ const output =
   cli.flags.output != null ? path.resolve(cli.flags.output) : process.cwd()
 debug(`output`, output)
 
+// mkdir directory, if not exist
+try {
+  fs.mkdirSync(output, { recursive: true })
+} catch (e) {
+  console.error(
+    chalk.red(`[api-docs-gen] output directory mkdir error: ${e.message}`)
+  )
+  process.exit(1)
+}
+
 // config
-const config = cli.flags.config
+let config: Config = defaultConfig
+try {
+  config = resolveConfig(cli.flags.config)
+} catch (e) {
+  console.error(chalk.red(`[api-docs-gen] ${e.message}`))
+  process.exit(1)
+}
 debug(`config`, config)
 
 // run

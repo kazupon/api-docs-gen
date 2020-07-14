@@ -1,6 +1,6 @@
-export * from './types'
 export * from './utils'
 export * from './builder'
+export * from './config'
 export { process, getCustomTags, getDocSectionContent } from './processor'
 export { resolve } from './resolver'
 export { generate } from './generator'
