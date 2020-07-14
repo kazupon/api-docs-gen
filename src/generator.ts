@@ -18,16 +18,15 @@ const debug = Debug('api-docs-gen:generator')
 export async function generate(
   input: string[],
   output: string,
-  config: Config
+  config: Config,
+  callback?: (pkgname: string, filename: string) => void
 ): Promise<void> {
   debug(`Config`, config)
 
+  const apiModel = new ApiModel()
   for (const target of input) {
     debug(`generate from ${target} ...`)
-
-    const apiModel = new ApiModel()
     const apiPackage = loadPackage(target, apiModel)
-    console.log('pacakge', apiPackage.displayName)
 
     let result = config.processor(
       apiModel,
@@ -56,7 +55,9 @@ export async function generate(
     }
 
     for (const { filename, body } of result) {
-      await fs.writeFile(path.resolve(pkgDir, filename), body, 'utf-8')
+      const filepath = path.resolve(pkgDir, filename)
+      await fs.writeFile(filepath, body, 'utf-8')
+      callback && callback(apiPackage.displayName, filepath)
     }
   }
 }

@@ -75,7 +75,14 @@ debug(`config`, config)
 // run
 try {
   ;(async () => {
-    await generate(input, output, config)
+    await generate(
+      input,
+      output,
+      config,
+      (pkgname: string, filepath: string) => {
+        console.log(chalk.green(`📦 ${pkgname}: 📝 save ${filepath}`))
+      }
+    )
   })()
 } catch (e) {
   console.error(chalk.red(`[api-docs-gen] ${e.message}`))
