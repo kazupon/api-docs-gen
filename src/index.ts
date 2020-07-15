@@ -1,1 +1,6 @@
-console.log('I was born in the world!')
+export * from './utils'
+export * from './builder'
+export * from './config'
+export { process, getCustomTags, getDocSectionContent } from './processor'
+export { resolve } from './resolver'
+export { generate } from './generator'

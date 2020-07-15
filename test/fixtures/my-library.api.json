@@ -1,0 +1,667 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.9.1",
+    "schemaVersion": 1003,
+    "oldestForwardsCompatibleVersion": 1001
+  },
+  "kind": "Package",
+  "canonicalReference": "my-library!",
+  "docComment": "",
+  "name": "my-library",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "my-library!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Function",
+          "canonicalReference": "my-library!add:function(1)",
+          "docComment": "/**\n * add function : `x`\n *\n * @remarks\n *\n * This is add function remarks: {@link ErrorCodes}. See {@link https://foo.bar.com/api/add | add}.\n *\n * @param a - target `1`\n *\n * @param b - target 2\n *\n * @returns result as `a` + `b`\n *\n * @throws\n *\n * `SyntaxError` this is syntax error\n *\n * @throws\n *\n * `Error` this is general error\n *\n * @example\n *\n * example of `add` function:\n * ```javascript\n * console.log(add(1, 1))\n * ```\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function add(a: "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": ", b: "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "a",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "parameterName": "b",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            }
+          ],
+          "name": "add"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "my-library!Calculatable:interface",
+          "docComment": "/**\n * Calculatable interface\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface Calculatable "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Calculatable",
+          "members": [
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "my-library!Calculatable#add:member(1)",
+              "docComment": "/**\n * add method\n *\n * @param a - target 1\n *\n * @param b - target 2\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "add(a: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", b: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "a",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                },
+                {
+                  "parameterName": "b",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ],
+              "name": "add"
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "my-library!Calculatable#PI:member",
+              "docComment": "/**\n * PI\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "PI: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "PI",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "my-library!Calculator:class",
+          "docComment": "/**\n * Calculator class\n *\n * @remarks\n *\n * This is remarks of Calculator class\n *\n * @example\n * ```javascript\n * const c = new Calculator()\n * const v1 = c.add(1, 1)\n * const v2 = c.sub(1, 1)\n * ```\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class Calculator implements "
+            },
+            {
+              "kind": "Reference",
+              "text": "Calculatable",
+              "canonicalReference": "my-library!Calculatable:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Calculator",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "my-library!Calculator:constructor(1)",
+              "docComment": "/**\n * Conssutructor of usage\n *\n * @param type - calculator type\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(type: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "type",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "my-library!Calculator#add:member(1)",
+              "docComment": "/**\n * add method\n *\n * @param a - target 1\n *\n * @param b - target 2\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "add(a: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", b: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "a",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                },
+                {
+                  "parameterName": "b",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ],
+              "name": "add"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "my-library!Calculator#PI:member",
+              "docComment": "/**\n * PI\n *\n * @returns 3.14\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "PI: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "PI",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "my-library!Calculator#sub:member(1)",
+              "docComment": "/**\n * sub method\n *\n * @param a - target 1\n *\n * @param b - target 2\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "sub(a: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", b: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "a",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                },
+                {
+                  "parameterName": "b",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ],
+              "name": "sub"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "my-library!Calculator#type:member",
+              "docComment": "/**\n * calcurator types\n *\n * @default 'simple'\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "type: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "my-library!Config:var",
+          "docComment": "/**\n * Configrations\n *\n * @default {}\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "Config: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    [name: string]: unknown;\n}"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Config",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "my-library!ErrorCodes:enum",
+          "docComment": "/**\n * Error Code\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum ErrorCodes "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ErrorCodes",
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "my-library!ErrorCodes.InvalidFormat:member",
+              "docComment": "/**\n * Invalid format\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "InvalidFormat = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "InvalidFormat",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "my-library!ErrorCodes.Succcess:member",
+              "docComment": "/**\n * Success\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Succcess = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "0"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Succcess",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "my-library!FallbackLocale:type",
+          "docComment": "/**\n * Falback Locale\n *\n * @remarks\n *\n * This is remarks of `Fallback Locale`\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type FallbackLocale = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Locale",
+              "canonicalReference": "my-library!Locale:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Locale",
+              "canonicalReference": "my-library!Locale:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[] | {\n    [locale in string]: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Locale",
+              "canonicalReference": "my-library!Locale:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[];\n} | false"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "FallbackLocale",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 7
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "my-library!Locale:type",
+          "docComment": "/**\n * Locale\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type Locale = "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "Locale",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "my-library!LocaleMessage:type",
+          "docComment": "/**\n * Locale Message resources\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type LocaleMessage = "
+            },
+            {
+              "kind": "Content",
+              "text": "string | "
+            },
+            {
+              "kind": "Reference",
+              "text": "LocaleMessage",
+              "canonicalReference": "my-library!LocaleMessage:type"
+            },
+            {
+              "kind": "Content",
+              "text": "[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "LocaleMessage",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "my-library!TokenChars:enum",
+          "docComment": "/**\n * Token Characters\n *\n * @remarks\n *\n * This is remarks of Token Chararaceters\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum TokenChars "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "TokenChars",
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "my-library!TokenChars.Modulo:member",
+              "docComment": "/**\n * Modulo charactor\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Modulo = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"%\""
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Modulo",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "my-library!TokenChars.Pipe:member",
+              "docComment": "/**\n * Pipe charactor `|`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Pipe = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"|\""
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Pipe",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ]
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "my-library!VERSION:var",
+          "docComment": "/**\n * app version\n *\n * @remarks\n *\n * you can lookup application version that is semver format.\n *\n * @example\n * ```javascript\n * console.log(VERSION)\n * ```\n *\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "VERSION = \"1.0.0\""
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "VERSION",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        }
+      ]
+    }
+  ]
+}
