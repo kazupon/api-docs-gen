@@ -1,3 +1,5 @@
+import { promises as fs } from 'fs'
+
 /**
  * string type checking function
  *
@@ -45,4 +47,12 @@ const RE_BAD_PATH_CHARS = /[^a-z0-9_\-\.]/gi
  */
 export function getSafePathFromDisplayName(name: string): string {
   return name.replace(RE_BAD_PATH_CHARS, '_').toLowerCase()
+}
+
+export async function mkdir(path: string) {
+  await fs.mkdir(path, { recursive: true })
+}
+
+export async function writeFile(path: string, data: string) {
+  await fs.writeFile(path, data, 'utf-8')
 }

@@ -4,7 +4,8 @@ import meow from 'meow'
 import chalk from 'chalk'
 import { debug as Debug } from 'debug'
 import { generate } from './generator'
-import { Config, resolveConfig, defaultConfig } from './config'
+import { Config, resolveConfig, DefaultConfig } from './config'
+import { GenerateStyle, GENERATE_STYLES } from './constants'
 
 const debug = Debug('api-docs-gen:cli')
 
@@ -18,6 +19,11 @@ export const flags = {
     type: 'string',
     alias: 'c',
     isRequired: false
+  },
+  'generate-style': {
+    type: 'string',
+    alias: 'g',
+    default: GENERATE_STYLES.prefix
   }
 } as const
 
@@ -27,18 +33,22 @@ const cli = meow(
     $ api-docs-gen <input>
 
   Options
-    --config, -c configuration file
-    --output, -o output dierectory that is markdown contents
+    --config, -c              configuration file
+    --output, -o              output dierectory that is markdown contents
+    --generate-style, -g      document generating style, default 'prefix'.
+                              Be able to separated each package docs with 'directory'
 
   Examples
-    $ api-docs-gen my-library-api.json
-    $ api-docs-gen my-library-api.json --output ./docs
-    $ api-docs-gen my-library-api.json --config docsgen.config.js
+    $ api-docs-gen package1.api.json
+    $ api-docs-gen package1.api.json --output ./docs
+    $ api-docs-gen package1.api.json --config docsgen.config.js
+    $ api-docs-gen package1.api.json package2.api.json --generate-style directory
 `,
   {
     flags
   }
 )
+debug('cli', cli)
 
 // check input
 const input = cli.input
@@ -57,13 +67,13 @@ try {
   fs.mkdirSync(output, { recursive: true })
 } catch (e) {
   console.error(
-    chalk.red(`[api-docs-gen] output directory mkdir error: ${e.message}`)
+    chalk.red(`[api-docs-gen] make output directory error: ${e.message}`)
   )
   process.exit(1)
 }
 
 // config
-let config: Config = defaultConfig
+let config: Config = DefaultConfig
 try {
   config = resolveConfig(cli.flags.config)
 } catch (e) {
@@ -72,12 +82,20 @@ try {
 }
 debug(`config`, config)
 
+// generate style
+const genStyleFlag = cli.flags['generate-style'] as GenerateStyle
+const genStyle = Object.keys(GENERATE_STYLES).includes(genStyleFlag)
+  ? genStyleFlag
+  : 'prefix'
+debug('packageDocsStyle', genStyleFlag, genStyle)
+
 // run
 try {
   ;(async () => {
     await generate(
       input,
       output,
+      genStyle,
       config,
       (pkgname: string, filepath: string) => {
         console.log(chalk.green(`📦 ${pkgname}: 📝 save ${filepath}`))

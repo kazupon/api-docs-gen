@@ -23,12 +23,14 @@ import { debug as Debug } from 'debug'
 import type { MarkdownContent, ReferenceResolver } from './config'
 import { ContentBuilder, createContentBuilder } from './builder'
 import { escapeText } from './utils'
+import type { GenerateStyle } from './constants'
 
 const debug = Debug('api-docs-gen:processor')
 
 export function process(
   model: ApiModel,
   pkg: ApiPackage,
+  style: GenerateStyle,
   resolver: ReferenceResolver
 ): string | MarkdownContent[] {
   // build
@@ -129,10 +131,11 @@ export function process(
                   // @ts-ignore TODO:
                   p.tsdocParamBlock.content,
                   item,
+                  style,
                   resolver
                 )
               : ''
-          } `
+          } |`
         )
       }
       builder.newline()
@@ -149,6 +152,7 @@ export function process(
           // @ts-ignore TODO:
           docs.returnsBlock.content,
           item,
+          style,
           resolver
         )
       )
@@ -167,6 +171,7 @@ export function process(
           pkg,
           t.content,
           item,
+          style,
           resolver
         )}`
         if (throws.length > 1) {
@@ -188,6 +193,7 @@ export function process(
           // @ts-ignore TODO:
           docs.remarksBlock.content,
           item,
+          style,
           resolver
         )
       )
@@ -206,7 +212,14 @@ export function process(
           builder.pushline(`#### Example ${count}`)
         }
         builder.pushline(
-          `${getDocSectionContent(model, pkg, e.content, item, resolver)}`
+          `${getDocSectionContent(
+            model,
+            pkg,
+            e.content,
+            item,
+            style,
+            resolver
+          )}`
         )
         builder.newline()
         count++
@@ -267,10 +280,11 @@ export function process(
                   // @ts-ignore TODO:
                   memberDeclared.tsdocComment.summarySection,
                   item,
+                  style,
                   resolver
                 )
               : ''
-          } `
+          } |`
         )
       }
       builder.newline()
@@ -287,6 +301,7 @@ export function process(
           // @ts-ignore TODO:
           docs.remarksBlock.content,
           item,
+          style,
           resolver
         )
       )
@@ -305,7 +320,14 @@ export function process(
           builder.pushline(`#### Example ${count}`)
         }
         builder.pushline(
-          `${getDocSectionContent(model, pkg, e.content, item, resolver)}`
+          `${getDocSectionContent(
+            model,
+            pkg,
+            e.content,
+            item,
+            style,
+            resolver
+          )}`
         )
         builder.newline()
         count++
@@ -362,10 +384,11 @@ export function process(
                   // @ts-ignore TODO:
                   p.tsdocParamBlock.content,
                   item,
+                  style,
                   resolver
                 )
               : ''
-          } `
+          } |`
         )
       }
       builder.newline()
@@ -382,6 +405,7 @@ export function process(
           // @ts-ignore TODO:
           docs.returnsBlock.content,
           item,
+          style,
           resolver
         )
       )
@@ -400,6 +424,7 @@ export function process(
           pkg,
           t.content,
           item,
+          style,
           resolver
         )}`
         if (throws.length > 1) {
@@ -421,6 +446,7 @@ export function process(
           // @ts-ignore TODO:
           docs.remarksBlock.content,
           item,
+          style,
           resolver
         )
       )
@@ -439,7 +465,14 @@ export function process(
           builder.pushline(`#### Example ${count}`)
         }
         builder.pushline(
-          `${getDocSectionContent(model, pkg, e.content, item, resolver)}`
+          `${getDocSectionContent(
+            model,
+            pkg,
+            e.content,
+            item,
+            style,
+            resolver
+          )}`
         )
         builder.newline()
         count++
@@ -558,6 +591,7 @@ export function process(
           // @ts-ignore TODO:
           docs.remarksBlock.content,
           item,
+          style,
           resolver
         )
       )
@@ -576,7 +610,14 @@ export function process(
           builder.pushline(`#### Example ${count}`)
         }
         builder.pushline(
-          `${getDocSectionContent(model, pkg, e.content, item, resolver)}`
+          `${getDocSectionContent(
+            model,
+            pkg,
+            e.content,
+            item,
+            style,
+            resolver
+          )}`
         )
         builder.newline()
         count++
@@ -627,6 +668,7 @@ export function process(
           // @ts-ignore TODO:
           docs.remarksBlock.content,
           item,
+          style,
           resolver
         )
       )
@@ -645,7 +687,14 @@ export function process(
           builder.pushline(`#### Example ${count}`)
         }
         builder.pushline(
-          `${getDocSectionContent(model, pkg, e.content, item, resolver)}`
+          `${getDocSectionContent(
+            model,
+            pkg,
+            e.content,
+            item,
+            style,
+            resolver
+          )}`
         )
         builder.newline()
         count++
@@ -678,6 +727,7 @@ export function getDocSectionContent(
   pkg: ApiPackage,
   content: DocSection,
   contextItem: ApiItem,
+  style: GenerateStyle,
   resolver: ReferenceResolver
 ): string {
   let ret = ''
@@ -702,7 +752,12 @@ export function getDocSectionContent(
               contextItem
             )
             if (result.resolvedApiItem) {
-              const filepath = resolver(result.resolvedApiItem, model, pkg)
+              const filepath = resolver(
+                style,
+                result.resolvedApiItem,
+                model,
+                pkg
+              )
               if (linkText) {
                 const encodedLinkText = escapeText(
                   linkText.replace(/\s+/g, ' ')

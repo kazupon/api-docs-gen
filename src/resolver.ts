@@ -4,19 +4,20 @@ import type {
   ApiPackage
 } from '@microsoft/api-extractor-model'
 import { getSafePathFromDisplayName } from './utils'
+import { GenerateStyle } from './constants'
 
 export function resolve(
+  style: GenerateStyle,
   item: ApiItem,
   model: ApiModel, // eslint-disable-line @typescript-eslint/no-unused-vars
-  pkg: ApiPackage // eslint-disable-line @typescript-eslint/no-unused-vars
+  pkg: ApiPackage
 ): string {
   if (item.kind === 'Model') {
     return './index'
   }
 
   let baseName = ''
-  // const pakcageBase = pkg.displayName
-  const pakcageBase = ''
+  const pkgName = pkg.displayName
   for (const hierarchyItem of item.getHierarchy()) {
     const qualifiedName = getSafePathFromDisplayName(hierarchyItem.displayName)
     switch (hierarchyItem.kind) {
@@ -35,5 +36,13 @@ export function resolve(
     }
   }
 
-  return pakcageBase ? `./${pakcageBase}/${baseName}` : `./${baseName}`
+  return style === 'prefix' ? `./${pkgName}-${baseName}` : `./${baseName}`
+}
+
+export function loadPackage(modelPath: string, model: ApiModel): ApiPackage {
+  try {
+    return model.loadPackage(modelPath)
+  } catch (e) {
+    throw new Error(`Cannot load package model from ${modelPath}: ${e.message}`)
+  }
 }

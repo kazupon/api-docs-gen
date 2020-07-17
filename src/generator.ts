@@ -1,10 +1,11 @@
 import path from 'path'
-import { promises as fs } from 'fs'
-import { ApiPackage, ApiModel } from '@microsoft/api-extractor-model'
+import { ApiModel } from '@microsoft/api-extractor-model'
 import { debug as Debug } from 'debug'
-import { isString } from './utils'
+import { loadPackage } from './resolver'
+import { isString, mkdir, writeFile } from './utils'
 
 import type { Config } from './config'
+import type { GenerateStyle } from './constants'
 
 const debug = Debug('api-docs-gen:generator')
 
@@ -12,16 +13,19 @@ const debug = Debug('api-docs-gen:generator')
  * generate markdown contents
  *
  * @param input input paths
- * @param output output path
+ * @param output output full path
+ * @param style generate style, see {@link GenerateStyle}
  * @param config configration, see {@link Config}
  */
 export async function generate(
   input: string[],
   output: string,
+  style: GenerateStyle,
   config: Config,
   callback?: (pkgname: string, filename: string) => void
 ): Promise<void> {
-  debug(`Config`, config)
+  debug(`config`, config)
+  debug('style', style)
 
   const apiModel = new ApiModel()
   for (const target of input) {
@@ -31,6 +35,7 @@ export async function generate(
     let result = config.processor(
       apiModel,
       apiPackage,
+      style,
       config.linkReferencer! // eslint-disable-line @typescript-eslint/no-non-null-assertion
     )
 
@@ -42,30 +47,29 @@ export async function generate(
         }
       ]
     }
+    debug('result: ', result)
 
     if (!Array.isArray(result)) {
       throw new Error('Not supported processor result type')
     }
 
-    const pkgDir = path.resolve(output, apiPackage.displayName)
-    try {
-      await fs.mkdir(pkgDir, { recursive: true })
-    } catch (e) {
-      throw new Error(`Cannot make '${pkgDir} directory: ${e.message}`)
+    let outputTarget = output
+    if (style === 'directory') {
+      outputTarget = path.resolve(output, apiPackage.displayName)
+      try {
+        await mkdir(outputTarget)
+      } catch (e) {
+        throw new Error(`Cannot make '${outputTarget} directory: ${e.message}`)
+      }
     }
 
     for (const { filename, body } of result) {
-      const filepath = path.resolve(pkgDir, filename)
-      await fs.writeFile(filepath, body, 'utf-8')
+      const filepath = path.resolve(
+        outputTarget,
+        style === 'prefix' ? `${apiPackage.displayName}-${filename}` : filename
+      )
+      await writeFile(filepath, body)
       callback && callback(apiPackage.displayName, filepath)
     }
-  }
-}
-
-function loadPackage(modelPath: string, model: ApiModel): ApiPackage {
-  try {
-    return model.loadPackage(modelPath)
-  } catch (e) {
-    throw new Error(`Cannot load package model from ${modelPath}: ${e.message}`)
   }
 }

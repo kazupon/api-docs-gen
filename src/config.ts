@@ -8,6 +8,7 @@ import type {
 import { debug as Debug } from 'debug'
 import { resolve } from './resolver'
 import { process as markdownProcessor } from './processor'
+import { GenerateStyle } from './constants'
 
 const debug = Debug('api-docs-gen:config')
 
@@ -28,6 +29,7 @@ export interface Config {
 /**
  * Markdown reference resolver
  *
+ * @param style package docs style, See the {@link GenerateStyle}
  * @param item the item of `api-extractor-model`
  * @param model the model of `api-extractor-model`
  * @param pkg the package of `api-extractor-model`
@@ -35,6 +37,7 @@ export interface Config {
  * @returns resolved reference path
  */
 export type ReferenceResolver = (
+  style: GenerateStyle,
   item: ApiItem,
   model: ApiModel,
   pkg: ApiPackage
@@ -59,6 +62,7 @@ export interface MarkdownContent {
  *
  * @param model the api model of `api-extractor-model`
  * @param package the package of `api-extractor-model`
+ * @param style package docs style. see the {@link GenerateStyle}
  * @param resolver the markdown reference resolver. if you're specfified at {@link Config}, it's passed, else it's not specified passed internal refenrece resolver.
  *
  * @returns markdown content
@@ -66,13 +70,14 @@ export interface MarkdownContent {
 export type MarkdownProcessor = (
   model: ApiModel,
   pkg: ApiPackage,
+  style: GenerateStyle,
   resolver: ReferenceResolver
 ) => string | MarkdownContent[]
 
 /**
  * Default Config
  */
-export const defaultConfig: Config = {
+export const DefaultConfig: Config = {
   linkReferencer: resolve,
   processor: markdownProcessor
 }
@@ -100,7 +105,7 @@ export function resolveConfig(configPath?: string | null): Config {
   }
 
   if (!resolvedPath) {
-    return defaultConfig
+    return DefaultConfig
   }
 
   try {
@@ -119,7 +124,7 @@ export function resolveConfig(configPath?: string | null): Config {
       config.linkReferencer = config.linkReferencer || resolve
       return config
     } else {
-      return defaultConfig
+      return DefaultConfig
     }
   } catch (e) {
     throw new Error(`Failed to load config from ${resolvedPath}: ${e.message}`)
