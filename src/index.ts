@@ -1,6 +1,7 @@
-export * from './utils'
+export { getSafePathFromDisplayName, escapeText } from './utils'
 export * from './builder'
 export * from './config'
+export { GENERATE_STYLES, GenerateStyle } from './constants'
 export { process, getCustomTags, getDocSectionContent } from './processor'
 export { resolve } from './resolver'
 export { generate } from './generator'

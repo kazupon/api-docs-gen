@@ -52,8 +52,8 @@ add(a: number, b: number): number;
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| a | number | target 1 
-| b | number | target 2 
+| a | number | target 1 |
+| b | number | target 2 |
 
 #### sub
 
@@ -68,8 +68,8 @@ sub(a: number, b: number): number;
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| a | number | target 1 
-| b | number | target 2 
+| a | number | target 1 |
+| b | number | target 2 |
 
 
 ### Properties
@@ -112,8 +112,8 @@ export declare enum ErrorCodes
 
 | Member | Value| Description |
 | --- | --- | --- |
-| InvalidFormat | 1 | Invalid format 
-| Succcess | 0 | Success 
+| InvalidFormat | 1 | Invalid format |
+| Succcess | 0 | Success |
 
 ## TokenChars
 
@@ -128,8 +128,8 @@ export declare enum TokenChars
 
 | Member | Value| Description |
 | --- | --- | --- |
-| Modulo | \\"%\\" | Modulo charactor 
-| Pipe | \\"|\\" | Pipe charactor \`|\` 
+| Modulo | \\"%\\" | Modulo charactor |
+| Pipe | \\"|\\" | Pipe charactor \`|\` |
 
 ### Remarks
 
@@ -154,8 +154,8 @@ export declare function add(a: number, b: number): number;
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| a | number | target \`1\` 
-| b | number | target 2 
+| a | number | target \`1\` |
+| b | number | target 2 |
 
 ### Returns
 
@@ -168,7 +168,7 @@ export declare function add(a: number, b: number): number;
 
 ### Remarks
 
-This is add function remarks: [ErrorCodes](./enum#errorcodes). See [add](https://foo.bar.com/api/add).
+This is add function remarks: [ErrorCodes](./my-library-enum#errorcodes). See [add](https://foo.bar.com/api/add).
 
 ### Examples
 
@@ -209,8 +209,8 @@ add(a: number, b: number): number;
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| a | number | target 1 
-| b | number | target 2 
+| a | number | target 1 |
+| b | number | target 2 |
 
 
 ### Properties
