@@ -64,13 +64,13 @@ export enum ErrorCodes {
  */
 export enum TokenChars {
   /**
-   * Pipe charactor `|`
-   */
-  Pipe = '|',
-  /**
    * Modulo charactor
    */
   Modulo = '%',
+  /**
+   * Plus charactor
+   */
+  Plus = '+',
 }
 
 /**
