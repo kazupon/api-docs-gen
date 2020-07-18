@@ -7,9 +7,9 @@ lib
 *~
 .vscode
 examples/docs/api
-examples/library1/dist/*.d.ts
-examples/library1/etc/*.md
-examples/library1/temp
-examples/utilities/dist/*.d.ts
-examples/utilities/etc/*.md
-examples/utilities/temp
+examples/packages/library1/dist/*.d.ts
+examples/packages/library1/etc/*.md
+examples/packages/library1/temp
+examples/packages/utilities/dist/*.d.ts
+examples/packages/utilities/etc/*.md
+examples/packages/utilities/temp
