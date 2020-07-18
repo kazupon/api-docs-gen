@@ -29,7 +29,7 @@ jest.mock('../src/utils', () => ({
 }))
 import { mkdir, writeFile } from '../src/utils'
 
-import { DefaultConfig } from '../src/config'
+import { DefaultConfig, GenerateStyle } from '../src/config'
 import { generate } from '../src/generator'
 
 afterEach(() => {
@@ -39,7 +39,7 @@ afterEach(() => {
 test('generate prefix style contents', async () => {
   const input = [API_JSON1, API_JSON2]
   const output = path.resolve(__dirname, './')
-  await generate(input, output, 'prefix', DefaultConfig)
+  await generate(input, output, GenerateStyle.Prefix, DefaultConfig)
 
   expect(mkdir).not.toHaveBeenCalled()
   expect(writeFile).toHaveBeenCalledTimes(7)
@@ -62,7 +62,7 @@ test('generate prefix style contents', async () => {
 test('generate directory style contents', async () => {
   const input = [API_JSON1, API_JSON2]
   const output = path.resolve(__dirname, './')
-  await generate(input, output, 'directory', DefaultConfig)
+  await generate(input, output, GenerateStyle.Directory, DefaultConfig)
 
   expect(mkdir).toHaveBeenCalledTimes(2)
   expect(mkdir.mock.calls[0][0]).toEqual(path.resolve(output, './my-library'))

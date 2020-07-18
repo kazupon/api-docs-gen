@@ -1,7 +1,10 @@
 export { getSafePathFromDisplayName, escapeText } from './utils'
 export * from './builder'
 export * from './config'
-export { GENERATE_STYLES, GenerateStyle } from './constants'
-export { process, getCustomTags, getDocSectionContent } from './processor'
-export { resolve } from './resolver'
+export {
+  process as processor,
+  getCustomTags,
+  getDocSectionContent
+} from './processor'
+export { resolve as resolver } from './resolver'
 export { generate } from './generator'

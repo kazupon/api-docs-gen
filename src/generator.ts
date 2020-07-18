@@ -4,8 +4,7 @@ import { debug as Debug } from 'debug'
 import { loadPackage } from './resolver'
 import { isString, mkdir, writeFile } from './utils'
 
-import type { Config } from './config'
-import type { GenerateStyle } from './constants'
+import type { Config, GenerateStyle } from './config'
 
 const debug = Debug('api-docs-gen:generator')
 
