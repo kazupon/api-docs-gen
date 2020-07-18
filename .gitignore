@@ -6,3 +6,10 @@ lib
 *.swp
 *~
 .vscode
+examples/docs/api
+examples/packages/library1/dist/*.d.ts
+examples/packages/library1/etc/*.md
+examples/packages/library1/temp
+examples/packages/utilities/dist/*.d.ts
+examples/packages/utilities/etc/*.md
+examples/packages/utilities/temp

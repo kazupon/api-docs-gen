@@ -47,6 +47,7 @@
     "eslint-plugin-vue-libs": "^4.0.0",
     "jest": "^26.1.0",
     "jest-watch-typeahead": "^0.6.0",
+    "lerna": "^3.22.1",
     "lerna-changelog": "^1.0.1",
     "npm-run-all": "^4.1.5",
     "opener": "^1.5.1",
@@ -54,7 +55,8 @@
     "shipjs": "^0.20.1",
     "ts-jest": "^26.1.1",
     "typescript": "^3.9.5",
-    "typescript-eslint-language-service": "^3.0.0"
+    "typescript-eslint-language-service": "^3.0.0",
+    "vuepress": "^1.5.2"
   },
   "engines": {
     "node": ">= 10"
@@ -73,6 +75,14 @@
   },
   "scripts": {
     "build": "tsc -p .",
+    "example": "yarn example:build && yarn example:extract && yarn example:gen",
+    "example:setup": "lerna bootstrap",
+    "example:teardown": "rm -rf ./examples/packages/utilities/node_modules && rm -rf ./examples/packages/library1/node_modules",
+    "example:build": "lerna run build",
+    "example:extract": "lerna run extract",
+    "example:gen": "node ./bin/run.js ./examples/packages/utilities/temp/utilities.api.json ./examples/packages/library1/temp/library1.api.json -o ./examples/docs/api",
+    "example:clean": "lerna run clean && rm -rf examples/docs/api/*.md",
+    "example:docs": "vuepress dev examples/docs",
     "clean": "npm-run-all clean:*",
     "clean:cache:jest": "jest --clearCache",
     "clean:coverage": "rm -rf ./coverage",
