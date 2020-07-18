@@ -1,0 +1,6 @@
+{
+  "npmClient": "yarn",
+  "useWorkspace": true,
+  "packages": ["./examples/*"],
+  "version": "0.0.0"
+}
