@@ -257,7 +257,7 @@ export declare enum TokenChars
 | Member | Value| Description |
 | --- | --- | --- |
 | Modulo | \\"%\\" | Modulo charactor |
-| Pipe | \\"|\\" | Pipe charactor \`|\` |
+| Plus | \\"+\\" | Plus charactor |
 
 ### Remarks
 
@@ -306,29 +306,140 @@ export declare type LocaleMessage = string | LocaleMessage[];
 `;
 
 exports[`generate directory style contents 7`] = `
-"# Variable
-
-## isArray
+"# Function
 
 ## isBoolean
 
+Whether the value is Boolean or not
+
+**Signature:**
+\`\`\`typescript
+export declare function isBoolean(val: unknown): val is boolean;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
+
 ## isFunction
+
+Whether the value is Function or not
+
+**Signature:**
+\`\`\`typescript
+export declare function isFunction(val: unknown): val is Function;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
 
 ## isObject
 
+Whether the value is Object or not
+
+**Signature:**
+\`\`\`typescript
+export declare function isObject(val: unknown): val is Record<string, unknown>;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
+
 ## isPlainObject
+
+Whether the value is Plain Object or not
+
+**Signature:**
+\`\`\`typescript
+export declare function isPlainObject(val: unknown): val is Record<string, unknown>;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
 
 ## isPromise
 
+Whether the value is Promise or not
+
+**Signature:**
+\`\`\`typescript
+export declare function isPromise<T = any>(val: unknown): val is Promise<T>;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
+
 ## isString
+
+Whether the value is String or not
+
+**Signature:**
+\`\`\`typescript
+export declare function isString(val: unknown): val is string;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
 
 ## isSymbol
 
-## objectToString
+Whether the value is Symbol or not
 
-## toDisplayString
+**Signature:**
+\`\`\`typescript
+export declare function isSymbol(val: unknown): val is symbol;
+\`\`\`
 
-## toTypeString
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
 
 "
 `;
@@ -363,7 +474,7 @@ export declare function add(a: number, b: number): number;
 
 ### Remarks
 
-This is add function remarks: [ErrorCodes](./my-library-enum#errorcodes). See [add](https://foo.bar.com/api/add).
+This is add function remarks: [ErrorCodes](./library1-enum#errorcodes). See [add](https://foo.bar.com/api/add).
 
 ### Examples
 
@@ -590,7 +701,7 @@ export declare enum TokenChars
 | Member | Value| Description |
 | --- | --- | --- |
 | Modulo | \\"%\\" | Modulo charactor |
-| Pipe | \\"|\\" | Pipe charactor \`|\` |
+| Plus | \\"+\\" | Plus charactor |
 
 ### Remarks
 
@@ -639,29 +750,140 @@ export declare type LocaleMessage = string | LocaleMessage[];
 `;
 
 exports[`generate prefix style contents 7`] = `
-"# Variable
-
-## isArray
+"# Function
 
 ## isBoolean
 
+Whether the value is Boolean or not
+
+**Signature:**
+\`\`\`typescript
+export declare function isBoolean(val: unknown): val is boolean;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
+
 ## isFunction
+
+Whether the value is Function or not
+
+**Signature:**
+\`\`\`typescript
+export declare function isFunction(val: unknown): val is Function;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
 
 ## isObject
 
+Whether the value is Object or not
+
+**Signature:**
+\`\`\`typescript
+export declare function isObject(val: unknown): val is Record<string, unknown>;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
+
 ## isPlainObject
+
+Whether the value is Plain Object or not
+
+**Signature:**
+\`\`\`typescript
+export declare function isPlainObject(val: unknown): val is Record<string, unknown>;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
 
 ## isPromise
 
+Whether the value is Promise or not
+
+**Signature:**
+\`\`\`typescript
+export declare function isPromise<T = any>(val: unknown): val is Promise<T>;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
+
 ## isString
+
+Whether the value is String or not
+
+**Signature:**
+\`\`\`typescript
+export declare function isString(val: unknown): val is string;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
 
 ## isSymbol
 
-## objectToString
+Whether the value is Symbol or not
 
-## toDisplayString
+**Signature:**
+\`\`\`typescript
+export declare function isSymbol(val: unknown): val is symbol;
+\`\`\`
 
-## toTypeString
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| val | unknown | target value |
+
+### Returns
+
+ boolean value
 
 "
 `;

@@ -34,7 +34,7 @@ const cli = meow(
   Options
     --config, -c              configuration file
     --output, -o              output dierectory that is markdown contents
-    --generate-style, -g      document generating style, default 'prefix'.
+    --generate-style, -g      document generating style, default 'prefix'
                               Be able to separated each package docs with 'directory'
 
   Examples

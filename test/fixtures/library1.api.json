@@ -6,18 +6,18 @@
     "oldestForwardsCompatibleVersion": 1001
   },
   "kind": "Package",
-  "canonicalReference": "my-library!",
+  "canonicalReference": "library1!",
   "docComment": "",
-  "name": "my-library",
+  "name": "library1",
   "members": [
     {
       "kind": "EntryPoint",
-      "canonicalReference": "my-library!",
+      "canonicalReference": "library1!",
       "name": "",
       "members": [
         {
           "kind": "Function",
-          "canonicalReference": "my-library!add:function(1)",
+          "canonicalReference": "library1!add:function(1)",
           "docComment": "/**\n * add function : `x`\n *\n * @remarks\n *\n * This is add function remarks: {@link ErrorCodes}. See {@link https://foo.bar.com/api/add | add}.\n *\n * @param a - target `1`\n *\n * @param b - target 2\n *\n * @returns result as `a` + `b`\n *\n * @throws\n *\n * `SyntaxError` this is syntax error\n *\n * @throws\n *\n * `Error` this is general error\n *\n * @example\n *\n * example of `add` function:\n * ```javascript\n * console.log(add(1, 1))\n * ```\n *\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -75,7 +75,7 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "my-library!Calculatable:interface",
+          "canonicalReference": "library1!Calculatable:interface",
           "docComment": "/**\n * Calculatable interface\n *\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -88,7 +88,7 @@
           "members": [
             {
               "kind": "MethodSignature",
-              "canonicalReference": "my-library!Calculatable#add:member(1)",
+              "canonicalReference": "library1!Calculatable#add:member(1)",
               "docComment": "/**\n * add method\n *\n * @param a - target 1\n *\n * @param b - target 2\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -146,7 +146,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "my-library!Calculatable#PI:member",
+              "canonicalReference": "library1!Calculatable#PI:member",
               "docComment": "/**\n * PI\n */\n",
               "excerptTokens": [
                 {
@@ -174,7 +174,7 @@
         },
         {
           "kind": "Class",
-          "canonicalReference": "my-library!Calculator:class",
+          "canonicalReference": "library1!Calculator:class",
           "docComment": "/**\n * Calculator class\n *\n * @remarks\n *\n * This is remarks of Calculator class\n *\n * @example\n * ```javascript\n * const c = new Calculator()\n * const v1 = c.add(1, 1)\n * const v2 = c.sub(1, 1)\n * ```\n *\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -184,7 +184,7 @@
             {
               "kind": "Reference",
               "text": "Calculatable",
-              "canonicalReference": "my-library!Calculatable:interface"
+              "canonicalReference": "library1!Calculatable:interface"
             },
             {
               "kind": "Content",
@@ -196,7 +196,7 @@
           "members": [
             {
               "kind": "Constructor",
-              "canonicalReference": "my-library!Calculator:constructor(1)",
+              "canonicalReference": "library1!Calculator:constructor(1)",
               "docComment": "/**\n * Conssutructor of usage\n *\n * @param type - calculator type\n */\n",
               "excerptTokens": [
                 {
@@ -226,7 +226,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "my-library!Calculator#add:member(1)",
+              "canonicalReference": "library1!Calculator#add:member(1)",
               "docComment": "/**\n * add method\n *\n * @param a - target 1\n *\n * @param b - target 2\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -285,7 +285,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "my-library!Calculator#PI:member",
+              "canonicalReference": "library1!Calculator#PI:member",
               "docComment": "/**\n * PI\n *\n * @returns 3.14\n */\n",
               "excerptTokens": [
                 {
@@ -311,7 +311,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "my-library!Calculator#sub:member(1)",
+              "canonicalReference": "library1!Calculator#sub:member(1)",
               "docComment": "/**\n * sub method\n *\n * @param a - target 1\n *\n * @param b - target 2\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -370,7 +370,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "my-library!Calculator#type:member",
+              "canonicalReference": "library1!Calculator#type:member",
               "docComment": "/**\n * calcurator types\n *\n * @default 'simple'\n */\n",
               "excerptTokens": [
                 {
@@ -404,7 +404,7 @@
         },
         {
           "kind": "Variable",
-          "canonicalReference": "my-library!Config:var",
+          "canonicalReference": "library1!Config:var",
           "docComment": "/**\n * Configrations\n *\n * @default {}\n */\n",
           "excerptTokens": [
             {
@@ -425,7 +425,7 @@
         },
         {
           "kind": "Enum",
-          "canonicalReference": "my-library!ErrorCodes:enum",
+          "canonicalReference": "library1!ErrorCodes:enum",
           "docComment": "/**\n * Error Code\n */\n",
           "excerptTokens": [
             {
@@ -438,7 +438,7 @@
           "members": [
             {
               "kind": "EnumMember",
-              "canonicalReference": "my-library!ErrorCodes.InvalidFormat:member",
+              "canonicalReference": "library1!ErrorCodes.InvalidFormat:member",
               "docComment": "/**\n * Invalid format\n */\n",
               "excerptTokens": [
                 {
@@ -459,7 +459,7 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "my-library!ErrorCodes.Succcess:member",
+              "canonicalReference": "library1!ErrorCodes.Succcess:member",
               "docComment": "/**\n * Success\n */\n",
               "excerptTokens": [
                 {
@@ -482,7 +482,7 @@
         },
         {
           "kind": "TypeAlias",
-          "canonicalReference": "my-library!FallbackLocale:type",
+          "canonicalReference": "library1!FallbackLocale:type",
           "docComment": "/**\n * Falback Locale\n *\n * @remarks\n *\n * This is remarks of `Fallback Locale`\n */\n",
           "excerptTokens": [
             {
@@ -492,7 +492,7 @@
             {
               "kind": "Reference",
               "text": "Locale",
-              "canonicalReference": "my-library!Locale:type"
+              "canonicalReference": "library1!Locale:type"
             },
             {
               "kind": "Content",
@@ -501,7 +501,7 @@
             {
               "kind": "Reference",
               "text": "Locale",
-              "canonicalReference": "my-library!Locale:type"
+              "canonicalReference": "library1!Locale:type"
             },
             {
               "kind": "Content",
@@ -510,7 +510,7 @@
             {
               "kind": "Reference",
               "text": "Locale",
-              "canonicalReference": "my-library!Locale:type"
+              "canonicalReference": "library1!Locale:type"
             },
             {
               "kind": "Content",
@@ -530,7 +530,7 @@
         },
         {
           "kind": "TypeAlias",
-          "canonicalReference": "my-library!Locale:type",
+          "canonicalReference": "library1!Locale:type",
           "docComment": "/**\n * Locale\n */\n",
           "excerptTokens": [
             {
@@ -555,7 +555,7 @@
         },
         {
           "kind": "TypeAlias",
-          "canonicalReference": "my-library!LocaleMessage:type",
+          "canonicalReference": "library1!LocaleMessage:type",
           "docComment": "/**\n * Locale Message resources\n */\n",
           "excerptTokens": [
             {
@@ -569,7 +569,7 @@
             {
               "kind": "Reference",
               "text": "LocaleMessage",
-              "canonicalReference": "my-library!LocaleMessage:type"
+              "canonicalReference": "library1!LocaleMessage:type"
             },
             {
               "kind": "Content",
@@ -589,7 +589,7 @@
         },
         {
           "kind": "Enum",
-          "canonicalReference": "my-library!TokenChars:enum",
+          "canonicalReference": "library1!TokenChars:enum",
           "docComment": "/**\n * Token Characters\n *\n * @remarks\n *\n * This is remarks of Token Chararaceters\n */\n",
           "excerptTokens": [
             {
@@ -602,7 +602,7 @@
           "members": [
             {
               "kind": "EnumMember",
-              "canonicalReference": "my-library!TokenChars.Modulo:member",
+              "canonicalReference": "library1!TokenChars.Modulo:member",
               "docComment": "/**\n * Modulo charactor\n */\n",
               "excerptTokens": [
                 {
@@ -623,20 +623,20 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "my-library!TokenChars.Pipe:member",
-              "docComment": "/**\n * Pipe charactor `|`\n */\n",
+              "canonicalReference": "library1!TokenChars.Plus:member",
+              "docComment": "/**\n * Plus charactor\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "Pipe = "
+                  "text": "Plus = "
                 },
                 {
                   "kind": "Content",
-                  "text": "\"|\""
+                  "text": "\"+\""
                 }
               ],
               "releaseTag": "Public",
-              "name": "Pipe",
+              "name": "Plus",
               "initializerTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -646,7 +646,7 @@
         },
         {
           "kind": "Variable",
-          "canonicalReference": "my-library!VERSION:var",
+          "canonicalReference": "library1!VERSION:var",
           "docComment": "/**\n * app version\n *\n * @remarks\n *\n * you can lookup application version that is semver format.\n *\n * @example\n * ```javascript\n * console.log(VERSION)\n * ```\n *\n */\n",
           "excerptTokens": [
             {

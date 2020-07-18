@@ -6,7 +6,7 @@ import { MarkdownContent } from '../src/config'
 
 test('processor', () => {
   const apiModel = new ApiModel()
-  const target = path.resolve(__dirname, './fixtures/my-library.api.json')
+  const target = path.resolve(__dirname, './fixtures/library1.api.json')
   const apiPackage = apiModel.loadPackage(target)
   const contents = process(
     apiModel,

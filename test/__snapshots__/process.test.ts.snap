@@ -129,7 +129,7 @@ export declare enum TokenChars
 | Member | Value| Description |
 | --- | --- | --- |
 | Modulo | \\"%\\" | Modulo charactor |
-| Pipe | \\"|\\" | Pipe charactor \`|\` |
+| Plus | \\"+\\" | Plus charactor |
 
 ### Remarks
 
@@ -168,7 +168,7 @@ export declare function add(a: number, b: number): number;
 
 ### Remarks
 
-This is add function remarks: [ErrorCodes](./my-library-enum#errorcodes). See [add](https://foo.bar.com/api/add).
+This is add function remarks: [ErrorCodes](./library1-enum#errorcodes). See [add](https://foo.bar.com/api/add).
 
 ### Examples
 

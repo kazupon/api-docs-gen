@@ -4,8 +4,8 @@ import { ApiModel } from '@microsoft/api-extractor-model'
 /**
  * setup ApiPackage Stub data
  */
-const API_JSON1 = path.resolve(__dirname, './fixtures/my-library.api.json')
-const API_JSON2 = path.resolve(__dirname, './fixtures/shared.api.json')
+const API_JSON1 = path.resolve(__dirname, './fixtures/library1.api.json')
+const API_JSON2 = path.resolve(__dirname, './fixtures/utilities.api.json')
 const model = new ApiModel()
 const API_MODEL_FILES = [API_JSON1, API_JSON2]
 const PACKAGES = API_MODEL_FILES.reduce((packages, file) => {
@@ -46,13 +46,13 @@ test('generate prefix style contents', async () => {
   for (const arg of writeFile.mock.calls) {
     expect(
       [
-        path.resolve(output, './my-library-enum.md'),
-        path.resolve(output, './my-library-function.md'),
-        path.resolve(output, './my-library-variable.md'),
-        path.resolve(output, './my-library-class.md'),
-        path.resolve(output, './my-library-interface.md'),
-        path.resolve(output, './my-library-typealias.md'),
-        path.resolve(output, './shared-variable.md')
+        path.resolve(output, './library1-enum.md'),
+        path.resolve(output, './library1-function.md'),
+        path.resolve(output, './library1-variable.md'),
+        path.resolve(output, './library1-class.md'),
+        path.resolve(output, './library1-interface.md'),
+        path.resolve(output, './library1-typealias.md'),
+        path.resolve(output, './utilities-function.md')
       ].includes(arg[0])
     ).toBe(true)
     expect(arg[1]).toMatchSnapshot()
@@ -65,17 +65,17 @@ test('generate directory style contents', async () => {
   await generate(input, output, GenerateStyle.Directory, DefaultConfig)
 
   expect(mkdir).toHaveBeenCalledTimes(2)
-  expect(mkdir.mock.calls[0][0]).toEqual(path.resolve(output, './my-library'))
-  expect(mkdir.mock.calls[1][0]).toEqual(path.resolve(output, './shared'))
+  expect(mkdir.mock.calls[0][0]).toEqual(path.resolve(output, './library1'))
+  expect(mkdir.mock.calls[1][0]).toEqual(path.resolve(output, './utilities'))
 
   const passedArgs = [
-    path.resolve(output, './my-library/enum.md'),
-    path.resolve(output, './my-library/function.md'),
-    path.resolve(output, './my-library/variable.md'),
-    path.resolve(output, './my-library/class.md'),
-    path.resolve(output, './my-library/interface.md'),
-    path.resolve(output, './my-library/typealias.md'),
-    path.resolve(output, './shared/variable.md')
+    path.resolve(output, './library1/enum.md'),
+    path.resolve(output, './library1/function.md'),
+    path.resolve(output, './library1/variable.md'),
+    path.resolve(output, './library1/class.md'),
+    path.resolve(output, './library1/interface.md'),
+    path.resolve(output, './library1/typealias.md'),
+    path.resolve(output, './utilities/function.md')
   ]
   expect(writeFile).toHaveBeenCalledTimes(7)
   for (const arg of writeFile.mock.calls) {
