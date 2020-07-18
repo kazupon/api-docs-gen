@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`processor: class.md 1`] = `
+exports[`multi: class.md 1`] = `
 "# Class
 
 ## Calculator
@@ -96,7 +96,7 @@ type: string;
 "
 `;
 
-exports[`processor: enum.md 1`] = `
+exports[`multi: enum.md 1`] = `
 "# Enum
 
 ## ErrorCodes
@@ -138,7 +138,7 @@ This is remarks of Token Chararaceters
 "
 `;
 
-exports[`processor: function.md 1`] = `
+exports[`multi: function.md 1`] = `
 "# Function
 
 ## add
@@ -181,7 +181,7 @@ console.log(add(1, 1))
 "
 `;
 
-exports[`processor: interface.md 1`] = `
+exports[`multi: interface.md 1`] = `
 "# Interface
 
 ## Calculatable
@@ -228,7 +228,7 @@ PI: number;
 "
 `;
 
-exports[`processor: typealias.md 1`] = `
+exports[`multi: typealias.md 1`] = `
 "# TypeAlias
 
 ## FallbackLocale
@@ -267,7 +267,7 @@ export declare type LocaleMessage = string | LocaleMessage[];
 "
 `;
 
-exports[`processor: variable.md 1`] = `
+exports[`multi: variable.md 1`] = `
 "# Variable
 
 ## Config
