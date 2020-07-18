@@ -6,8 +6,8 @@ import type {
   ApiItem
 } from '@microsoft/api-extractor-model'
 import { debug as Debug } from 'debug'
-import { resolve } from './resolver'
-import { process as markdownProcessor } from './processor'
+import { multi as multiResolver } from './resolver'
+import { multi as multiProcessor } from './processor'
 
 const debug = Debug('api-docs-gen:config')
 
@@ -74,7 +74,7 @@ export type MarkdownProcessor = (
 ) => string | MarkdownContent[]
 
 /**
- * Constant of `--genereate-style` options
+ * Constant of `--genereate-style` option
  */
 export const enum GenerateStyle {
   Prefix = 'prefix',
@@ -85,8 +85,8 @@ export const enum GenerateStyle {
  * Default Config
  */
 export const DefaultConfig: Config = {
-  linkReferencer: resolve,
-  processor: markdownProcessor
+  linkReferencer: multiResolver,
+  processor: multiProcessor
 }
 
 export function resolveConfig(configPath?: string | null): Config {
@@ -128,7 +128,7 @@ export function resolveConfig(configPath?: string | null): Config {
     }
 
     if (config) {
-      config.linkReferencer = config.linkReferencer || resolve
+      config.linkReferencer = config.linkReferencer || multiResolver
       return config
     } else {
       return DefaultConfig

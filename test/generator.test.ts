@@ -13,10 +13,10 @@ const PACKAGES = API_MODEL_FILES.reduce((packages, file) => {
 }, {})
 
 // mock 'resolver' module
-jest.mock('../src/resolver', () => {
-  const { resolve } = jest.requireActual('../src/resolver')
+jest.mock('../src/resolver/index', () => {
+  const { multi } = jest.requireActual('../src/resolver/index')
   return {
-    resolve,
+    multi,
     loadPackage: jest.fn().mockImplementation(modelPath => PACKAGES[modelPath]) // stub
   }
 })

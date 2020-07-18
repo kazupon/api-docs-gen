@@ -19,7 +19,7 @@ module.exports = {
   themeConfig: {
     sidebarDepth: 3,
     sidebar: {
-      '/': api,
+      '/': api
     }
   }
 }
