@@ -1,0 +1,22 @@
+{
+  "name": "utilities",
+  "version": "0.0.0",
+  "private": true,
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "extract": "api-extractor run -l -c ./api-extractor.json",
+    "clean": "rm -rf ./dist ./temp ./lib ./etc/*.md"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.6",
+    "@microsoft/api-extractor": "^7.9.1"
+  }
+}

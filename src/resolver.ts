@@ -4,7 +4,7 @@ import type {
   ApiPackage
 } from '@microsoft/api-extractor-model'
 import { getSafePathFromDisplayName } from './utils'
-import { GenerateStyle } from './constants'
+import { GenerateStyle } from './config'
 
 export function resolve(
   style: GenerateStyle,
@@ -36,7 +36,9 @@ export function resolve(
     }
   }
 
-  return style === 'prefix' ? `./${pkgName}-${baseName}` : `./${baseName}`
+  return style === GenerateStyle.Prefix
+    ? `./${pkgName}-${baseName}`
+    : `./${baseName}`
 }
 
 export function loadPackage(modelPath: string, model: ApiModel): ApiPackage {

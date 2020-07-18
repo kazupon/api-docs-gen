@@ -4,8 +4,7 @@ import meow from 'meow'
 import chalk from 'chalk'
 import { debug as Debug } from 'debug'
 import { generate } from './generator'
-import { Config, resolveConfig, DefaultConfig } from './config'
-import { GenerateStyle, GENERATE_STYLES } from './constants'
+import { Config, resolveConfig, DefaultConfig, GenerateStyle } from './config'
 
 const debug = Debug('api-docs-gen:cli')
 
@@ -23,7 +22,7 @@ export const flags = {
   'generate-style': {
     type: 'string',
     alias: 'g',
-    default: GENERATE_STYLES.prefix
+    default: GenerateStyle.Prefix
   }
 } as const
 
@@ -84,9 +83,12 @@ debug(`config`, config)
 
 // generate style
 const genStyleFlag = cli.flags['generate-style'] as GenerateStyle
-const genStyle = Object.keys(GENERATE_STYLES).includes(genStyleFlag)
+const genStyle = Object.keys([
+  GenerateStyle.Prefix,
+  GenerateStyle.Directory
+]).includes(genStyleFlag)
   ? genStyleFlag
-  : 'prefix'
+  : GenerateStyle.Prefix
 debug('packageDocsStyle', genStyleFlag, genStyle)
 
 // run

@@ -8,7 +8,6 @@ import type {
 import { debug as Debug } from 'debug'
 import { resolve } from './resolver'
 import { process as markdownProcessor } from './processor'
-import { GenerateStyle } from './constants'
 
 const debug = Debug('api-docs-gen:config')
 
@@ -73,6 +72,14 @@ export type MarkdownProcessor = (
   style: GenerateStyle,
   resolver: ReferenceResolver
 ) => string | MarkdownContent[]
+
+/**
+ * Constant of `--genereate-style` options
+ */
+export const enum GenerateStyle {
+  Prefix = 'prefix',
+  Directory = 'directory'
+}
 
 /**
  * Default Config

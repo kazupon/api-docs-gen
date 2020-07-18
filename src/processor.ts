@@ -20,10 +20,13 @@ import {
 } from '@microsoft/tsdoc'
 import type { DeclarationReference } from '@microsoft/tsdoc/lib/beta/DeclarationReference'
 import { debug as Debug } from 'debug'
-import type { MarkdownContent, ReferenceResolver } from './config'
+import type {
+  MarkdownContent,
+  ReferenceResolver,
+  GenerateStyle
+} from './config'
 import { ContentBuilder, createContentBuilder } from './builder'
 import { escapeText } from './utils'
-import type { GenerateStyle } from './constants'
 
 const debug = Debug('api-docs-gen:processor')
 
