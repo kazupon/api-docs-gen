@@ -100,6 +100,12 @@ export const enum GenerateStyle {
   Directory = 'directory'
 }
 
+/**
+ * Default Configration
+ *
+ * @remarks
+ * Default config for the CLI
+ */
 export const DefaultConfig: Config = {
   linkReferencer: multiResolver,
   processor: multiProcessor

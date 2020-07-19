@@ -2,6 +2,7 @@ export { getSafePathFromDisplayName, escapeText } from './utils'
 export * from './builder'
 export {
   Config,
+  DefaultConfig,
   GenerateStyle,
   MarkdownContent,
   ReferenceResolver,

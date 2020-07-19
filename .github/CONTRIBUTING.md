@@ -1,4 +1,4 @@
-# rollup-plugin-vue-i18n Contributing Guide
+# api-docs-gen Contributing Guide
 
 - [Issue Reporting Guidelines](#issue-reporting-guidelines)
 - [Pull Request Guidelines](#pull-request-guidelines)
@@ -10,7 +10,7 @@
 
 - Try to search for your issue, it may have already been answered or even fixed in the master branch.
 
-- Check if the issue is reproducible with the latest stable version of rollup-plugin-vue-i18n. If you are using a pre-release, please indicate the specific version you are using.
+- Check if the issue is reproducible with the latest stable version of api-docs-gen. If you are using a pre-release, please indicate the specific version you are using.
 
 - It is **required** that you clearly describe the steps necessary to reproduce the issue you are running into. Issues with no clear repro steps will not be triaged. If an issue labeled `Status: Need More Info` receives no further input from the issue author for more than 5 days, it will be closed.
 
@@ -35,12 +35,12 @@
   - Add appropriate test coverage if applicable.
 
 ### Work Step Example
-- Fork the repository from [intlify/rollup-plugin-vue-i18n](https://github.com/intlify/rollup-plugin-vue-i18n) !
+- Fork the repository from [api-docs-gen](https://github.com/kazupon/api-docs-gen) !
 - Create your topic branch from `master`: `git branch my-new-topic origin/master`
 - Add codes and pass tests !
 - Commit your changes: `git commit -am 'Add some topic'`
 - Push to the branch: `git push origin my-new-topic`
-- Submit a pull request to `master` branch of `intlify/rollup-plugin-vue-i18n` repository !
+- Submit a pull request to `master` branch of `kazupon/api-docs-gen` repository !
 
 ## Development Setup
 

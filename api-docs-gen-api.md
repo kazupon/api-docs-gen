@@ -18,6 +18,8 @@
   - [multiResolver](#multiresolver)
   - [tocProcessor](#tocprocessor)
   - [tocResolver](#tocresolver)
+- [Variable](#variable)
+  - [DefaultConfig](#defaultconfig)
 - [Enum](#enum)
   - [GenerateStyle](#generatestyle)
 - [TypeAlias](#typealias)
@@ -469,6 +471,22 @@ export declare function resolve(style: GenerateStyle, item: ApiItem, model: ApiM
 #### Remarks
 
 This reference resolver is used by the [processor](#tocprocessor) to generate a reference specifically for API docs of markdown content with TOC.
+
+
+## Variable
+
+### DefaultConfig
+
+Default Configration
+
+**Signature:**
+```typescript
+DefaultConfig: Config
+```
+
+#### Remarks
+
+Default config for the CLI
 
 
 ## Enum
