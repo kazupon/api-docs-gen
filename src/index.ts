@@ -1,10 +1,16 @@
 export { getSafePathFromDisplayName, escapeText } from './utils'
 export * from './builder'
-export * from './config'
+export {
+  Config,
+  GenerateStyle,
+  MarkdownContent,
+  ReferenceResolver,
+  MarkdownProcessor
+} from './config'
 export {
   multi as multiProcessor,
   toc as tocProcessor,
-  getCustomTags,
+  findCustomTags,
   getDocSectionContent
 } from './processor'
 export { multi as multiResolver, toc as tocResolver } from './resolver'

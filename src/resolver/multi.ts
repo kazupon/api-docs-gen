@@ -7,10 +7,25 @@ import { ApiItemKind } from '@microsoft/api-extractor-model'
 import { getSafePathFromDisplayName } from '../utils'
 import { GenerateStyle } from '../config'
 
+/**
+ * Resolve the markdown content reference
+ *
+ * @remarks
+ * This reference resolver is used by the {@link multiProcessor | processor} to generate API docs references for separate pieces of markdown content.
+ *
+ * @param style - generate style, See the {@link GenerateStyle}
+ * @param item - a {@link https://rushstack.io/pages/api/api-extractor-model.apiitem/ | item}
+ * @param model - a {@link https://rushstack.io/pages/api/api-extractor-model.apimodel/ | model}
+ * @param pkg - a {@link https://rushstack.io/pages/api/api-extractor-model.apipackage/ | package}
+ *
+ * @returns resolved the reference string
+ *
+ * @public
+ */
 export function resolve(
   style: GenerateStyle,
   item: ApiItem,
-  model: ApiModel, // eslint-disable-line @typescript-eslint/no-unused-vars
+  model: ApiModel,
   pkg: ApiPackage
 ): string {
   let baseName = ''

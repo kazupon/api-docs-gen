@@ -110,7 +110,7 @@ export function buildFunctionContent(
 
   // throws
   // @ts-ignore TODO:
-  const throws = getCustomTags(docs.customBlocks, '@throws')
+  const throws = findCustomTags(docs.customBlocks, '@throws')
   if (throws.length > 0) {
     builder.pushline(`${'#'.repeat(base + 1)} Throws`)
     builder.newline()
@@ -151,7 +151,7 @@ export function buildFunctionContent(
 
   // examples
   // @ts-ignore TODO:
-  const examples = getCustomTags(docs.customBlocks, '@example')
+  const examples = findCustomTags(docs.customBlocks, '@example')
   if (examples.length > 0) {
     builder.pushline(`${'#'.repeat(base + 1)} Examples`)
     builder.newline()
@@ -259,7 +259,7 @@ export function buildEnumContent(
 
   // examples
   // @ts-ignore TODO:
-  const examples = getCustomTags(docs.customBlocks, '@example')
+  const examples = findCustomTags(docs.customBlocks, '@example')
   if (examples.length > 0) {
     builder.pushline(`${'#'.repeat(base + 1)} Examples`)
     builder.newline()
@@ -298,7 +298,15 @@ export function buildContentForClassinizable(
   if (docs.summarySection) {
     builder.pushline(
       // @ts-ignore
-      getDocSectionContent(model, pkg, docs.summarySection, item, resolver)
+      getDocSectionContent(
+        model,
+        pkg,
+        // @ts-ignore TODO:
+        docs.summarySection,
+        item,
+        style,
+        resolver
+      )
     )
     builder.newline()
   }
@@ -361,7 +369,7 @@ export function buildContentForClassinizable(
 
   // throws
   // @ts-ignore TODO:
-  const throws = getCustomTags(docs.customBlocks, '@throws')
+  const throws = findCustomTags(docs.customBlocks, '@throws')
   if ((type === 'constructor' || type === 'method') && throws.length > 0) {
     builder.pushline(`${'#'.repeat(base)} Throws`)
     builder.newline()
@@ -402,7 +410,7 @@ export function buildContentForClassinizable(
 
   // examples
   // @ts-ignore TODO:
-  const examples = getCustomTags(docs.customBlocks, '@example')
+  const examples = findCustomTags(docs.customBlocks, '@example')
   if (examples.length > 0) {
     builder.pushline(`${'#'.repeat(base)} Examples`)
     builder.newline()
@@ -617,7 +625,7 @@ export function buildTypeAliasContent(
 
   // examples
   // @ts-ignore TODO:
-  const examples = getCustomTags(docs.customBlocks, '@example')
+  const examples = findCustomTags(docs.customBlocks, '@example')
   if (examples.length > 0) {
     builder.pushline(`${'#'.repeat(base) + 1} Examples`)
     builder.newline()
@@ -694,7 +702,7 @@ export function buildVariableContent(
 
   // examples
   // @ts-ignore TODO:
-  const examples = getCustomTags(docs.customBlocks, '@example')
+  const examples = findCustomTags(docs.customBlocks, '@example')
   if (examples.length > 0) {
     builder.pushline(`${'#'.repeat(base + 1)} Examples`)
     builder.newline()
@@ -713,6 +721,20 @@ export function buildVariableContent(
   }
 }
 
+/**
+ * Get DocSection content
+ *
+ * @param model - a {@link https://rushstack.io/pages/api/api-extractor-model.apimodel/ | model}
+ * @param pkg - a {@link https://rushstack.io/pages/api/api-extractor-model.apipackage/ | package}
+ * @param content - a {@link https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/nodes/DocSection.ts | content}
+ * @param contextItem - a context {@link https://rushstack.io/pages/api/api-extractor-model.apiitem/ | item}
+ * @param style - generate style, See the {@link GenerateStyle}
+ * @param resolver - {@link ReferenceResolver | resolver} to resolve markdown content references
+ *
+ * @returns doc section markdown content
+ *
+ * @public
+ */
 export function getDocSectionContent(
   model: ApiModel,
   pkg: ApiPackage,
@@ -790,7 +812,20 @@ export function getDocSectionContent(
   return ret
 }
 
-export function getCustomTags(
+/**
+ * Find custom tags
+ *
+ * @remarks
+ * About custom tags, See the {@link https://github.com/microsoft/tsdoc/issues/21 | this issue}
+ *
+ * @param customBlocks - target cusotm blocks
+ * @param tag - finding target tag
+ *
+ * @returns found custom blocks
+ *
+ * @public
+ */
+export function findCustomTags(
   customBlocks: readonly DocBlock[],
   tag: string
 ): DocBlock[] {

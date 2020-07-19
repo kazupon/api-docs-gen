@@ -3,7 +3,10 @@ import { isNumber } from './utils'
 /**
  * Content Builder options
  *
- * @remarks options that creating a {@link ContentBuilder}
+ * @remarks
+ * options that creating a {@link ContentBuilder}
+ *
+ * @public
  */
 export interface ContentBuilderOptions {
   /**
@@ -14,11 +17,13 @@ export interface ContentBuilderOptions {
 
 /**
  * Content Builder
+ *
+ * @public
  */
 export interface ContentBuilder {
   /**
    * Indent level
-   * @default 0
+   * @defaultValue 0
    */
   readonly indentLevel: number
   /**
@@ -27,7 +32,7 @@ export interface ContentBuilder {
   readonly content: string
   /**
    * Add content
-   * @param content additional content
+   * @param content - additional content
    */
   push(content: string): void
   /**
@@ -36,17 +41,17 @@ export interface ContentBuilder {
   newline(): void
   /**
    * Add content with line break
-   * @param content additional content
+   * @param content - additional content
    */
   pushline(content: string): void
   /**
    * Indent content
-   * @param withNewLine whether indent to be added without new line
+   * @param withNewLine - whether indent to be added without new line
    */
   indent(withoutNewLine?: boolean): void
   /**
    * DeIndent content
-   * @param withoutNewLine whether deindent to be added without new line
+   * @param withoutNewLine - whether deindent to be added without new line
    */
   deindent(withoutNewLine?: boolean): void
 }
@@ -54,9 +59,11 @@ export interface ContentBuilder {
 /**
  * Create a Content Builder
  *
- * @param options Content Builder options
+ * @param options - Content Builder options
  *
- * @return A {@link ContentBuilder} instance
+ * @returns A {@link ContentBuilder} instance
+ *
+ * @public
  */
 export function createContentBuilder(
   options: ContentBuilderOptions = {}

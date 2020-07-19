@@ -5,6 +5,9 @@ lib
 *.log
 *.swp
 *~
+temp
+dist
+etc/*.md
 examples/docs/api
 examples/packages/library1/dist/*.d.ts
 examples/packages/library1/etc/*.md

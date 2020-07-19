@@ -7,11 +7,26 @@ import { ApiItemKind } from '@microsoft/api-extractor-model'
 import { getSafePathFromDisplayName } from '../utils'
 import { GenerateStyle } from '../config'
 
+/**
+ * Resolve the markdown content reference
+ *
+ * @remarks
+ * This reference resolver is used by the {@link tocProcessor | processor} to generate a reference specifically for API docs of markdown content with TOC.
+ *
+ * @param style - generate style, See the {@link GenerateStyle}
+ * @param item - a {@link https://rushstack.io/pages/api/api-extractor-model.apiitem/ | item}
+ * @param model - a {@link https://rushstack.io/pages/api/api-extractor-model.apimodel/ | model}
+ * @param pkg - a {@link https://rushstack.io/pages/api/api-extractor-model.apipackage/ | package}
+ *
+ * @returns resolved the reference string
+ *
+ * @public
+ */
 export function resolve(
-  style: GenerateStyle, // eslint-disable-line @typescript-eslint/no-unused-vars
+  style: GenerateStyle,
   item: ApiItem,
-  model: ApiModel, // eslint-disable-line @typescript-eslint/no-unused-vars
-  pkg: ApiPackage // eslint-disable-line @typescript-eslint/no-unused-vars
+  model: ApiModel,
+  pkg: ApiPackage
 ): string {
   let baseName = ''
   for (const hierarchyItem of item.getHierarchy()) {

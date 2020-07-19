@@ -18,6 +18,23 @@ import {
   buildVariableContent
 } from './utils'
 
+/**
+ * Process of API doc model
+ *
+ * @remarks
+ * Generate the markdown contents that have TOC.
+ * About API doc model, see the {@link https://api-extractor.com/pages/overview/demo_docs/ | doc model structure}, and {@link https://github.com/microsoft/rushstack/tree/master/apps/api-extractor-model | doc model API}.
+ * In about generate api docs, see the {@link https://github.com/kazupon/api-docs-gen/blob/master/api-docs-gen-api.md | api-docs-gen API References}
+ *
+ * @param model - a {@link https://rushstack.io/pages/api/api-extractor-model.apimodel/ | model}
+ * @param pkg - a {@link https://rushstack.io/pages/api/api-extractor-model.apipackage/ | package}
+ * @param style - generate style, See the {@link GenerateStyle}
+ * @param resolver - {@link ReferenceResolver | resolver} to resolve markdown content references
+ *
+ * @returns markdown string content that have TOC
+ *
+ * @public
+ */
 export function process(
   model: ApiModel,
   pkg: ApiPackage,

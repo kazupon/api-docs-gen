@@ -13,14 +13,16 @@ const debug = Debug('api-docs-gen:config')
 
 /**
  * Configuration
+ *
+ * @public
  */
 export interface Config {
   /**
-   * markdown link reference resolver
+   * markdown link reference {@link ReferenceResolver | resolver}
    */
   linkReferencer?: ReferenceResolver
   /**
-   * markdown docs processor
+   * markdown docs {@link MarkdownProcessor | processor}
    */
   processor: MarkdownProcessor
 }
@@ -28,12 +30,14 @@ export interface Config {
 /**
  * Markdown reference resolver
  *
- * @param style package docs style, See the {@link GenerateStyle}
- * @param item the item of `api-extractor-model`
- * @param model the model of `api-extractor-model`
- * @param pkg the package of `api-extractor-model`
+ * @param style - generate style, See the {@link GenerateStyle}
+ * @param item - a {@link https://rushstack.io/pages/api/api-extractor-model.apiitem/ | item}
+ * @param model - a {@link https://rushstack.io/pages/api/api-extractor-model.apimodel/ | model}
+ * @param pkg - a {@link https://rushstack.io/pages/api/api-extractor-model.apipackage/ | package}
  *
  * @returns resolved reference path
+ *
+ * @public
  */
 export type ReferenceResolver = (
   style: GenerateStyle,
@@ -44,6 +48,8 @@ export type ReferenceResolver = (
 
 /**
  * Markdown content
+ *
+ * @public
  */
 export interface MarkdownContent {
   /**
@@ -59,12 +65,14 @@ export interface MarkdownContent {
 /**
  * Markdown docs processor
  *
- * @param model the api model of `api-extractor-model`
- * @param package the package of `api-extractor-model`
- * @param style package docs style. see the {@link GenerateStyle}
- * @param resolver the markdown reference resolver. if you're specfified at {@link Config}, it's passed, else it's not specified passed internal refenrece resolver.
+ * @param model - a {@link https://rushstack.io/pages/api/api-extractor-model.apimodel/ | model}
+ * @param pkg - a {@link https://rushstack.io/pages/api/api-extractor-model.apipackage/ | package}
+ * @param style - generate style. see the {@link GenerateStyle}
+ * @param resolver - the markdown reference {@link ReferenceResolver | resolver}. if you're specfified at {@link Config}, it's passed, else it's not specified passed internal refenrece resolver.
  *
  * @returns markdown content
+ *
+ * @public
  */
 export type MarkdownProcessor = (
   model: ApiModel,
@@ -74,16 +82,24 @@ export type MarkdownProcessor = (
 ) => string | MarkdownContent[]
 
 /**
- * Constant of `--genereate-style` option
+ * The generate style
+ *
+ * @remarks
+ * The value of this constants is the same as that taken from `--genereate-style` option.
+ *
+ * @public
  */
 export const enum GenerateStyle {
+  /**
+   * Prefix the output api docs file name with package name
+   */
   Prefix = 'prefix',
+  /**
+   * Output api docs files for each package
+   */
   Directory = 'directory'
 }
 
-/**
- * Default Config
- */
 export const DefaultConfig: Config = {
   linkReferencer: multiResolver,
   processor: multiProcessor

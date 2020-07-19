@@ -19,6 +19,30 @@ import {
   buildVariableContent
 } from './utils'
 
+/**
+ * Process of API doc model
+ *
+ * @remarks
+ * Generate the markdown contents the bellow:
+ *
+ * ```
+ * - Function
+ * - Enum
+ * - Interface
+ * - Class
+ * - Variable
+ * - TypeAlias
+ * ```
+ *
+ * @param model - a {@link https://rushstack.io/pages/api/api-extractor-model.apimodel/ | model}
+ * @param pkg - a {@link https://rushstack.io/pages/api/api-extractor-model.apipackage/ | package}
+ * @param style - generate style, See the {@link GenerateStyle}
+ * @param resolver - {@link ReferenceResolver | resolver} to resolve markdown content references
+ *
+ * @returns markdown content strign or Array of {@link MarkdownContent}
+ *
+ * @public
+ */
 export function process(
   model: ApiModel,
   pkg: ApiPackage,

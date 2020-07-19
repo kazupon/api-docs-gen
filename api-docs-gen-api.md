@@ -10,17 +10,14 @@
 - [Function](#function)
   - [createContentBuilder](#createcontentbuilder)
   - [escapeText](#escapetext)
+  - [findCustomTags](#findcustomtags)
   - [generate](#generate)
-  - [getCustomTags](#getcustomtags)
   - [getDocSectionContent](#getdocsectioncontent)
   - [getSafePathFromDisplayName](#getsafepathfromdisplayname)
   - [multiProcessor](#multiprocessor)
   - [multiResolver](#multiresolver)
-  - [resolveConfig](#resolveconfig)
   - [tocProcessor](#tocprocessor)
   - [tocResolver](#tocresolver)
-- [Variable](#variable)
-  - [DefaultConfig](#defaultconfig)
 - [Enum](#enum)
   - [GenerateStyle](#generatestyle)
 - [TypeAlias](#typealias)
@@ -46,7 +43,7 @@ export interface Config
 
 ##### linkReferencer
 
-markdown link reference resolver
+markdown link reference [resolver](#referenceresolver)
 
 **Signature:**
 ```typescript
@@ -55,7 +52,7 @@ linkReferencer?: ReferenceResolver;
 
 ##### processor
 
-markdown docs processor
+markdown docs [processor](#markdownprocessor)
 
 **Signature:**
 ```typescript
@@ -163,7 +160,7 @@ readonly content: string;
 
 ##### indentLevel
 
-Indent level   0
+Indent level
 
 **Signature:**
 ```typescript
@@ -250,11 +247,15 @@ export declare function createContentBuilder(options?: ContentBuilderOptions): C
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| options | ContentBuilderOptions | Content Builder options A [ContentBuilder](#contentbuilder) instance |
+| options | ContentBuilderOptions | Content Builder options |
+
+#### Returns
+
+ A [ContentBuilder](#contentbuilder) instance
 
 ### escapeText
 
-escape text
+Escape text
 
 **Signature:**
 ```typescript
@@ -271,9 +272,33 @@ export declare function escapeText(text: string): string;
 
  escaped text
 
+### findCustomTags
+
+Find custom tags
+
+**Signature:**
+```typescript
+export declare function findCustomTags(customBlocks: readonly DocBlock[], tag: string): DocBlock[];
+```
+
+#### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| customBlocks | readonly DocBlock[] | target cusotm blocks |
+| tag | string | finding target tag |
+
+#### Returns
+
+ found custom blocks
+
+#### Remarks
+
+About custom tags, See the [this issue](https://github.com/microsoft/tsdoc/issues/21)
+
 ### generate
 
-generate markdown contents
+Generate API docs
 
 **Signature:**
 ```typescript
@@ -285,18 +310,38 @@ export declare function generate(input: string[], output: string, style: Generat
 | Parameter | Type | Description |
 | --- | --- | --- |
 | input | string[] | input paths |
-| output | string | output full path |
-| style | GenerateStyle | generate style, see [GenerateStyle](#generatestyle) |
-| config | Config | configration, see [Config](#config) |
+| output | string | output api docs full path |
+| style | GenerateStyle | generate style, see the [GenerateStyle](#generatestyle) |
+| config | Config | configration, see the [Config](#config) |
 | callback | (pkgname: string, filename: string) => void |  |
-
-### getCustomTags
 
 ### getDocSectionContent
 
+Get DocSection content
+
+**Signature:**
+```typescript
+export declare function getDocSectionContent(model: ApiModel, pkg: ApiPackage, content: DocSection, contextItem: ApiItem, style: GenerateStyle, resolver: ReferenceResolver): string;
+```
+
+#### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| model | ApiModel | a [model](https://rushstack.io/pages/api/api-extractor-model.apimodel/) |
+| pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
+| content | DocSection | a [content](https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/nodes/DocSection.ts) |
+| contextItem | ApiItem | a context [item](https://rushstack.io/pages/api/api-extractor-model.apiitem/) |
+| style | GenerateStyle | generate style, See the [GenerateStyle](#generatestyle) |
+| resolver | ReferenceResolver | [resolver](#referenceresolver) to resolve markdown content references |
+
+#### Returns
+
+ doc section markdown content
+
 ### getSafePathFromDisplayName
 
-get safe path from display name of ApiItem
+Get safe path from display name of [ApiItem](https://rushstack.io/pages/api/api-extractor-model.apiitem/)
 
 **Signature:**
 ```typescript
@@ -315,32 +360,122 @@ export declare function getSafePathFromDisplayName(name: string): string;
 
 ### multiProcessor
 
-### multiResolver
-
-### resolveConfig
-
-### tocProcessor
-
-### tocResolver
-
-
-## Variable
-
-### DefaultConfig
-
-Default Config
+Process of API doc model
 
 **Signature:**
 ```typescript
-DefaultConfig: Config
+export declare function process(model: ApiModel, pkg: ApiPackage, style: GenerateStyle, resolver: ReferenceResolver): string | MarkdownContent[];
 ```
+
+#### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| model | ApiModel | a [model](https://rushstack.io/pages/api/api-extractor-model.apimodel/) |
+| pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
+| style | GenerateStyle | generate style, See the [GenerateStyle](#generatestyle) |
+| resolver | ReferenceResolver | [resolver](#referenceresolver) to resolve markdown content references |
+
+#### Returns
+
+ markdown content strign or Array of [MarkdownContent](#markdowncontent)
+
+#### Remarks
+
+Generate the markdown contents the bellow:
+```
+- Function
+- Enum
+- Interface
+- Class
+- Variable
+- TypeAlias
+```
+
+### multiResolver
+
+Resolve the markdown content reference
+
+**Signature:**
+```typescript
+export declare function resolve(style: GenerateStyle, item: ApiItem, model: ApiModel, pkg: ApiPackage): string;
+```
+
+#### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| style | GenerateStyle | generate style, See the [GenerateStyle](#generatestyle) |
+| item | ApiItem | a [item](https://rushstack.io/pages/api/api-extractor-model.apiitem/) |
+| model | ApiModel | a [model](https://rushstack.io/pages/api/api-extractor-model.apimodel/) |
+| pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
+
+#### Returns
+
+ resolved the reference string
+
+#### Remarks
+
+This reference resolver is used by the [processor](#multiprocessor) to generate API docs references for separate pieces of markdown content.
+
+### tocProcessor
+
+Process of API doc model
+
+**Signature:**
+```typescript
+export declare function process(model: ApiModel, pkg: ApiPackage, style: GenerateStyle, resolver: ReferenceResolver): string | MarkdownContent[];
+```
+
+#### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| model | ApiModel | a [model](https://rushstack.io/pages/api/api-extractor-model.apimodel/) |
+| pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
+| style | GenerateStyle | generate style, See the [GenerateStyle](#generatestyle) |
+| resolver | ReferenceResolver | [resolver](#referenceresolver) to resolve markdown content references |
+
+#### Returns
+
+ markdown string content that have TOC
+
+#### Remarks
+
+Generate the markdown contents that have TOC. About API doc model, see the [doc model structure](https://api-extractor.com/pages/overview/demo_docs/), and [doc model API](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor-model). In about generate api docs, see the [api-docs-gen API References](https://github.com/kazupon/api-docs-gen/blob/master/api-docs-gen-api.md)
+
+### tocResolver
+
+Resolve the markdown content reference
+
+**Signature:**
+```typescript
+export declare function resolve(style: GenerateStyle, item: ApiItem, model: ApiModel, pkg: ApiPackage): string;
+```
+
+#### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| style | GenerateStyle | generate style, See the [GenerateStyle](#generatestyle) |
+| item | ApiItem | a [item](https://rushstack.io/pages/api/api-extractor-model.apiitem/) |
+| model | ApiModel | a [model](https://rushstack.io/pages/api/api-extractor-model.apimodel/) |
+| pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
+
+#### Returns
+
+ resolved the reference string
+
+#### Remarks
+
+This reference resolver is used by the [processor](#tocprocessor) to generate a reference specifically for API docs of markdown content with TOC.
 
 
 ## Enum
 
 ### GenerateStyle
 
-Constant of `--genereate-style` option
+The generate style
 
 **Signature:**
 ```typescript
@@ -351,8 +486,12 @@ export declare const enum GenerateStyle
 
 | Member | Value| Description |
 | --- | --- | --- |
-| Directory | "directory" |  |
-| Prefix | "prefix" |  |
+| Directory | "directory" | Output api docs files for each package |
+| Prefix | "prefix" | Prefix the output api docs file name with package name |
+
+#### Remarks
+
+The value of this constants is the same as that taken from `--genereate-style` option.
 
 
 ## TypeAlias

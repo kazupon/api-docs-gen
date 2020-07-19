@@ -9,12 +9,14 @@ import type { Config, GenerateStyle } from './config'
 const debug = Debug('api-docs-gen:generator')
 
 /**
- * generate markdown contents
+ * Generate API docs
  *
- * @param input input paths
- * @param output output full path
- * @param style generate style, see {@link GenerateStyle}
- * @param config configration, see {@link Config}
+ * @param input - input paths
+ * @param output - output api docs full path
+ * @param style - generate style, see the {@link GenerateStyle}
+ * @param config - configration, see the {@link Config}
+ *
+ * @public
  */
 export async function generate(
   input: string[],

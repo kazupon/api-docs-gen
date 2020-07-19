@@ -1,30 +1,18 @@
 import { promises as fs } from 'fs'
 
-/**
- * string type checking function
- *
- * @param val the target value
- *
- * @returns if it's string, return `true`, else return `false`
- */
 export const isString = (val: unknown): val is string => typeof val === 'string'
 
-/**
- * number type checking function
- *
- * @param val the target value
- *
- * @returns if it's number , return `true`, else return `false`
- */
 export const isNumber = (val: unknown): val is number =>
   typeof val === 'number' && isFinite(val)
 
 /**
- * escape text
+ * Escape text
  *
- * @param text the target text
+ * @param text - the target text
  *
  * @returns escaped text
+ *
+ * @public
  */
 export function escapeText(text: string): string {
   return text
@@ -39,11 +27,13 @@ export function escapeText(text: string): string {
 const RE_BAD_PATH_CHARS = /[^a-z0-9_\-\.]/gi
 
 /**
- * get safe path from display name of ApiItem
+ * Get safe path from display name of {@link https://rushstack.io/pages/api/api-extractor-model.apiitem/ | ApiItem}
  *
- * @param name the target displayname
+ * @param name - the target displayname
  *
  * @returns safe path
+ *
+ * @public
  */
 export function getSafePathFromDisplayName(name: string): string {
   return name.replace(RE_BAD_PATH_CHARS, '_').toLowerCase()
