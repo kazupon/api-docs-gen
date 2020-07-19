@@ -66,7 +66,9 @@
   "keywords": [
     "documentation",
     "generator",
-    "typescript"
+    "typescript",
+    "tsdoc",
+    "api-extractor"
   ],
   "license": "MIT",
   "main": "lib/index.js",
