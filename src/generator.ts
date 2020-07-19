@@ -41,7 +41,7 @@ export async function generate(
     if (isString(result)) {
       result = [
         {
-          filename: 'index.md',
+          filename: 'api.md',
           body: result
         }
       ]
