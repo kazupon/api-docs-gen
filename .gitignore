@@ -5,7 +5,6 @@ lib
 *.log
 *.swp
 *~
-.vscode
 examples/docs/api
 examples/packages/library1/dist/*.d.ts
 examples/packages/library1/etc/*.md

@@ -34,6 +34,7 @@
     "meow": "^7.0.1"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.9.2",
     "@types/chalk": "^2.2.0",
     "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.3",
@@ -73,8 +74,16 @@
     "type": "git",
     "url": "git+https://github.com/kazupon/api-docs-gen.git"
   },
+  "files": [
+    "bin/*.js",
+    "dist/*.d.ts",
+    "lib/**/*.js"
+  ],
   "scripts": {
-    "build": "tsc -p .",
+    "build": "yarn build:transpile && yarn build:extract",
+    "build:transpile": "tsc -p .",
+    "build:extract": "api-extractor run -c ./api-extractor.json",
+    "build:docs": "node ./bin/run.js ./temp/api-docs-gen.api.json -c ./docsgen.config.js -o ./",
     "example": "yarn example:build && yarn example:extract && yarn example:gen",
     "example:setup": "lerna bootstrap",
     "example:teardown": "rm -rf ./examples/packages/utilities/node_modules && rm -rf ./examples/packages/library1/node_modules",
@@ -87,6 +96,7 @@
     "clean:cache:jest": "jest --clearCache",
     "clean:coverage": "rm -rf ./coverage",
     "clean:lib": "rm -rf ./lib/*.*",
+    "clean:extract": "rm -rf ./temp ./dist ",
     "coverage": "opener coverage/lcov-report/index.html",
     "fix": "npm-run-all --parallel lint:fix format:fix",
     "format": "prettier --config .prettierrc --ignore-path .prettierignore '**/*.{js,json,html}'",
@@ -101,5 +111,5 @@
     "test:watch": "jest --env node --watch",
     "watch": "tsc -p . --watch"
   },
-  "types": "lib/index.d.ts"
+  "types": "dist/api-docs-gen.d.ts"
 }
