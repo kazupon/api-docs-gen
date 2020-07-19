@@ -46,7 +46,6 @@ export async function generate(
         }
       ]
     }
-    debug('result: ', result)
 
     if (!Array.isArray(result)) {
       throw new Error('Not supported processor result type')

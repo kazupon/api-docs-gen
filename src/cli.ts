@@ -29,13 +29,14 @@ export const flags = {
 const cli = meow(
   `
   Usage
-    $ api-docs-gen <input>
+    $ api-docs-gen <package1.api.json> <package2.api.json> ...
 
   Options
     --config, -c              configuration file
     --output, -o              output dierectory that is markdown contents
     --generate-style, -g      document generating style, default 'prefix'
-                              Be able to separated each package docs with 'directory'
+                              'prefix': be able to separated with each package name
+                              'directory': be able to separated with each package directory
 
   Examples
     $ api-docs-gen package1.api.json
@@ -47,14 +48,14 @@ const cli = meow(
     flags
   }
 )
-debug('cli', cli)
+debug('flags', flags)
 
 // check input
 const input = cli.input
 if (!input.length) {
-  console.error(chalk.red(`[api-docs-gen] not specified docs model`))
-  process.exit(1)
+  cli.showHelp(1)
 }
+debug('input', input)
 
 // resolve output
 const output =
@@ -82,11 +83,10 @@ try {
 debug(`config`, config)
 
 // generate style
-const genStyleFlag = cli.flags['generate-style'] as GenerateStyle
-const genStyle = Object.keys([
-  GenerateStyle.Prefix,
-  GenerateStyle.Directory
-]).includes(genStyleFlag)
+const genStyleFlag = cli.flags['generateStyle'] as GenerateStyle
+const genStyle = [GenerateStyle.Prefix, GenerateStyle.Directory].includes(
+  genStyleFlag
+)
   ? genStyleFlag
   : GenerateStyle.Prefix
 debug('packageDocsStyle', genStyleFlag, genStyle)

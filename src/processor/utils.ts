@@ -285,7 +285,8 @@ export function buildContentForClassinizable(
   resolver: ReferenceResolver,
   builder: ContentBuilder,
   item: ApiItem,
-  type: string
+  type: string,
+  base = 3
 ) {
   const itemDeclared = item as ApiDeclaredItem
   const docs = itemDeclared.tsdocComment
@@ -342,7 +343,7 @@ export function buildContentForClassinizable(
 
   // returns
   if (type === 'method' && docs.returnsBlock) {
-    builder.pushline(`### Returns`)
+    builder.pushline(`${'#'.repeat(base)} Returns`)
     builder.newline()
     builder.pushline(
       getDocSectionContent(
@@ -362,7 +363,7 @@ export function buildContentForClassinizable(
   // @ts-ignore TODO:
   const throws = getCustomTags(docs.customBlocks, '@throws')
   if ((type === 'constructor' || type === 'method') && throws.length > 0) {
-    builder.pushline(`### Throws`)
+    builder.pushline(`${'#'.repeat(base)} Throws`)
     builder.newline()
     for (const t of throws) {
       let text = `${getDocSectionContent(
@@ -383,7 +384,7 @@ export function buildContentForClassinizable(
 
   // remarks
   if (docs.remarksBlock) {
-    builder.pushline(`### Remarks`)
+    builder.pushline(`${'#'.repeat(base)} Remarks`)
     builder.newline()
     builder.pushline(
       getDocSectionContent(
@@ -403,12 +404,12 @@ export function buildContentForClassinizable(
   // @ts-ignore TODO:
   const examples = getCustomTags(docs.customBlocks, '@example')
   if (examples.length > 0) {
-    builder.pushline(`### Examples`)
+    builder.pushline(`${'#'.repeat(base)} Examples`)
     builder.newline()
     let count = 1
     for (const e of examples) {
       if (examples.length > 1) {
-        builder.pushline(`#### Example ${count}`)
+        builder.pushline(`${'#'.repeat(base + 1)} Example ${count}`)
       }
       builder.pushline(
         `${getDocSectionContent(model, pkg, e.content, item, style, resolver)}`
@@ -438,7 +439,8 @@ export function buildInterfaceContent(
     resolver,
     builder,
     item,
-    'interface'
+    'interface',
+    base + 1
   )
   builder.newline()
 
@@ -455,7 +457,8 @@ export function buildInterfaceContent(
       resolver,
       builder,
       method,
-      'method'
+      'method',
+      base + 1
     )
   }
   builder.newline()
@@ -473,7 +476,8 @@ export function buildInterfaceContent(
       resolver,
       builder,
       property,
-      'property'
+      'property',
+      base + 1
     )
   }
   builder.newline()
@@ -511,7 +515,8 @@ export function buildClassContent(
     resolver,
     builder,
     ctor,
-    'constructor'
+    'constructor',
+    base + 1
   )
   builder.newline()
 
@@ -528,7 +533,8 @@ export function buildClassContent(
       resolver,
       builder,
       method,
-      'method'
+      'method',
+      base + 1
     )
   }
   builder.newline()
@@ -546,7 +552,8 @@ export function buildClassContent(
       resolver,
       builder,
       property,
-      'property'
+      'property',
+      base + 1
     )
   }
   builder.newline()
