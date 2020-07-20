@@ -105,6 +105,8 @@ export const enum GenerateStyle {
  *
  * @remarks
  * Default config for the CLI
+ *
+ * @public
  */
 export const DefaultConfig: Config = {
   linkReferencer: multiResolver,
