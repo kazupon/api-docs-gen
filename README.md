@@ -1,5 +1,8 @@
 # :book: api-docs-gen
 
+![Test](https://github.com/kazupon/api-docs-gen/workflows/Test/badge.svg)
+[![npm](https://img.shields.io/npm/v/api-docs-gen.svg)](https://www.npmjs.com/package/api-docs-gen)
+
 API Documentation generator from `api-extractor` doc model
 
 
@@ -44,10 +47,10 @@ const path = require('path')
 const { genereate, DefaultConfig } = require('api-docs-gen')
 
 // input
-const input = [path.resolve('./package1.api.json')]
+const input = [path.resolve(process.cwd(), './package1.api.json')]
 
 // output
-const output = resolve(process.cwd(), './docs')
+const output = path.resolve(process.cwd(), './docs')
 
 // generate API docs with prefixed package name
 await generate(input, output, 'prefix', DefaultConfig)
