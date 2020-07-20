@@ -1,3 +1,14 @@
+
+## v0.1.0 (2020-07-20)
+
+#### :star: Features
+* [#10](https://github.com/kazupon/api-docs-gen/pull/10) TOC processor ([@kazupon](https://github.com/kazupon))
+* [#8](https://github.com/kazupon/api-docs-gen/pull/8) generate style feature ([@kazupon](https://github.com/kazupon))
+* [#7](https://github.com/kazupon/api-docs-gen/pull/7) feat: basic document generation ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v0.0.0 (2020-07-02)
 
 I've borned in the world! :tada:
