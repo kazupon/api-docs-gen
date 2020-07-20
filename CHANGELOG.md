@@ -1,4 +1,13 @@
 
+## v0.1.1 (2020-07-20)
+
+#### :pencil: Documentation
+* [#12](https://github.com/kazupon/api-docs-gen/pull/12) fix tsdoc annotation ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v0.1.0 (2020-07-20)
 
 #### :star: Features
