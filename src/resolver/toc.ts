@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import type {
   ApiItem,
   ApiModel,
@@ -47,3 +49,5 @@ export function resolve(
 
   return baseName
 }
+
+/* eslint-enable @typescript-eslint/no-unused-vars */
