@@ -56,11 +56,6 @@ export async function generate(
     let outputTarget = output
     if (style === 'directory') {
       outputTarget = path.resolve(output, apiPackage.displayName)
-      try {
-        await mkdir(outputTarget)
-      } catch (e) {
-        throw new Error(`Cannot make '${outputTarget} directory: ${e.message}`)
-      }
     }
 
     for (const { filename, body } of result) {
@@ -68,6 +63,14 @@ export async function generate(
         outputTarget,
         style === 'prefix' ? `${apiPackage.displayName}-${filename}` : filename
       )
+      const parsedPath = path.parse(filepath)
+      try {
+        await mkdir(parsedPath.dir)
+      } catch (e) {
+        throw new Error(
+          `Cannot make '${parsedPath.dir} directory: ${e.message}`
+        )
+      }
       await writeFile(filepath, body)
       callback && callback(apiPackage.displayName, filepath)
     }

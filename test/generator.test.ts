@@ -41,7 +41,7 @@ test('generate prefix style contents', async () => {
   const output = path.resolve(__dirname, './')
   await generate(input, output, GenerateStyle.Prefix, DefaultConfig)
 
-  expect(mkdir).not.toHaveBeenCalled()
+  expect(mkdir).toHaveBeenCalledTimes(7)
   expect(writeFile).toHaveBeenCalledTimes(7)
   for (const arg of writeFile.mock.calls) {
     expect(
@@ -64,9 +64,7 @@ test('generate directory style contents', async () => {
   const output = path.resolve(__dirname, './')
   await generate(input, output, GenerateStyle.Directory, DefaultConfig)
 
-  expect(mkdir).toHaveBeenCalledTimes(2)
-  expect(mkdir.mock.calls[0][0]).toEqual(path.resolve(output, './library1'))
-  expect(mkdir.mock.calls[1][0]).toEqual(path.resolve(output, './utilities'))
+  expect(mkdir).toHaveBeenCalledTimes(7)
 
   const passedArgs = [
     path.resolve(output, './library1/enum.md'),
