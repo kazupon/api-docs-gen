@@ -1,4 +1,13 @@
 
+## v0.1.2 (2020-08-07)
+
+#### :bug: Bug Fixes
+* [#14](https://github.com/kazupon/api-docs-gen/pull/14) fix: cannot directory ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v0.1.1 (2020-07-20)
 
 #### :pencil: Documentation
