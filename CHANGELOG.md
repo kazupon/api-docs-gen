@@ -1,4 +1,14 @@
 
+## v0.1.3 (2020-09-06)
+
+#### :bug: Bug Fixes
+* [#24](https://github.com/kazupon/api-docs-gen/pull/24) fix: escape typing ([@kazupon](https://github.com/kazupon))
+* [#23](https://github.com/kazupon/api-docs-gen/pull/23) fix: cannot resolve link tag ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v0.1.2 (2020-08-07)
 
 #### :bug: Bug Fixes
