@@ -13,6 +13,11 @@ export type A = string
 export type B = number
 
 /**
+ * A dumb type
+ */
+export type DumbType<T> = { foo: T }
+
+/**
  * app version
  *
  * @remarks
@@ -52,9 +57,7 @@ export type FallbackLocale =
 /**
  * Locale Message resources
  */
-export type LocaleMessage =
-  | string
-  | LocaleMessage[]
+export type LocaleMessage = string | LocaleMessage[]
 
 /**
  * Error Code
@@ -84,7 +87,7 @@ export enum TokenChars {
   /**
    * Plus charactor
    */
-  Plus = '+',
+  Plus = '+'
 }
 
 /**
@@ -113,6 +116,15 @@ export enum TokenChars {
  */
 export function add(a: number, b: number): number {
   return a + b
+}
+
+/**
+ * un dummy
+ *
+ * @param dummy - A dummy
+ */
+export function undumbify<T>(dummy: DumbType<T>): T {
+  return dummy.foo
 }
 
 /**
@@ -163,7 +175,7 @@ export class Calculator implements Calculatable {
    *
    * @param type calculator type
    */
-  constructor (type: string) {
+  constructor(type: string) {
     this.type = type
   }
 

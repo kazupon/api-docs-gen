@@ -474,6 +474,44 @@
           }
         },
         {
+          "kind": "TypeAlias",
+          "canonicalReference": "library1!DumbType:type",
+          "docComment": "/**\n * A dumb type\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type DumbType<T> = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    foo: T;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "DumbType",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
           "kind": "Enum",
           "canonicalReference": "library1!ErrorCodes:enum",
           "docComment": "/**\n * Error Code\n */\n",
@@ -693,6 +731,67 @@
               }
             }
           ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "library1!undumbify:function(1)",
+          "docComment": "/**\n * un dummy\n *\n * @param dummy - A dummy\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function undumbify<T>(dummy: "
+            },
+            {
+              "kind": "Reference",
+              "text": "DumbType",
+              "canonicalReference": "library1!DumbType:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 4,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "dummy",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "undumbify"
         },
         {
           "kind": "Variable",

@@ -79,7 +79,7 @@ export function buildFunctionContent(
     builder.pushline(`| --- | --- | --- |`)
     for (const p of itemParam.parameters) {
       builder.pushline(
-        `| ${p.name} | ${p.parameterTypeExcerpt.text.trim()} | ${
+        `| ${p.name} | ${escapeText(p.parameterTypeExcerpt.text.trim())} | ${
           p.tsdocParamBlock && p.tsdocParamBlock.content
             ? getDocSectionContent(
                 model,
@@ -345,7 +345,7 @@ export function buildContentForClassinizable(
     builder.pushline(`| --- | --- | --- |`)
     for (const p of itemParam.parameters) {
       builder.pushline(
-        `| ${p.name} | ${p.parameterTypeExcerpt.text.trim()} | ${
+        `| ${p.name} | ${escapeText(p.parameterTypeExcerpt.text.trim())} | ${
           p.tsdocParamBlock && p.tsdocParamBlock.content
             ? getDocSectionContent(
                 model,
