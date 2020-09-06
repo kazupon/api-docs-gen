@@ -1,6 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`generate directory style contents 1`] = `
+"# TypeAlias
+
+## A
+
+A
+
+**Signature:**
+\`\`\`typescript
+export declare type A = string;
+\`\`\`
+
+## B
+
+[A](./typealias#a)
+
+**Signature:**
+\`\`\`typescript
+export declare type B = number;
+\`\`\`
+
+## FallbackLocale
+
+Falback Locale
+
+**Signature:**
+\`\`\`typescript
+export declare type FallbackLocale = Locale | Locale[] | {
+    [locale in string]: Locale[];
+} | false;
+\`\`\`
+
+### Remarks
+
+This is remarks of \`Fallback Locale\`
+
+## Locale
+
+Locale
+
+**Signature:**
+\`\`\`typescript
+export declare type Locale = string;
+\`\`\`
+
+## LocaleMessage
+
+Locale Message resources
+
+**Signature:**
+\`\`\`typescript
+export declare type LocaleMessage = string | LocaleMessage[];
+\`\`\`
+
+"
+`;
+
+exports[`generate directory style contents 2`] = `
 "# Function
 
 ## add
@@ -43,7 +100,7 @@ console.log(add(1, 1))
 "
 `;
 
-exports[`generate directory style contents 2`] = `
+exports[`generate directory style contents 3`] = `
 "# Interface
 
 ## Calculatable
@@ -90,7 +147,7 @@ PI: number;
 "
 `;
 
-exports[`generate directory style contents 3`] = `
+exports[`generate directory style contents 4`] = `
 "# Class
 
 ## Calculator
@@ -186,7 +243,7 @@ type: string;
 "
 `;
 
-exports[`generate directory style contents 4`] = `
+exports[`generate directory style contents 5`] = `
 "# Variable
 
 ## Config
@@ -224,7 +281,7 @@ console.log(VERSION)
 "
 `;
 
-exports[`generate directory style contents 5`] = `
+exports[`generate directory style contents 6`] = `
 "# Enum
 
 ## ErrorCodes
@@ -262,45 +319,6 @@ export declare enum TokenChars
 ### Remarks
 
 This is remarks of Token Chararaceters
-
-"
-`;
-
-exports[`generate directory style contents 6`] = `
-"# TypeAlias
-
-## FallbackLocale
-
-Falback Locale
-
-**Signature:**
-\`\`\`typescript
-export declare type FallbackLocale = Locale | Locale[] | {
-    [locale in string]: Locale[];
-} | false;
-\`\`\`
-
-### Remarks
-
-This is remarks of \`Fallback Locale\`
-
-## Locale
-
-Locale
-
-**Signature:**
-\`\`\`typescript
-export declare type Locale = string;
-\`\`\`
-
-## LocaleMessage
-
-Locale Message resources
-
-**Signature:**
-\`\`\`typescript
-export declare type LocaleMessage = string | LocaleMessage[];
-\`\`\`
 
 "
 `;
@@ -445,6 +463,63 @@ export declare function isSymbol(val: unknown): val is symbol;
 `;
 
 exports[`generate prefix style contents 1`] = `
+"# TypeAlias
+
+## A
+
+A
+
+**Signature:**
+\`\`\`typescript
+export declare type A = string;
+\`\`\`
+
+## B
+
+[A](./library1-typealias#a)
+
+**Signature:**
+\`\`\`typescript
+export declare type B = number;
+\`\`\`
+
+## FallbackLocale
+
+Falback Locale
+
+**Signature:**
+\`\`\`typescript
+export declare type FallbackLocale = Locale | Locale[] | {
+    [locale in string]: Locale[];
+} | false;
+\`\`\`
+
+### Remarks
+
+This is remarks of \`Fallback Locale\`
+
+## Locale
+
+Locale
+
+**Signature:**
+\`\`\`typescript
+export declare type Locale = string;
+\`\`\`
+
+## LocaleMessage
+
+Locale Message resources
+
+**Signature:**
+\`\`\`typescript
+export declare type LocaleMessage = string | LocaleMessage[];
+\`\`\`
+
+"
+`;
+
+exports[`generate prefix style contents 2`] = `
 "# Function
 
 ## add
@@ -487,7 +562,7 @@ console.log(add(1, 1))
 "
 `;
 
-exports[`generate prefix style contents 2`] = `
+exports[`generate prefix style contents 3`] = `
 "# Interface
 
 ## Calculatable
@@ -534,7 +609,7 @@ PI: number;
 "
 `;
 
-exports[`generate prefix style contents 3`] = `
+exports[`generate prefix style contents 4`] = `
 "# Class
 
 ## Calculator
@@ -630,7 +705,7 @@ type: string;
 "
 `;
 
-exports[`generate prefix style contents 4`] = `
+exports[`generate prefix style contents 5`] = `
 "# Variable
 
 ## Config
@@ -668,7 +743,7 @@ console.log(VERSION)
 "
 `;
 
-exports[`generate prefix style contents 5`] = `
+exports[`generate prefix style contents 6`] = `
 "# Enum
 
 ## ErrorCodes
@@ -706,45 +781,6 @@ export declare enum TokenChars
 ### Remarks
 
 This is remarks of Token Chararaceters
-
-"
-`;
-
-exports[`generate prefix style contents 6`] = `
-"# TypeAlias
-
-## FallbackLocale
-
-Falback Locale
-
-**Signature:**
-\`\`\`typescript
-export declare type FallbackLocale = Locale | Locale[] | {
-    [locale in string]: Locale[];
-} | false;
-\`\`\`
-
-### Remarks
-
-This is remarks of \`Fallback Locale\`
-
-## Locale
-
-Locale
-
-**Signature:**
-\`\`\`typescript
-export declare type Locale = string;
-\`\`\`
-
-## LocaleMessage
-
-Locale Message resources
-
-**Signature:**
-\`\`\`typescript
-export declare type LocaleMessage = string | LocaleMessage[];
-\`\`\`
 
 "
 `;

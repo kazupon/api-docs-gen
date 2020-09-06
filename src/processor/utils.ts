@@ -46,8 +46,14 @@ export function buildFunctionContent(
   // summary
   if (docs.summarySection) {
     builder.pushline(
-      // @ts-ignore
-      getDocSectionContent(model, pkg, docs.summarySection, item, resolver)
+      getDocSectionContent(
+        model,
+        pkg,
+        docs.summarySection,
+        item,
+        style,
+        resolver
+      )
     )
     builder.newline()
   }
@@ -191,8 +197,14 @@ export function buildEnumContent(
   // summary
   if (docs.summarySection) {
     builder.pushline(
-      // @ts-ignore
-      getDocSectionContent(model, pkg, docs.summarySection, item, resolver)
+      getDocSectionContent(
+        model,
+        pkg,
+        docs.summarySection,
+        item,
+        style,
+        resolver
+      )
     )
     builder.newline()
   }
@@ -588,8 +600,14 @@ export function buildTypeAliasContent(
   // summary
   if (docs.summarySection) {
     builder.pushline(
-      // @ts-ignore
-      getDocSectionContent(model, pkg, docs.summarySection, item, resolver)
+      getDocSectionContent(
+        model,
+        pkg,
+        docs.summarySection,
+        item,
+        style,
+        resolver
+      )
     )
     builder.newline()
   }
@@ -665,8 +683,14 @@ export function buildVariableContent(
   // summary
   if (docs.summarySection) {
     builder.pushline(
-      // @ts-ignore
-      getDocSectionContent(model, pkg, docs.summarySection, item, resolver)
+      getDocSectionContent(
+        model,
+        pkg,
+        docs.summarySection,
+        item,
+        style,
+        resolver
+      )
     )
     builder.newline()
   }
