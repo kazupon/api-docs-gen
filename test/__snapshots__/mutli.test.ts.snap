@@ -178,6 +178,21 @@ console.log(add(1, 1))
 \`\`\`
 
 
+## undumbify
+
+un dummy
+
+**Signature:**
+\`\`\`typescript
+export declare function undumbify<T>(dummy: DumbType<T>): T;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| dummy | DumbType&lt;T&gt; | A dummy |
+
 "
 `;
 
@@ -247,6 +262,17 @@ export declare type A = string;
 **Signature:**
 \`\`\`typescript
 export declare type B = number;
+\`\`\`
+
+## DumbType
+
+A dumb type
+
+**Signature:**
+\`\`\`typescript
+export declare type DumbType<T> = {
+    foo: T;
+};
 \`\`\`
 
 ## FallbackLocale

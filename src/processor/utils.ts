@@ -49,6 +49,7 @@ export function buildFunctionContent(
       getDocSectionContent(
         model,
         pkg,
+        // @ts-ignore TODO:
         docs.summarySection,
         item,
         style,
@@ -78,7 +79,7 @@ export function buildFunctionContent(
     builder.pushline(`| --- | --- | --- |`)
     for (const p of itemParam.parameters) {
       builder.pushline(
-        `| ${p.name} | ${p.parameterTypeExcerpt.text.trim()} | ${
+        `| ${p.name} | ${escapeText(p.parameterTypeExcerpt.text.trim())} | ${
           p.tsdocParamBlock && p.tsdocParamBlock.content
             ? getDocSectionContent(
                 model,
@@ -200,6 +201,7 @@ export function buildEnumContent(
       getDocSectionContent(
         model,
         pkg,
+        // @ts-ignore TODO:
         docs.summarySection,
         item,
         style,
@@ -343,7 +345,7 @@ export function buildContentForClassinizable(
     builder.pushline(`| --- | --- | --- |`)
     for (const p of itemParam.parameters) {
       builder.pushline(
-        `| ${p.name} | ${p.parameterTypeExcerpt.text.trim()} | ${
+        `| ${p.name} | ${escapeText(p.parameterTypeExcerpt.text.trim())} | ${
           p.tsdocParamBlock && p.tsdocParamBlock.content
             ? getDocSectionContent(
                 model,
@@ -603,6 +605,7 @@ export function buildTypeAliasContent(
       getDocSectionContent(
         model,
         pkg,
+        // @ts-ignore TODO:
         docs.summarySection,
         item,
         style,
@@ -686,6 +689,7 @@ export function buildVariableContent(
       getDocSectionContent(
         model,
         pkg,
+        // @ts-ignore TODO:
         docs.summarySection,
         item,
         style,
