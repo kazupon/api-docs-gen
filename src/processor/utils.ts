@@ -49,6 +49,7 @@ export function buildFunctionContent(
       getDocSectionContent(
         model,
         pkg,
+        // @ts-ignore TODO:
         docs.summarySection,
         item,
         style,
@@ -200,6 +201,7 @@ export function buildEnumContent(
       getDocSectionContent(
         model,
         pkg,
+        // @ts-ignore TODO:
         docs.summarySection,
         item,
         style,
@@ -603,6 +605,7 @@ export function buildTypeAliasContent(
       getDocSectionContent(
         model,
         pkg,
+        // @ts-ignore TODO:
         docs.summarySection,
         item,
         style,
@@ -686,6 +689,7 @@ export function buildVariableContent(
       getDocSectionContent(
         model,
         pkg,
+        // @ts-ignore TODO:
         docs.summarySection,
         item,
         style,
