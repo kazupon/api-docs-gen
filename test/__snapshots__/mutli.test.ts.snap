@@ -231,6 +231,24 @@ PI: number;
 exports[`multi: typealias.md 1`] = `
 "# TypeAlias
 
+## A
+
+A
+
+**Signature:**
+\`\`\`typescript
+export declare type A = string;
+\`\`\`
+
+## B
+
+[A](./library1-typealias#a)
+
+**Signature:**
+\`\`\`typescript
+export declare type B = number;
+\`\`\`
+
 ## FallbackLocale
 
 Falback Locale

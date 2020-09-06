@@ -5,6 +5,12 @@ exports[`toc 1`] = `
 
 ## Table Of Contents
 
+- [TypeAlias](#typealias)
+  - [A](#a)
+  - [B](#b)
+  - [FallbackLocale](#fallbacklocale)
+  - [Locale](#locale)
+  - [LocaleMessage](#localemessage)
 - [Function](#function)
   - [add](#add)
 - [Interface](#interface)
@@ -17,10 +23,60 @@ exports[`toc 1`] = `
 - [Enum](#enum)
   - [ErrorCodes](#errorcodes)
   - [TokenChars](#tokenchars)
-- [TypeAlias](#typealias)
-  - [FallbackLocale](#fallbacklocale)
-  - [Locale](#locale)
-  - [LocaleMessage](#localemessage)
+
+## TypeAlias
+
+### A
+
+A
+
+**Signature:**
+\`\`\`typescript
+export declare type A = string;
+\`\`\`
+
+### B
+
+[A](#a)
+
+**Signature:**
+\`\`\`typescript
+export declare type B = number;
+\`\`\`
+
+### FallbackLocale
+
+Falback Locale
+
+**Signature:**
+\`\`\`typescript
+export declare type FallbackLocale = Locale | Locale[] | {
+    [locale in string]: Locale[];
+} | false;
+\`\`\`
+
+#### Remarks
+
+This is remarks of \`Fallback Locale\`
+
+### Locale
+
+Locale
+
+**Signature:**
+\`\`\`typescript
+export declare type Locale = string;
+\`\`\`
+
+### LocaleMessage
+
+Locale Message resources
+
+**Signature:**
+\`\`\`typescript
+export declare type LocaleMessage = string | LocaleMessage[];
+\`\`\`
+
 
 ## Function
 
@@ -271,42 +327,6 @@ export declare enum TokenChars
 #### Remarks
 
 This is remarks of Token Chararaceters
-
-
-## TypeAlias
-
-### FallbackLocale
-
-Falback Locale
-
-**Signature:**
-\`\`\`typescript
-export declare type FallbackLocale = Locale | Locale[] | {
-    [locale in string]: Locale[];
-} | false;
-\`\`\`
-
-#### Remarks
-
-This is remarks of \`Fallback Locale\`
-
-### Locale
-
-Locale
-
-**Signature:**
-\`\`\`typescript
-export declare type Locale = string;
-\`\`\`
-
-### LocaleMessage
-
-Locale Message resources
-
-**Signature:**
-\`\`\`typescript
-export declare type LocaleMessage = string | LocaleMessage[];
-\`\`\`
 
 
 "

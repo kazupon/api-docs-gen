@@ -1,4 +1,18 @@
 /**
+ * A
+ *
+ * @public
+ */
+export type A = string
+
+/**
+ * {@link A}
+ *
+ * @public
+ */
+export type B = number
+
+/**
  * app version
  *
  * @remarks
