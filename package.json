@@ -31,7 +31,7 @@
     "@microsoft/tsdoc": "^0.12.20",
     "chalk": "^4.1.0",
     "debug": "^4.1.1",
-    "meow": "^7.0.1"
+    "meow": "^8.0.0"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.9.2",
