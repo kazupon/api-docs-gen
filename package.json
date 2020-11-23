@@ -61,13 +61,18 @@
   "engines": {
     "node": ">= 10"
   },
+  "files": [
+    "bin/*.js",
+    "dist/*.d.ts",
+    "lib/**/*.js"
+  ],
   "homepage": "https://github.com/kazupon/api-docs-gen#readme",
   "keywords": [
+    "api-extractor",
     "documentation",
     "generator",
-    "typescript",
     "tsdoc",
-    "api-extractor"
+    "typescript"
   ],
   "license": "MIT",
   "main": "lib/index.js",
@@ -75,30 +80,25 @@
     "type": "git",
     "url": "git+https://github.com/kazupon/api-docs-gen.git"
   },
-  "files": [
-    "bin/*.js",
-    "dist/*.d.ts",
-    "lib/**/*.js"
-  ],
   "scripts": {
     "build": "yarn build:transpile && yarn build:extract",
-    "build:transpile": "tsc -p .",
-    "build:extract": "api-extractor run -l -c ./api-extractor.json",
     "build:docs": "node ./bin/run.js ./temp/api-docs-gen.api.json -c ./docsgen.config.js -o ./",
-    "example": "yarn example:build && yarn example:extract && yarn example:gen",
-    "example:setup": "lerna bootstrap",
-    "example:teardown": "rm -rf ./examples/packages/utilities/node_modules && rm -rf ./examples/packages/library1/node_modules",
-    "example:build": "lerna run build",
-    "example:extract": "lerna run extract",
-    "example:gen": "node ./bin/run.js ./examples/packages/utilities/temp/utilities.api.json ./examples/packages/library1/temp/library1.api.json -o ./examples/docs/api",
-    "example:clean": "lerna run clean && rm -rf examples/docs/api/*.md",
-    "example:docs": "vuepress dev examples/docs",
+    "build:extract": "api-extractor run -l -c ./api-extractor.json",
+    "build:transpile": "tsc -p .",
     "clean": "npm-run-all clean:*",
     "clean:cache:jest": "jest --clearCache",
     "clean:coverage": "rm -rf ./coverage",
-    "clean:lib": "rm -rf ./lib/*.*",
     "clean:extract": "rm -rf ./temp ./dist ./ect/*.md",
+    "clean:lib": "rm -rf ./lib/*.*",
     "coverage": "opener coverage/lcov-report/index.html",
+    "example": "yarn example:build && yarn example:extract && yarn example:gen",
+    "example:build": "lerna run build",
+    "example:clean": "lerna run clean && rm -rf examples/docs/api/*.md",
+    "example:docs": "vuepress dev examples/docs",
+    "example:extract": "lerna run extract",
+    "example:gen": "node ./bin/run.js ./examples/packages/utilities/temp/utilities.api.json ./examples/packages/library1/temp/library1.api.json -o ./examples/docs/api",
+    "example:setup": "lerna bootstrap",
+    "example:teardown": "rm -rf ./examples/packages/utilities/node_modules && rm -rf ./examples/packages/library1/node_modules",
     "fix": "npm-run-all --parallel lint:fix format:fix",
     "format": "prettier --config .prettierrc --ignore-path .prettierignore '**/*.{js,json,html}'",
     "format:fix": "yarn format --write",
