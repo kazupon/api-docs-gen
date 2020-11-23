@@ -34,6 +34,7 @@ export interface Config {
  * @param item - a {@link https://rushstack.io/pages/api/api-extractor-model.apiitem/ | item}
  * @param model - a {@link https://rushstack.io/pages/api/api-extractor-model.apimodel/ | model}
  * @param pkg - a {@link https://rushstack.io/pages/api/api-extractor-model.apipackage/ | package}
+ * @param customTags - TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`.
  *
  * @returns resolved reference path
  *
@@ -43,7 +44,8 @@ export type ReferenceResolver = (
   style: GenerateStyle,
   item: ApiItem,
   model: ApiModel,
-  pkg: ApiPackage
+  pkg: ApiPackage,
+  customTags?: string[]
 ) => string
 
 /**

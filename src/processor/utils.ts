@@ -868,7 +868,8 @@ export function getDocSectionContent(
                 style,
                 result.resolvedApiItem,
                 model,
-                pkg
+                pkg,
+                customTags
               )
               if (linkText) {
                 const encodedLinkText = escapeText(
