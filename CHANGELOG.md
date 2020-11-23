@@ -1,4 +1,13 @@
 
+## v0.2.4 (2020-11-23)
+
+#### :star: Features
+* [#39](https://github.com/kazupon/api-docs-gen/pull/39) feat: noprefix option ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v0.2.3 (2020-11-23)
 
 #### :star: Features

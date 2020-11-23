@@ -1,7 +1,7 @@
 {
   "name": "api-docs-gen",
   "description": "API Documentation generator from `api-extractor` doc model",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": {
     "name": "kazuya kawaguchi",
     "email": "kawakazu80@gmail.com"
