@@ -23,6 +23,10 @@ export const flags = {
     type: 'string',
     alias: 'g',
     default: GenerateStyle.Prefix
+  },
+  'tsdoc-config': {
+    type: 'string',
+    alias: 't'
   }
 } as const
 
@@ -32,17 +36,19 @@ const cli = meow(
     $ api-docs-gen <package1.api.json> <package2.api.json> ...
 
   Options
-    --config, -c              configuration file
+    --config, -c              configration file
     --output, -o              output dierectory that is markdown contents
     --generate-style, -g      document generating style, default 'prefix'
                               'prefix': be able to separated with each package name
                               'directory': be able to separated with each package directory
+    --tsdoc-config, -t        tsdoc configration file
 
   Examples
     $ api-docs-gen package1.api.json
     $ api-docs-gen package1.api.json --output ./docs
     $ api-docs-gen package1.api.json --config docsgen.config.js
     $ api-docs-gen package1.api.json package2.api.json --generate-style directory
+    $ api-docs-gen package1.api.json --tsdoc-config ./tsdoc.json
 `,
   {
     flags
@@ -91,18 +97,26 @@ const genStyle = [GenerateStyle.Prefix, GenerateStyle.Directory].includes(
   : GenerateStyle.Prefix
 debug('packageDocsStyle', genStyleFlag, genStyle)
 
+// tsdoc configratio
+const tsdocConfig = cli.flags['tsdoc-config']
+
 // run
 try {
   ;(async () => {
-    await generate(
-      input,
-      output,
-      genStyle,
+    await generate(input, output, {
+      style: genStyle,
       config,
-      (pkgname: string, filepath: string) => {
+      tsdocConfigPath:
+        tsdocConfig != null
+          ? path.resolve(process.cwd(), tsdocConfig)
+          : undefined,
+      errorOnTSDocConfig: (error: string): void => {
+        console.log(chalk.yellow(`⚠️ Error on TSDoc configration: ${error}`))
+      },
+      done: (pkgname: string, filepath: string): void => {
         console.log(chalk.green(`📦 ${pkgname}: 📝 save ${filepath}`))
       }
-    )
+    })
   })()
 } catch (e) {
   console.error(chalk.red(`[api-docs-gen] ${e.message}`))

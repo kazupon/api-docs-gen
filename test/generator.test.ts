@@ -41,7 +41,10 @@ afterEach(() => {
 test('generate prefix style contents', async () => {
   const input = [API_JSON1, API_JSON2]
   const output = path.resolve(__dirname, './')
-  await generate(input, output, GenerateStyle.Prefix, DefaultConfig)
+  await generate(input, output, {
+    style: GenerateStyle.Prefix,
+    config: DefaultConfig
+  })
 
   expect(mkdir).toHaveBeenCalledTimes(7)
   expect(writeFile).toHaveBeenCalledTimes(7)
@@ -65,7 +68,10 @@ test('generate prefix style contents', async () => {
 test('generate directory style contents', async () => {
   const input = [API_JSON1, API_JSON2]
   const output = path.resolve(__dirname, './')
-  await generate(input, output, GenerateStyle.Directory, DefaultConfig)
+  await generate(input, output, {
+    style: GenerateStyle.Directory,
+    config: DefaultConfig
+  })
 
   expect(mkdir).toHaveBeenCalledTimes(7)
 

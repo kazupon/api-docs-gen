@@ -15,4 +15,4 @@ export {
   getDocSectionContent
 } from './processor'
 export { multi as multiResolver, toc as tocResolver } from './resolver'
-export { generate } from './generator'
+export { generate, GenerateOptions } from './generator'

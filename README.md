@@ -33,11 +33,12 @@ Usage
   $ api-docs-gen <package1.api.json> <package2.api.json> ...
 
 Options
-  --config, -c              configuration file
+  --config, -c              configration file
   --output, -o              output dierectory that is markdown contents
   --generate-style, -g      document generating style, default 'prefix'
                             'prefix': be able to separated with each package name
                             'directory': be able to separated with each package directory
+  --tsdoc-config, -t        tsdoc configration file
 ```
 
 
@@ -53,7 +54,7 @@ const input = [path.resolve(process.cwd(), './package1.api.json')]
 const output = path.resolve(process.cwd(), './docs')
 
 // generate API docs with prefixed package name
-await generate(input, output, 'prefix', DefaultConfig)
+await generate(input, output, { style: 'prefix', config: DefaultConfig })
 ```
 
 About details, See the [API References](https://github.com/kazupon/api-docs-gen/blob/master/api-docs-gen-api.md)
@@ -76,6 +77,21 @@ $ yarn example:gen # genearte API docs with `api-docs-gen`
 $ yarn example:docs # run vuepress
 ```
 
+## :bookmark: TSDoc custom tags
+
+`api-docs-gen` allows TSDoc custom tags to be processed using [tsdoc-config](https://github.com/microsoft/tsdoc/tree/master/tsdoc-config).
+
+You can make it work from the `api-extractor` model by specifying tsdoc configration in the `--tsdoc-config` option as follows:
+
+```bash
+$ api-docs-gen package1.api.json --tsdoc-config ./tsdoc.json
+```
+
+If you want to output custom tags comment to markdown, you need to implement and configure the custom `MarkdownProcessor`.
+
+For the `MarkdownProcessor`, see the [API References](https://github.com/kazupon/api-docs-gen/blob/master/api-docs-gen-api.md).
+
+See how to configure it in the following configration.
 
 ## :wrench: Configration
 You can fully customize the generation of api docs using the config offered by `api-docs-gen`.

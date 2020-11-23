@@ -38,6 +38,7 @@ import {
  * @param pkg - a {@link https://rushstack.io/pages/api/api-extractor-model.apipackage/ | package}
  * @param style - generate style, See the {@link GenerateStyle}
  * @param resolver - {@link ReferenceResolver | resolver} to resolve markdown content references
+ * @param customTags - TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`.
  *
  * @returns markdown content strign or Array of {@link MarkdownContent}
  *
@@ -47,7 +48,8 @@ export function process(
   model: ApiModel,
   pkg: ApiPackage,
   style: GenerateStyle,
-  resolver: ReferenceResolver
+  resolver: ReferenceResolver,
+  customTags?: string[]
 ): string | MarkdownContent[] {
   // build
   function build(pkg: ApiPackage): Map<string, ContentBuilder> {
@@ -75,22 +77,70 @@ export function process(
 
       switch (kind) {
         case ApiItemKind.Function:
-          buildFunctionContent(style, model, pkg, resolver, builder, item)
+          buildFunctionContent(
+            style,
+            model,
+            pkg,
+            resolver,
+            builder,
+            item,
+            customTags || []
+          )
           break
         case ApiItemKind.Enum:
-          buildEnumContent(style, model, pkg, resolver, builder, item)
+          buildEnumContent(
+            style,
+            model,
+            pkg,
+            resolver,
+            builder,
+            item,
+            customTags || []
+          )
           break
         case ApiItemKind.Interface:
-          buildInterfaceContent(style, model, pkg, resolver, builder, item)
+          buildInterfaceContent(
+            style,
+            model,
+            pkg,
+            resolver,
+            builder,
+            item,
+            customTags || []
+          )
           break
         case ApiItemKind.Class:
-          buildClassContent(style, model, pkg, resolver, builder, item)
+          buildClassContent(
+            style,
+            model,
+            pkg,
+            resolver,
+            builder,
+            item,
+            customTags || []
+          )
           break
         case ApiItemKind.TypeAlias:
-          buildTypeAliasContent(style, model, pkg, resolver, builder, item)
+          buildTypeAliasContent(
+            style,
+            model,
+            pkg,
+            resolver,
+            builder,
+            item,
+            customTags || []
+          )
           break
         case ApiItemKind.Variable:
-          buildVariableContent(style, model, pkg, resolver, builder, item)
+          buildVariableContent(
+            style,
+            model,
+            pkg,
+            resolver,
+            builder,
+            item,
+            customTags || []
+          )
           break
         default:
           break
