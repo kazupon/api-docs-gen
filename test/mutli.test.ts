@@ -26,7 +26,7 @@ test('multi with custom tags', () => {
     './fixtures/tsdoc.library1.json'
   )
   const { tagDefinitions } = loadTSDocConfig(tsdocConfigPath)
-  mergeTSDocTagDefinition(tagDefinitions)
+  const customTags = mergeTSDocTagDefinition(tagDefinitions)
   const apiModel = new ApiModel()
   const target = path.resolve(__dirname, './fixtures/library1.custom.api.json')
   const apiPackage = apiModel.loadPackage(target)
@@ -34,7 +34,8 @@ test('multi with custom tags', () => {
     apiModel,
     apiPackage,
     GenerateStyle.Prefix,
-    multiResolver
+    multiResolver,
+    customTags
   ) as MarkdownContent[]
   for (const content of contents) {
     expect(content.body).toMatchSnapshot(content.filename)
