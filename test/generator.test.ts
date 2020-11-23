@@ -8,7 +8,8 @@ const API_JSON1 = path.resolve(__dirname, './fixtures/library1.api.json')
 const API_JSON2 = path.resolve(__dirname, './fixtures/utilities.api.json')
 const model = new ApiModel()
 const API_MODEL_FILES = [API_JSON1, API_JSON2]
-const PACKAGES = API_MODEL_FILES.reduce((packages, file) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const PACKAGES: any = API_MODEL_FILES.reduce((packages, file) => {
   return Object.assign(packages, { [file]: model.loadPackage(file) })
 }, {})
 
@@ -23,7 +24,8 @@ jest.mock('../src/resolver/index', () => {
 
 // mock 'utils' modules
 jest.mock('../src/utils', () => ({
-  ...jest.requireActual('../src/utils'),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ...jest.requireActual<any>('../src/utils'),
   mkdir: jest.fn(),
   writeFile: jest.fn()
 }))
@@ -43,6 +45,7 @@ test('generate prefix style contents', async () => {
 
   expect(mkdir).toHaveBeenCalledTimes(7)
   expect(writeFile).toHaveBeenCalledTimes(7)
+  // @ts-ignore TS2339: Property 'mock' does not exist on type '(path: string, data: string) => Promise<void>'.
   for (const arg of writeFile.mock.calls) {
     expect(
       [
@@ -76,6 +79,7 @@ test('generate directory style contents', async () => {
     path.resolve(output, './utilities/function.md')
   ]
   expect(writeFile).toHaveBeenCalledTimes(7)
+  // @ts-ignore TS2339: Property 'mock' does not exist on type '(path: string, data: string) => Promise<void>'.
   for (const arg of writeFile.mock.calls) {
     expect(passedArgs.includes(arg[0])).toBe(true)
     expect(arg[1]).toMatchSnapshot()
