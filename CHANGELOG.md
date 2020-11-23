@@ -1,4 +1,13 @@
 
+## v0.2.1 (2020-11-23)
+
+#### :bug: Bug Fixes
+* [#33](https://github.com/kazupon/api-docs-gen/pull/33) fix: cannot resolve tsdoc config option ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v0.2.0 (2020-11-23)
 
 #### :star: Features
