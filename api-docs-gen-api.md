@@ -482,7 +482,7 @@ Resolve the markdown content reference
 
 **Signature:**
 ```typescript
-export declare function resolve(style: GenerateStyle, item: ApiItem, model: ApiModel, pkg: ApiPackage): string;
+export declare function resolve(style: GenerateStyle, item: ApiItem, model: ApiModel, pkg: ApiPackage, customTags?: string[]): string;
 ```
 
 #### Parameters
@@ -493,6 +493,7 @@ export declare function resolve(style: GenerateStyle, item: ApiItem, model: ApiM
 | item | ApiItem | a [item](https://rushstack.io/pages/api/api-extractor-model.apiitem/) |
 | model | ApiModel | a [model](https://rushstack.io/pages/api/api-extractor-model.apimodel/) |
 | pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
+| customTags | string\[\] | TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`. |
 
 #### Returns
 
@@ -535,7 +536,7 @@ Resolve the markdown content reference
 
 **Signature:**
 ```typescript
-export declare function resolve(style: GenerateStyle, item: ApiItem, model: ApiModel, pkg: ApiPackage): string;
+export declare function resolve(style: GenerateStyle, item: ApiItem, model: ApiModel, pkg: ApiPackage, customTags?: string[]): string;
 ```
 
 #### Parameters
@@ -546,6 +547,7 @@ export declare function resolve(style: GenerateStyle, item: ApiItem, model: ApiM
 | item | ApiItem | a [item](https://rushstack.io/pages/api/api-extractor-model.apiitem/) |
 | model | ApiModel | a [model](https://rushstack.io/pages/api/api-extractor-model.apimodel/) |
 | pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
+| customTags | string\[\] | TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`. |
 
 #### Returns
 
@@ -612,7 +614,7 @@ Markdown reference resolver
 
 **Signature:**
 ```typescript
-export declare type ReferenceResolver = (style: GenerateStyle, item: ApiItem, model: ApiModel, pkg: ApiPackage) => string;
+export declare type ReferenceResolver = (style: GenerateStyle, item: ApiItem, model: ApiModel, pkg: ApiPackage, customTags?: string[]) => string;
 ```
 
 
