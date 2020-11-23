@@ -26,7 +26,8 @@ export const flags = {
   },
   'tsdoc-config': {
     type: 'string',
-    alias: 't'
+    alias: 't',
+    default: ''
   }
 } as const
 
@@ -98,7 +99,8 @@ const genStyle = [GenerateStyle.Prefix, GenerateStyle.Directory].includes(
 debug('packageDocsStyle', genStyleFlag, genStyle)
 
 // tsdoc configratio
-const tsdocConfig = cli.flags['tsdoc-config']
+const tsdocConfig = cli.flags['tsdocConfig'] as string
+debug('tsdocConfig', tsdocConfig)
 
 // run
 try {
@@ -106,10 +108,9 @@ try {
     await generate(input, output, {
       style: genStyle,
       config,
-      tsdocConfigPath:
-        tsdocConfig != null
-          ? path.resolve(process.cwd(), tsdocConfig)
-          : undefined,
+      tsdocConfigPath: !tsdocConfig
+        ? path.resolve(process.cwd(), tsdocConfig)
+        : undefined,
       errorOnTSDocConfig: (error: string): void => {
         console.log(chalk.yellow(`⚠️ Error on TSDoc configration: ${error}`))
       },
