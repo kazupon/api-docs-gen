@@ -91,3 +91,30 @@ test('generate directory style contents', async () => {
     expect(arg[1]).toMatchSnapshot()
   }
 })
+
+test('generate no prefix style contents', async () => {
+  const input = [API_JSON1, API_JSON2]
+  const output = path.resolve(__dirname, './')
+  await generate(input, output, {
+    style: GenerateStyle.NoPrefix,
+    config: DefaultConfig
+  })
+
+  expect(mkdir).toHaveBeenCalledTimes(7)
+  expect(writeFile).toHaveBeenCalledTimes(7)
+  // @ts-ignore TS2339: Property 'mock' does not exist on type '(path: string, data: string) => Promise<void>'.
+  for (const arg of writeFile.mock.calls) {
+    expect(
+      [
+        path.resolve(output, './enum.md'),
+        path.resolve(output, './function.md'),
+        path.resolve(output, './variable.md'),
+        path.resolve(output, './class.md'),
+        path.resolve(output, './interface.md'),
+        path.resolve(output, './typealias.md'),
+        path.resolve(output, './function.md') // override
+      ].includes(arg[0])
+    ).toBe(true)
+    expect(arg[1]).toMatchSnapshot()
+  }
+})
