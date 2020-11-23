@@ -41,6 +41,7 @@ const cli = meow(
     --output, -o              output dierectory that is markdown contents
     --generate-style, -g      document generating style, default 'prefix'
                               'prefix': be able to separated with each package name
+                              'noprefix': not separated with each package name
                               'directory': be able to separated with each package directory
     --tsdoc-config, -t        tsdoc configration file
 
@@ -91,9 +92,11 @@ debug(`config`, config)
 
 // generate style
 const genStyleFlag = cli.flags['generateStyle'] as GenerateStyle
-const genStyle = [GenerateStyle.Prefix, GenerateStyle.Directory].includes(
-  genStyleFlag
-)
+const genStyle = [
+  GenerateStyle.Prefix,
+  GenerateStyle.NoPrefix,
+  GenerateStyle.Directory
+].includes(genStyleFlag)
   ? genStyleFlag
   : GenerateStyle.Prefix
 debug('packageDocsStyle', genStyleFlag, genStyle)

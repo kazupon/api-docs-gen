@@ -99,6 +99,10 @@ export const enum GenerateStyle {
    */
   Prefix = 'prefix',
   /**
+   * No Prefix the output api docs file name
+   */
+  NoPrefix = 'noprefix',
+  /**
    * Output api docs files for each package
    */
   Directory = 'directory'

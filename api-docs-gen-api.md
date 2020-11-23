@@ -590,6 +590,7 @@ export declare const enum GenerateStyle
 | Member | Value| Description |
 | --- | --- | --- |
 | Directory | "directory" | Output api docs files for each package |
+| NoPrefix | "noprefix" | No Prefix the output api docs file name |
 | Prefix | "prefix" | Prefix the output api docs file name with package name |
 
 #### Remarks
