@@ -1,4 +1,13 @@
 
+## v0.2.0 (2020-11-23)
+
+#### :star: Features
+* [#31](https://github.com/kazupon/api-docs-gen/pull/31) feat: support custom tags ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v0.1.3 (2020-09-06)
 
 #### :bug: Bug Fixes
