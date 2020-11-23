@@ -287,7 +287,7 @@ export declare function findCustomTags(customBlocks: readonly DocBlock[], tag: s
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| customBlocks | readonly DocBlock[] | target cusotm blocks |
+| customBlocks | readonly DocBlock\[\] | target cusotm blocks |
 | tag | string | finding target tag |
 
 #### Returns
@@ -311,11 +311,11 @@ export declare function generate(input: string[], output: string, style: Generat
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| input | string[] | input paths |
+| input | string\[\] | input paths |
 | output | string | output api docs full path |
 | style | GenerateStyle | generate style, see the [GenerateStyle](#generatestyle) |
 | config | Config | configration, see the [Config](#config) |
-| callback | (pkgname: string, filename: string) => void |  |
+| callback | (pkgname: string, filename: string) =&gt; void |  |
 
 ### getDocSectionContent
 
