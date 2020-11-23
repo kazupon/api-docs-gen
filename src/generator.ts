@@ -1,7 +1,7 @@
 import path from 'path'
 import { ApiModel } from '@microsoft/api-extractor-model'
 import { debug as Debug } from 'debug'
-import { loadPackage } from './resolver'
+import { loadPackage, loadTSDocConfig, mergeTSDocTagDefinition } from './tsdoc'
 import { isString, mkdir, writeFile } from './utils'
 
 import type { Config, GenerateStyle } from './config'
@@ -9,24 +9,78 @@ import type { Config, GenerateStyle } from './config'
 const debug = Debug('api-docs-gen:generator')
 
 /**
+ * Generate Options for Generate API
+ *
+ * @public
+ */
+export interface GenerateOptions {
+  /**
+   * generate style
+   *
+   * @remarks
+   * see the {@link GenerateStyle}
+   */
+  style: GenerateStyle
+  /**
+   * configration
+   *
+   * @remarks
+   * see the {@link Config}
+   */
+  config: Config
+  /**
+   * TSDoc configration path
+   *
+   * @remarks
+   * Optional, see the {@link https://github.com/microsoft/tsdoc/tree/master/tsdoc-config | here}
+   */
+  tsdocConfigPath?: string
+  /**
+   * generate done callback
+   *
+   * @remarks
+   * The callback that will be called when the generate process is finished.
+   */
+  done?: (pkgname: string, filename: string) => void
+  /**
+   * TSDoc configration error callback
+   *
+   * @remarks
+   * The callback occurs if you have an error in configration when `--tsdoc-config` is specified
+   */
+  errorOnTSDocConfig?: (error: string) => void
+}
+
+/**
  * Generate API docs
  *
  * @param input - input paths
  * @param output - output api docs full path
- * @param style - generate style, see the {@link GenerateStyle}
- * @param config - configration, see the {@link Config}
+ * @param options - optiosn for generate, see the {@link GenerateOptions}
  *
  * @public
  */
 export async function generate(
   input: string[],
   output: string,
-  style: GenerateStyle,
-  config: Config,
-  callback?: (pkgname: string, filename: string) => void
+  options: GenerateOptions
 ): Promise<void> {
+  const { style, config, tsdocConfigPath, done, errorOnTSDocConfig } = options
   debug(`config`, config)
   debug('style', style)
+  debug('tsdocConfig', tsdocConfigPath)
+
+  let customTags: string[] = []
+  if (tsdocConfigPath) {
+    try {
+      const tsdocConfig = loadTSDocConfig(tsdocConfigPath)
+      customTags = mergeTSDocTagDefinition(tsdocConfig.tagDefinitions)
+      debug('TSDoc custom tags:', customTags)
+    } catch (e) {
+      debug('error on TSDoc Configration', e.message)
+      errorOnTSDocConfig && errorOnTSDocConfig(e.message)
+    }
+  }
 
   const apiModel = new ApiModel()
   for (const target of input) {
@@ -37,7 +91,8 @@ export async function generate(
       apiModel,
       apiPackage,
       style,
-      config.linkReferencer! // eslint-disable-line @typescript-eslint/no-non-null-assertion
+      config.linkReferencer!,
+      customTags
     )
 
     if (isString(result)) {
@@ -72,7 +127,7 @@ export async function generate(
         )
       }
       await writeFile(filepath, body)
-      callback && callback(apiPackage.displayName, filepath)
+      done && done(apiPackage.displayName, filepath)
     }
   }
 }

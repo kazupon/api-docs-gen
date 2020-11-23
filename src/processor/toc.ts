@@ -30,6 +30,7 @@ import {
  * @param pkg - a {@link https://rushstack.io/pages/api/api-extractor-model.apipackage/ | package}
  * @param style - generate style, See the {@link GenerateStyle}
  * @param resolver - {@link ReferenceResolver | resolver} to resolve markdown content references
+ * @param customTags - TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`.
  *
  * @returns markdown string content that have TOC
  *
@@ -39,7 +40,8 @@ export function process(
   model: ApiModel,
   pkg: ApiPackage,
   style: GenerateStyle,
-  resolver: ReferenceResolver
+  resolver: ReferenceResolver,
+  customTags?: string[]
 ): string | MarkdownContent[] {
   function build(): string {
     const builder = createContentBuilder()
@@ -102,11 +104,21 @@ export function process(
             resolver,
             contentBuilder,
             item,
+            customTags || [],
             3
           )
           break
         case ApiItemKind.Enum:
-          buildEnumContent(style, model, pkg, resolver, contentBuilder, item, 3)
+          buildEnumContent(
+            style,
+            model,
+            pkg,
+            resolver,
+            contentBuilder,
+            item,
+            customTags || [],
+            3
+          )
           break
         case ApiItemKind.Interface:
           buildInterfaceContent(
@@ -116,6 +128,7 @@ export function process(
             resolver,
             contentBuilder,
             item,
+            customTags || [],
             3
           )
           break
@@ -127,6 +140,7 @@ export function process(
             resolver,
             contentBuilder,
             item,
+            customTags || [],
             3
           )
           break
@@ -138,6 +152,7 @@ export function process(
             resolver,
             contentBuilder,
             item,
+            customTags || [],
             3
           )
           break
@@ -149,6 +164,7 @@ export function process(
             resolver,
             contentBuilder,
             item,
+            customTags || [],
             3
           )
           break

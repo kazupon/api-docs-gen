@@ -69,6 +69,7 @@ export interface MarkdownContent {
  * @param pkg - a {@link https://rushstack.io/pages/api/api-extractor-model.apipackage/ | package}
  * @param style - generate style. see the {@link GenerateStyle}
  * @param resolver - the markdown reference {@link ReferenceResolver | resolver}. if you're specfified at {@link Config}, it's passed, else it's not specified passed internal refenrece resolver.
+ * @param customTags - TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`.
  *
  * @returns markdown content
  *
@@ -78,7 +79,8 @@ export type MarkdownProcessor = (
   model: ApiModel,
   pkg: ApiPackage,
   style: GenerateStyle,
-  resolver: ReferenceResolver
+  resolver: ReferenceResolver,
+  customTags?: string[]
 ) => string | MarkdownContent[]
 
 /**

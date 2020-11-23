@@ -1904,12 +1904,22 @@
     source-map "~0.6.1"
     typescript "~4.0.5"
 
+"@microsoft/tsdoc-config@^0.13.6":
+  version "0.13.6"
+  resolved "https://registry.yarnpkg.com/@microsoft/tsdoc-config/-/tsdoc-config-0.13.6.tgz#2154785e264edaa515ce5bb2a6c9cd7865f356cf"
+  integrity sha512-VJjV35PnrNISoX2WMemZjnCIdOUPTRpCz6pu8inISotLd3SgoDSJygGaE7+lOYdCtDl+4c8PWJdZivxxXgOnLw==
+  dependencies:
+    "@microsoft/tsdoc" "0.12.21"
+    ajv "~6.12.3"
+    jju "~1.4.0"
+    resolve "~1.12.0"
+
 "@microsoft/tsdoc@0.12.19":
   version "0.12.19"
   resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.12.19.tgz#2173ccb92469aaf62031fa9499d21b16d07f9b57"
   integrity sha512-IpgPxHrNxZiMNUSXqR1l/gePKPkfAmIKoDRP9hp7OwjU29ZR8WCJsOJ8iBKgw0Qk+pFwR+8Y1cy8ImLY6e9m4A==
 
-"@microsoft/tsdoc@^0.12.21":
+"@microsoft/tsdoc@0.12.21", "@microsoft/tsdoc@^0.12.21":
   version "0.12.21"
   resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.12.21.tgz#1098c393634826ed47386862a1241ce8b7c0cf0d"
   integrity sha512-j+9OJ0A0buZZaUn6NxeHUVpoa05tY2PgVs7kXJhJQiKRB0G1zQqbJxer3T7jWtzpqQWP89OBDluyIeyTsMk8Sg==
@@ -2962,7 +2972,7 @@ ajv-keywords@^3.1.0, ajv-keywords@^3.4.1, ajv-keywords@^3.5.2:
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.5.2.tgz#31f29da5ab6e00d1c2d329acf7b5929614d5014d"
   integrity sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ==
 
-ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.3, ajv@^6.12.4:
+ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.3, ajv@^6.12.4, ajv@~6.12.3:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
   integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
@@ -11306,6 +11316,13 @@ resolve@^1.1.6, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.17.0, resolve@^1.18
   integrity sha512-lDfCPaMKfOJXjy0dPayzPdF1phampNWr3qFCjAu+rw/qbQmr5jWH5xN2hwh9QKfw9E5v4hwV7A+jrCmL8yjjqA==
   dependencies:
     is-core-module "^2.0.0"
+    path-parse "^1.0.6"
+
+resolve@~1.12.0:
+  version "1.12.3"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.12.3.tgz#96d5253df8005ce19795c14338f2a013c38a8c15"
+  integrity sha512-hF6+hAPlxjqHWrw4p1rF3Wztbgxd4AjA5VlUzY5zcTb4J8D3JK4/1RjU48pHz2PJWzGVsLB1VWZkvJzhK2CCOA==
+  dependencies:
     path-parse "^1.0.6"
 
 resolve@~1.17.0:

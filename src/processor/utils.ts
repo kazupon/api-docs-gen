@@ -32,6 +32,7 @@ export function buildFunctionContent(
   resolver: ReferenceResolver,
   builder: ContentBuilder,
   item: ApiItem,
+  customTags: string[],
   base = 2
 ): void {
   builder.pushline(`${'#'.repeat(base)} ${item.displayName}`)
@@ -53,7 +54,8 @@ export function buildFunctionContent(
         docs.summarySection,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )
     )
     builder.newline()
@@ -88,7 +90,8 @@ export function buildFunctionContent(
                 p.tsdocParamBlock.content,
                 item,
                 style,
-                resolver
+                resolver,
+                customTags
               )
             : ''
         } |`
@@ -109,7 +112,8 @@ export function buildFunctionContent(
         docs.returnsBlock.content,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )
     )
     builder.newline()
@@ -128,7 +132,8 @@ export function buildFunctionContent(
         t.content,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )}`
       if (throws.length > 1) {
         text = `- ` + text
@@ -150,7 +155,8 @@ export function buildFunctionContent(
         docs.remarksBlock.content,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )
     )
     builder.newline()
@@ -168,7 +174,15 @@ export function buildFunctionContent(
         builder.pushline(`${'#'.repeat(base + 2)} Example ${count}`)
       }
       builder.pushline(
-        `${getDocSectionContent(model, pkg, e.content, item, style, resolver)}`
+        `${getDocSectionContent(
+          model,
+          pkg,
+          e.content,
+          item,
+          style,
+          resolver,
+          customTags
+        )}`
       )
       builder.newline()
       count++
@@ -184,6 +198,7 @@ export function buildEnumContent(
   resolver: ReferenceResolver,
   builder: ContentBuilder,
   item: ApiItem,
+  customTags: string[],
   base = 2
 ): void {
   builder.pushline(`${'#'.repeat(base)} ${item.displayName}`)
@@ -205,7 +220,8 @@ export function buildEnumContent(
         docs.summarySection,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )
     )
     builder.newline()
@@ -244,7 +260,8 @@ export function buildEnumContent(
                 memberDeclared.tsdocComment.summarySection,
                 item,
                 style,
-                resolver
+                resolver,
+                customTags
               )
             : ''
         } |`
@@ -265,7 +282,8 @@ export function buildEnumContent(
         docs.remarksBlock.content,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )
     )
     builder.newline()
@@ -283,7 +301,15 @@ export function buildEnumContent(
         builder.pushline(`${'#'.repeat(base + 1)} Example ${count}`)
       }
       builder.pushline(
-        `${getDocSectionContent(model, pkg, e.content, item, style, resolver)}`
+        `${getDocSectionContent(
+          model,
+          pkg,
+          e.content,
+          item,
+          style,
+          resolver,
+          customTags
+        )}`
       )
       builder.newline()
       count++
@@ -300,6 +326,7 @@ export function buildContentForClassinizable(
   builder: ContentBuilder,
   item: ApiItem,
   type: string,
+  customTags: string[],
   base = 3
 ) {
   const itemDeclared = item as ApiDeclaredItem
@@ -354,7 +381,8 @@ export function buildContentForClassinizable(
                 p.tsdocParamBlock.content,
                 item,
                 style,
-                resolver
+                resolver,
+                customTags
               )
             : ''
         } |`
@@ -375,7 +403,8 @@ export function buildContentForClassinizable(
         docs.returnsBlock.content,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )
     )
     builder.newline()
@@ -394,7 +423,8 @@ export function buildContentForClassinizable(
         t.content,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )}`
       if (throws.length > 1) {
         text = `- ` + text
@@ -416,7 +446,8 @@ export function buildContentForClassinizable(
         docs.remarksBlock.content,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )
     )
     builder.newline()
@@ -434,7 +465,15 @@ export function buildContentForClassinizable(
         builder.pushline(`${'#'.repeat(base + 1)} Example ${count}`)
       }
       builder.pushline(
-        `${getDocSectionContent(model, pkg, e.content, item, style, resolver)}`
+        `${getDocSectionContent(
+          model,
+          pkg,
+          e.content,
+          item,
+          style,
+          resolver,
+          customTags
+        )}`
       )
       builder.newline()
       count++
@@ -450,6 +489,7 @@ export function buildInterfaceContent(
   resolver: ReferenceResolver,
   builder: ContentBuilder,
   item: ApiItem,
+  customTags: string[],
   base = 2
 ): void {
   builder.pushline(`${'#'.repeat(base)} ${item.displayName}`)
@@ -462,6 +502,7 @@ export function buildInterfaceContent(
     builder,
     item,
     'interface',
+    customTags,
     base + 1
   )
   builder.newline()
@@ -480,6 +521,7 @@ export function buildInterfaceContent(
       builder,
       method,
       'method',
+      customTags,
       base + 1
     )
   }
@@ -499,6 +541,7 @@ export function buildInterfaceContent(
       builder,
       property,
       'property',
+      customTags,
       base + 1
     )
   }
@@ -512,6 +555,7 @@ export function buildClassContent(
   resolver: ReferenceResolver,
   builder: ContentBuilder,
   item: ApiItem,
+  customTags: string[],
   base = 2
 ): void {
   builder.pushline(`${'#'.repeat(base)} ${item.displayName}`)
@@ -523,7 +567,8 @@ export function buildClassContent(
     resolver,
     builder,
     item,
-    'class'
+    'class',
+    customTags
   )
   builder.newline()
 
@@ -538,6 +583,7 @@ export function buildClassContent(
     builder,
     ctor,
     'constructor',
+    customTags,
     base + 1
   )
   builder.newline()
@@ -556,6 +602,7 @@ export function buildClassContent(
       builder,
       method,
       'method',
+      customTags,
       base + 1
     )
   }
@@ -575,6 +622,7 @@ export function buildClassContent(
       builder,
       property,
       'property',
+      customTags,
       base + 1
     )
   }
@@ -588,6 +636,7 @@ export function buildTypeAliasContent(
   resolver: ReferenceResolver,
   builder: ContentBuilder,
   item: ApiItem,
+  customTags: string[],
   base = 2
 ): void {
   builder.pushline(`${'#'.repeat(base)} ${item.displayName}`)
@@ -609,7 +658,8 @@ export function buildTypeAliasContent(
         docs.summarySection,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )
     )
     builder.newline()
@@ -638,7 +688,8 @@ export function buildTypeAliasContent(
         docs.remarksBlock.content,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )
     )
     builder.newline()
@@ -656,7 +707,15 @@ export function buildTypeAliasContent(
         builder.pushline(`${'#'.repeat(base + 2)} Example ${count}`)
       }
       builder.pushline(
-        `${getDocSectionContent(model, pkg, e.content, item, style, resolver)}`
+        `${getDocSectionContent(
+          model,
+          pkg,
+          e.content,
+          item,
+          style,
+          resolver,
+          customTags
+        )}`
       )
       builder.newline()
       count++
@@ -672,6 +731,7 @@ export function buildVariableContent(
   resolver: ReferenceResolver,
   builder: ContentBuilder,
   item: ApiItem,
+  customTags: string[],
   base = 2
 ): void {
   builder.pushline(`${'#'.repeat(base)} ${item.displayName}`)
@@ -693,7 +753,8 @@ export function buildVariableContent(
         docs.summarySection,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )
     )
     builder.newline()
@@ -722,7 +783,8 @@ export function buildVariableContent(
         docs.remarksBlock.content,
         item,
         style,
-        resolver
+        resolver,
+        customTags
       )
     )
     builder.newline()
@@ -740,7 +802,15 @@ export function buildVariableContent(
         builder.pushline(`${'#'.repeat(base + 2)} Example ${count}`)
       }
       builder.pushline(
-        `${getDocSectionContent(model, pkg, e.content, item, style, resolver)}`
+        `${getDocSectionContent(
+          model,
+          pkg,
+          e.content,
+          item,
+          style,
+          resolver,
+          customTags
+        )}`
       )
       builder.newline()
       count++
@@ -769,7 +839,8 @@ export function getDocSectionContent(
   content: DocSection,
   contextItem: ApiItem,
   style: GenerateStyle,
-  resolver: ReferenceResolver
+  resolver: ReferenceResolver,
+  customTags: string[] // eslint-disable-line @typescript-eslint/no-unused-vars
 ): string {
   let ret = ''
 
