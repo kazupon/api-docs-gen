@@ -6,6 +6,7 @@
   - [Config](#config)
   - [ContentBuilder](#contentbuilder)
   - [ContentBuilderOptions](#contentbuilderoptions)
+  - [GenerateOptions](#generateoptions)
   - [MarkdownContent](#markdowncontent)
 - [Function](#function)
   - [createContentBuilder](#createcontentbuilder)
@@ -199,6 +200,87 @@ indentLevel?: number;
 ```
 
 
+### GenerateOptions
+
+Generate Options for Generate API
+
+**Signature:**
+```typescript
+export interface GenerateOptions 
+```
+
+
+#### Methods
+
+
+#### Properties
+
+##### config
+
+configration
+
+**Signature:**
+```typescript
+config: Config;
+```
+
+#### Remarks
+
+see the [Config](#config)
+
+##### done
+
+generate done callback
+
+**Signature:**
+```typescript
+done?: (pkgname: string, filename: string) => void;
+```
+
+#### Remarks
+
+The callback that will be called when the generate process is finished.
+
+##### errorOnTSDocConfig
+
+TSDoc configration error callback
+
+**Signature:**
+```typescript
+errorOnTSDocConfig?: (error: string) => void;
+```
+
+#### Remarks
+
+The callback occurs if you have an error in configration when `--tsdoc-config` is specified
+
+##### style
+
+generate style
+
+**Signature:**
+```typescript
+style: GenerateStyle;
+```
+
+#### Remarks
+
+see the [GenerateStyle](#generatestyle)
+
+##### tsdocConfigPath
+
+TSDoc configration path
+
+**Signature:**
+```typescript
+tsdocConfigPath?: string;
+```
+
+#### Remarks
+
+Optional, see the [here](https://github.com/microsoft/tsdoc/tree/master/tsdoc-config)
+
+
 ### MarkdownContent
 
 Markdown content
@@ -304,7 +386,7 @@ Generate API docs
 
 **Signature:**
 ```typescript
-export declare function generate(input: string[], output: string, style: GenerateStyle, config: Config, callback?: (pkgname: string, filename: string) => void): Promise<void>;
+export declare function generate(input: string[], output: string, options: GenerateOptions): Promise<void>;
 ```
 
 #### Parameters
@@ -313,9 +395,7 @@ export declare function generate(input: string[], output: string, style: Generat
 | --- | --- | --- |
 | input | string\[\] | input paths |
 | output | string | output api docs full path |
-| style | GenerateStyle | generate style, see the [GenerateStyle](#generatestyle) |
-| config | Config | configration, see the [Config](#config) |
-| callback | (pkgname: string, filename: string) =&gt; void |  |
+| options | GenerateOptions | optiosn for generate, see the [GenerateOptions](#generateoptions) |
 
 ### getDocSectionContent
 
@@ -323,7 +403,7 @@ Get DocSection content
 
 **Signature:**
 ```typescript
-export declare function getDocSectionContent(model: ApiModel, pkg: ApiPackage, content: DocSection, contextItem: ApiItem, style: GenerateStyle, resolver: ReferenceResolver): string;
+export declare function getDocSectionContent(model: ApiModel, pkg: ApiPackage, content: DocSection, contextItem: ApiItem, style: GenerateStyle, resolver: ReferenceResolver, customTags: string[]): string;
 ```
 
 #### Parameters
@@ -336,6 +416,7 @@ export declare function getDocSectionContent(model: ApiModel, pkg: ApiPackage, c
 | contextItem | ApiItem | a context [item](https://rushstack.io/pages/api/api-extractor-model.apiitem/) |
 | style | GenerateStyle | generate style, See the [GenerateStyle](#generatestyle) |
 | resolver | ReferenceResolver | [resolver](#referenceresolver) to resolve markdown content references |
+| customTags | string\[\] |  |
 
 #### Returns
 
@@ -366,7 +447,7 @@ Process of API doc model
 
 **Signature:**
 ```typescript
-export declare function process(model: ApiModel, pkg: ApiPackage, style: GenerateStyle, resolver: ReferenceResolver): string | MarkdownContent[];
+export declare function process(model: ApiModel, pkg: ApiPackage, style: GenerateStyle, resolver: ReferenceResolver, customTags?: string[]): string | MarkdownContent[];
 ```
 
 #### Parameters
@@ -377,6 +458,7 @@ export declare function process(model: ApiModel, pkg: ApiPackage, style: Generat
 | pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
 | style | GenerateStyle | generate style, See the [GenerateStyle](#generatestyle) |
 | resolver | ReferenceResolver | [resolver](#referenceresolver) to resolve markdown content references |
+| customTags | string\[\] | TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`. |
 
 #### Returns
 
@@ -426,7 +508,7 @@ Process of API doc model
 
 **Signature:**
 ```typescript
-export declare function process(model: ApiModel, pkg: ApiPackage, style: GenerateStyle, resolver: ReferenceResolver): string | MarkdownContent[];
+export declare function process(model: ApiModel, pkg: ApiPackage, style: GenerateStyle, resolver: ReferenceResolver, customTags?: string[]): string | MarkdownContent[];
 ```
 
 #### Parameters
@@ -437,6 +519,7 @@ export declare function process(model: ApiModel, pkg: ApiPackage, style: Generat
 | pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
 | style | GenerateStyle | generate style, See the [GenerateStyle](#generatestyle) |
 | resolver | ReferenceResolver | [resolver](#referenceresolver) to resolve markdown content references |
+| customTags | string\[\] | TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`. |
 
 #### Returns
 
@@ -520,7 +603,7 @@ Markdown docs processor
 
 **Signature:**
 ```typescript
-export declare type MarkdownProcessor = (model: ApiModel, pkg: ApiPackage, style: GenerateStyle, resolver: ReferenceResolver) => string | MarkdownContent[];
+export declare type MarkdownProcessor = (model: ApiModel, pkg: ApiPackage, style: GenerateStyle, resolver: ReferenceResolver, customTags?: string[]) => string | MarkdownContent[];
 ```
 
 ### ReferenceResolver
