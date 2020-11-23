@@ -108,7 +108,7 @@ try {
     await generate(input, output, {
       style: genStyle,
       config,
-      tsdocConfigPath: !tsdocConfig
+      tsdocConfigPath: tsdocConfig
         ? path.resolve(process.cwd(), tsdocConfig)
         : undefined,
       errorOnTSDocConfig: (error: string): void => {
