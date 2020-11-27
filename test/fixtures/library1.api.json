@@ -43,7 +43,7 @@
         {
           "kind": "Function",
           "canonicalReference": "library1!add:function(1)",
-          "docComment": "/**\n * add function : `x`\n *\n * @remarks\n *\n * This is add function remarks: {@link ErrorCodes}. See {@link https://foo.bar.com/api/add | add}.\n *\n * @param a - target `1`\n *\n * @param b - target 2\n *\n * @returns result as `a` + `b`\n *\n * @throws\n *\n * `SyntaxError` this is syntax error\n *\n * @throws\n *\n * `Error` this is general error\n *\n * @example\n *\n * example of `add` function:\n * ```javascript\n * console.log(add(1, 1))\n * ```\n *\n * @public\n */\n",
+          "docComment": "/**\n * add function : `x`\n *\n * @remarks\n *\n * This is add function remarks: {@link ErrorCodes}.\n *\n * See {@link https://foo.bar.com/api/add | add}.\n *\n * @param a - target `1`\n *\n * @param b - target 2\n *\n * @returns result as `a` + `b`\n *\n * @throws\n *\n * `SyntaxError` this is syntax error\n *\n * @throws\n *\n * `Error` this is general error\n *\n * @example\n *\n * example of `add` function:\n * ```javascript\n * console.log(add(1, 1))\n * ```\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -421,7 +421,7 @@
             {
               "kind": "Property",
               "canonicalReference": "library1!Calculator#type:member",
-              "docComment": "/**\n * calcurator types\n *\n * @default 'simple'\n */\n",
+              "docComment": "/**\n * calcurator types\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -455,7 +455,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "library1!Config:var",
-          "docComment": "/**\n * Configrations\n *\n * @default {}\n */\n",
+          "docComment": "/**\n * Configrations\n *\n * @defaultValue\n *\n * `{}`\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -674,6 +674,47 @@
             "startIndex": 1,
             "endIndex": 4
           }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "library1!MyOptions:interface",
+          "docComment": "/**\n * My Options\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface MyOptions "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "MyOptions",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "library1!MyOptions#field:member",
+              "docComment": "/**\n * Field\n *\n * @defaultValue\n *\n * `'simple'`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "field?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "field",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
         },
         {
           "kind": "Enum",

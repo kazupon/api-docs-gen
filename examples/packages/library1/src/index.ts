@@ -33,7 +33,7 @@ export const VERSION = '1.0.0'
 /**
  * Configrations
  *
- * @default {}
+ * @defaultValue `{}`
  */
 export const Config: { [name: string]: unknown } = {}
 
@@ -94,7 +94,9 @@ export enum TokenChars {
  * add function : `x`
  *
  * @remarks
- * This is add function remarks: {@link ErrorCodes}. See {@link https://foo.bar.com/api/add | add}.
+ * This is add function remarks: {@link ErrorCodes}.
+ *
+ * See {@link https://foo.bar.com/api/add | add}.
  *
  * @param a target `1`
  * @param b target 2
@@ -147,6 +149,20 @@ export interface Calculatable {
 }
 
 /**
+ * My Options
+ *
+ * @public
+ */
+export interface MyOptions {
+  /**
+   * Field
+   *
+   * @defaultValue `'simple'`
+   */
+  field?: string
+}
+
+/**
  * Calculator class
  *
  * @remarks
@@ -162,11 +178,8 @@ export interface Calculatable {
  * @public
  */
 export class Calculator implements Calculatable {
-
   /**
    * calcurator types
-   *
-   * @default 'simple'
    */
   type: string
 

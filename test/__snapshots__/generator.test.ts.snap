@@ -98,7 +98,9 @@ export declare function add(a: number, b: number): number;
 
 ### Remarks
 
-This is add function remarks: [ErrorCodes](./enum#errorcodes). See [add](https://foo.bar.com/api/add).
+This is add function remarks: [ErrorCodes](./enum#errorcodes).
+
+See [add](https://foo.bar.com/api/add).
 
 ### Examples
 
@@ -167,6 +169,31 @@ PI
 **Signature:**
 \`\`\`typescript
 PI: number;
+\`\`\`
+
+
+## MyOptions
+
+My Options
+
+**Signature:**
+\`\`\`typescript
+export interface MyOptions 
+\`\`\`
+
+
+### Methods
+
+
+### Properties
+
+#### field
+
+Field
+
+**Signature:**
+\`\`\`typescript
+field?: string;
 \`\`\`
 
 
@@ -258,7 +285,7 @@ PI: number;
 
 #### type
 
-calcurator types 'simple'
+calcurator types
 
 **Signature:**
 \`\`\`typescript
@@ -274,7 +301,7 @@ exports[`generate directory style contents 5`] = `
 
 ## Config
 
-Configrations 
+Configrations
 
 **Signature:**
 \`\`\`typescript
@@ -586,7 +613,9 @@ export declare function add(a: number, b: number): number;
 
 ### Remarks
 
-This is add function remarks: [ErrorCodes](./enum#errorcodes). See [add](https://foo.bar.com/api/add).
+This is add function remarks: [ErrorCodes](./enum#errorcodes).
+
+See [add](https://foo.bar.com/api/add).
 
 ### Examples
 
@@ -655,6 +684,31 @@ PI
 **Signature:**
 \`\`\`typescript
 PI: number;
+\`\`\`
+
+
+## MyOptions
+
+My Options
+
+**Signature:**
+\`\`\`typescript
+export interface MyOptions 
+\`\`\`
+
+
+### Methods
+
+
+### Properties
+
+#### field
+
+Field
+
+**Signature:**
+\`\`\`typescript
+field?: string;
 \`\`\`
 
 
@@ -746,7 +800,7 @@ PI: number;
 
 #### type
 
-calcurator types 'simple'
+calcurator types
 
 **Signature:**
 \`\`\`typescript
@@ -762,7 +816,7 @@ exports[`generate no prefix style contents 5`] = `
 
 ## Config
 
-Configrations 
+Configrations
 
 **Signature:**
 \`\`\`typescript
@@ -1074,7 +1128,9 @@ export declare function add(a: number, b: number): number;
 
 ### Remarks
 
-This is add function remarks: [ErrorCodes](./library1-enum#errorcodes). See [add](https://foo.bar.com/api/add).
+This is add function remarks: [ErrorCodes](./library1-enum#errorcodes).
+
+See [add](https://foo.bar.com/api/add).
 
 ### Examples
 
@@ -1143,6 +1199,31 @@ PI
 **Signature:**
 \`\`\`typescript
 PI: number;
+\`\`\`
+
+
+## MyOptions
+
+My Options
+
+**Signature:**
+\`\`\`typescript
+export interface MyOptions 
+\`\`\`
+
+
+### Methods
+
+
+### Properties
+
+#### field
+
+Field
+
+**Signature:**
+\`\`\`typescript
+field?: string;
 \`\`\`
 
 
@@ -1234,7 +1315,7 @@ PI: number;
 
 #### type
 
-calcurator types 'simple'
+calcurator types
 
 **Signature:**
 \`\`\`typescript
@@ -1250,7 +1331,7 @@ exports[`generate prefix style contents 5`] = `
 
 ## Config
 
-Configrations 
+Configrations
 
 **Signature:**
 \`\`\`typescript

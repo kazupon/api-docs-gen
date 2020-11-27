@@ -85,7 +85,9 @@ PI: number;
 
 #### type
 
-calcurator types 'simple'
+calcurator types
+
+ 'simple'
 
 **Signature:**
 \`\`\`typescript
@@ -316,7 +318,9 @@ exports[`multi with custom tags: variable.md 1`] = `
 
 ## Config
 
-Configrations 
+Configrations
+
+ 
 
 **Signature:**
 \`\`\`typescript
@@ -434,7 +438,7 @@ PI: number;
 
 #### type
 
-calcurator types 'simple'
+calcurator types
 
 **Signature:**
 \`\`\`typescript
@@ -517,7 +521,9 @@ export declare function add(a: number, b: number): number;
 
 ### Remarks
 
-This is add function remarks: [ErrorCodes](./library1-enum#errorcodes). See [add](https://foo.bar.com/api/add).
+This is add function remarks: [ErrorCodes](./library1-enum#errorcodes).
+
+See [add](https://foo.bar.com/api/add).
 
 ### Examples
 
@@ -586,6 +592,31 @@ PI
 **Signature:**
 \`\`\`typescript
 PI: number;
+\`\`\`
+
+
+## MyOptions
+
+My Options
+
+**Signature:**
+\`\`\`typescript
+export interface MyOptions 
+\`\`\`
+
+
+### Methods
+
+
+### Properties
+
+#### field
+
+Field
+
+**Signature:**
+\`\`\`typescript
+field?: string;
 \`\`\`
 
 
@@ -665,7 +696,7 @@ exports[`multi: variable.md 1`] = `
 
 ## Config
 
-Configrations 
+Configrations
 
 **Signature:**
 \`\`\`typescript

@@ -184,10 +184,8 @@ export function buildFunctionContent(
           customTags
         )}`
       )
-      builder.newline()
       count++
     }
-    builder.newline()
   }
 }
 
@@ -311,10 +309,8 @@ export function buildEnumContent(
           customTags
         )}`
       )
-      builder.newline()
       count++
     }
-    builder.newline()
   }
 }
 
@@ -475,10 +471,8 @@ export function buildContentForClassinizable(
           customTags
         )}`
       )
-      builder.newline()
       count++
     }
-    builder.newline()
   }
 }
 
@@ -717,10 +711,8 @@ export function buildTypeAliasContent(
           customTags
         )}`
       )
-      builder.newline()
       count++
     }
-    builder.newline()
   }
 }
 
@@ -812,10 +804,8 @@ export function buildVariableContent(
           customTags
         )}`
       )
-      builder.newline()
       count++
     }
-    builder.newline()
   }
 }
 
@@ -843,9 +833,15 @@ export function getDocSectionContent(
   customTags: string[] // eslint-disable-line @typescript-eslint/no-unused-vars
 ): string {
   let ret = ''
+  let paragraphBreak = false
 
   for (const n of content.nodes) {
     if (n.kind === DocNodeKind.Paragraph) {
+      if (!paragraphBreak) {
+        paragraphBreak = true
+      } else {
+        ret += `\n\n`
+      }
       for (const nn of n.getChildNodes()) {
         if (nn.kind === DocNodeKind.PlainText) {
           ret += ((nn as unknown) as DocPlainText).text
