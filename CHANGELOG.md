@@ -1,4 +1,13 @@
 
+## v0.2.5 (2020-11-27)
+
+#### :zap: Improvement Features
+* [#41](https://github.com/kazupon/api-docs-gen/pull/41) fix: improvement line breaking ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v0.2.4 (2020-11-23)
 
 #### :star: Features
