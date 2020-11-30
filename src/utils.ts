@@ -6,7 +6,7 @@ export const isNumber = (val: unknown): val is number =>
   typeof val === 'number' && isFinite(val)
 
 /**
- * Escape text
+ * Escape text for markdown
  *
  * @param text - the target text
  *
@@ -22,6 +22,24 @@ export function escapeText(text: string): string {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
+}
+
+/**
+ * Escape text for markdown table
+ *
+ * @param text - the target text
+ *
+ * @returns escaped text
+ *
+ * @public
+ */
+export function escapeTextForTable(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\|/g, '&#124;')
 }
 
 const RE_BAD_PATH_CHARS = /[^a-z0-9_\-\.]/gi

@@ -21,7 +21,7 @@ import type { DeclarationReference } from '@microsoft/tsdoc/lib/beta/Declaration
 import { ReferenceResolver, GenerateStyle } from '../config'
 import { debug as Debug } from 'debug'
 import { ContentBuilder } from '../builder'
-import { escapeText } from '../utils'
+import { escapeText, escapeTextForTable } from '../utils'
 
 const debug = Debug('api-docs-gen:processor:utils')
 
@@ -81,7 +81,9 @@ export function buildFunctionContent(
     builder.pushline(`| --- | --- | --- |`)
     for (const p of itemParam.parameters) {
       builder.pushline(
-        `| ${p.name} | ${escapeText(p.parameterTypeExcerpt.text.trim())} | ${
+        `| ${p.name} | ${escapeTextForTable(
+          p.parameterTypeExcerpt.text.trim()
+        )} | ${
           p.tsdocParamBlock && p.tsdocParamBlock.content
             ? getDocSectionContent(
                 model,
@@ -368,7 +370,9 @@ export function buildContentForClassinizable(
     builder.pushline(`| --- | --- | --- |`)
     for (const p of itemParam.parameters) {
       builder.pushline(
-        `| ${p.name} | ${escapeText(p.parameterTypeExcerpt.text.trim())} | ${
+        `| ${p.name} | ${escapeTextForTable(
+          p.parameterTypeExcerpt.text.trim()
+        )} | ${
           p.tsdocParamBlock && p.tsdocParamBlock.content
             ? getDocSectionContent(
                 model,
