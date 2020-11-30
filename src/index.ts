@@ -1,4 +1,8 @@
-export { getSafePathFromDisplayName, escapeText } from './utils'
+export {
+  getSafePathFromDisplayName,
+  escapeText,
+  escapeTextForTable
+} from './utils'
 export * from './builder'
 export {
   Config,

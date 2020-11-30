@@ -11,6 +11,7 @@
 - [Function](#function)
   - [createContentBuilder](#createcontentbuilder)
   - [escapeText](#escapetext)
+  - [escapeTextForTable](#escapetextfortable)
   - [findCustomTags](#findcustomtags)
   - [generate](#generate)
   - [getDocSectionContent](#getdocsectioncontent)
@@ -339,11 +340,30 @@ export declare function createContentBuilder(options?: ContentBuilderOptions): C
 
 ### escapeText
 
-Escape text
+Escape text for markdown
 
 **Signature:**
 ```typescript
 export declare function escapeText(text: string): string;
+```
+
+#### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| text | string | the target text |
+
+#### Returns
+
+ escaped text
+
+### escapeTextForTable
+
+Escape text for markdown table
+
+**Signature:**
+```typescript
+export declare function escapeTextForTable(text: string): string;
 ```
 
 #### Parameters
@@ -369,7 +389,7 @@ export declare function findCustomTags(customBlocks: readonly DocBlock[], tag: s
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| customBlocks | readonly DocBlock\[\] | target cusotm blocks |
+| customBlocks | readonly DocBlock[] | target cusotm blocks |
 | tag | string | finding target tag |
 
 #### Returns
@@ -393,7 +413,7 @@ export declare function generate(input: string[], output: string, options: Gener
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| input | string\[\] | input paths |
+| input | string[] | input paths |
 | output | string | output api docs full path |
 | options | GenerateOptions | optiosn for generate, see the [GenerateOptions](#generateoptions) |
 
@@ -416,7 +436,7 @@ export declare function getDocSectionContent(model: ApiModel, pkg: ApiPackage, c
 | contextItem | ApiItem | a context [item](https://rushstack.io/pages/api/api-extractor-model.apiitem/) |
 | style | GenerateStyle | generate style, See the [GenerateStyle](#generatestyle) |
 | resolver | ReferenceResolver | [resolver](#referenceresolver) to resolve markdown content references |
-| customTags | string\[\] |  |
+| customTags | string[] |  |
 
 #### Returns
 
@@ -458,7 +478,7 @@ export declare function process(model: ApiModel, pkg: ApiPackage, style: Generat
 | pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
 | style | GenerateStyle | generate style, See the [GenerateStyle](#generatestyle) |
 | resolver | ReferenceResolver | [resolver](#referenceresolver) to resolve markdown content references |
-| customTags | string\[\] | TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`. |
+| customTags | string[] | TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`. |
 
 #### Returns
 
@@ -475,6 +495,8 @@ Generate the markdown contents the bellow:
 - Variable
 - TypeAlias
 ```
+
+
 
 ### multiResolver
 
@@ -493,7 +515,7 @@ export declare function resolve(style: GenerateStyle, item: ApiItem, model: ApiM
 | item | ApiItem | a [item](https://rushstack.io/pages/api/api-extractor-model.apiitem/) |
 | model | ApiModel | a [model](https://rushstack.io/pages/api/api-extractor-model.apimodel/) |
 | pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
-| customTags | string\[\] | TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`. |
+| customTags | string[] | TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`. |
 
 #### Returns
 
@@ -520,7 +542,7 @@ export declare function process(model: ApiModel, pkg: ApiPackage, style: Generat
 | pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
 | style | GenerateStyle | generate style, See the [GenerateStyle](#generatestyle) |
 | resolver | ReferenceResolver | [resolver](#referenceresolver) to resolve markdown content references |
-| customTags | string\[\] | TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`. |
+| customTags | string[] | TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`. |
 
 #### Returns
 
@@ -547,7 +569,7 @@ export declare function resolve(style: GenerateStyle, item: ApiItem, model: ApiM
 | item | ApiItem | a [item](https://rushstack.io/pages/api/api-extractor-model.apiitem/) |
 | model | ApiModel | a [model](https://rushstack.io/pages/api/api-extractor-model.apimodel/) |
 | pkg | ApiPackage | a [package](https://rushstack.io/pages/api/api-extractor-model.apipackage/) |
-| customTags | string\[\] | TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`. |
+| customTags | string[] | TSDoc custom tags. This parameter is set to an array of custom tag names defined in `--tsdoc-config`. |
 
 #### Returns
 
