@@ -1,4 +1,13 @@
 
+## v0.2.6 (2020-11-30)
+
+#### :bug: Bug Fixes
+* [#43](https://github.com/kazupon/api-docs-gen/pull/43) fix: table text escapting ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v0.2.5 (2020-11-27)
 
 #### :zap: Improvement Features
