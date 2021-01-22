@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@microsoft/api-extractor-model": "^7.12.0",
-    "@microsoft/tsdoc": "^0.12.21",
+    "@microsoft/tsdoc": "^0.13.0",
     "@microsoft/tsdoc-config": "^0.13.6",
     "chalk": "^4.1.0",
     "debug": "^4.3.1",
