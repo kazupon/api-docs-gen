@@ -60,7 +60,7 @@
     "vuepress": "^1.7.1"
   },
   "engines": {
-    "node": ">= 10"
+    "node": ">= 12"
   },
   "files": [
     "bin/*.js",
