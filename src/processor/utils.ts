@@ -896,15 +896,12 @@ export function getDocSectionContent(
       }
       for (const nn of n.getChildNodes()) {
         if (nn.kind === DocNodeKind.PlainText) {
-          ret += ((nn as unknown) as DocPlainText).text
+          ret += (nn as unknown as DocPlainText).text
         } else if (nn.kind === DocNodeKind.CodeSpan) {
-          ret += `\`${((nn as unknown) as DocCodeSpan).code}\``
+          ret += `\`${(nn as unknown as DocCodeSpan).code}\``
         } else if (nn.kind === DocNodeKind.LinkTag) {
-          const {
-            linkText,
-            urlDestination,
-            codeDestination
-          } = (nn as unknown) as IDocLinkTagParameters
+          const { linkText, urlDestination, codeDestination } =
+            nn as unknown as IDocLinkTagParameters
           if (codeDestination) {
             const result = resolveDeclarationReference(
               model,
@@ -947,7 +944,7 @@ export function getDocSectionContent(
         }
       }
     } else if (n.kind === DocNodeKind.FencedCode) {
-      const fenced = (n as unknown) as DocFencedCode
+      const fenced = n as unknown as DocFencedCode
       ret += `\n`
       ret += `\`\`\`${fenced.language}\n`
       ret += fenced.code
