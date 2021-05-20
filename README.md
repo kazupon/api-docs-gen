@@ -35,10 +35,10 @@ Usage
 Options
   --config, -c              configration file
   --output, -o              output dierectory that is markdown contents
-  --generate-style, -g      document generating style, default 'prefix'
+  --generateStyle, -g       document generating style, default 'prefix'
                             'prefix': be able to separated with each package name
                             'directory': be able to separated with each package directory
-  --tsdoc-config, -t        tsdoc configration file
+  --tsdocConfig, -t         tsdoc configration file
 ```
 
 

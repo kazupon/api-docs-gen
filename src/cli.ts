@@ -19,12 +19,12 @@ export const flags = {
     alias: 'c',
     isRequired: false
   },
-  'generate-style': {
+  generateStyle: {
     type: 'string',
     alias: 'g',
     default: GenerateStyle.Prefix
   },
-  'tsdoc-config': {
+  tsdocConfig: {
     type: 'string',
     alias: 't',
     default: ''
@@ -39,18 +39,18 @@ const cli = meow(
   Options
     --config, -c              configration file
     --output, -o              output dierectory that is markdown contents
-    --generate-style, -g      document generating style, default 'prefix'
+    --generateStyle, -g       document generating style, default 'prefix'
                               'prefix': be able to separated with each package name
                               'noprefix': not separated with each package name
                               'directory': be able to separated with each package directory
-    --tsdoc-config, -t        tsdoc configration file
+    --tsdocConfig, -t         tsdoc configration file
 
   Examples
     $ api-docs-gen package1.api.json
     $ api-docs-gen package1.api.json --output ./docs
     $ api-docs-gen package1.api.json --config docsgen.config.js
-    $ api-docs-gen package1.api.json package2.api.json --generate-style directory
-    $ api-docs-gen package1.api.json --tsdoc-config ./tsdoc.json
+    $ api-docs-gen package1.api.json package2.api.json --generateStyle directory
+    $ api-docs-gen package1.api.json --tsdocConfig ./tsdoc.json
 `,
   {
     flags
