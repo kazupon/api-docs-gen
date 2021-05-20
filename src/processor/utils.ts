@@ -316,6 +316,14 @@ export function buildEnumContent(
   }
 }
 
+type ClassinzableType =
+  | 'constructor'
+  | 'method'
+  | 'property'
+  | 'function'
+  | 'interface'
+  | 'class'
+
 export function buildContentForClassinizable(
   style: GenerateStyle,
   model: ApiModel,
@@ -323,7 +331,7 @@ export function buildContentForClassinizable(
   resolver: ReferenceResolver,
   builder: ContentBuilder,
   item: ApiItem,
-  type: string,
+  type: ClassinzableType,
   customTags: string[],
   base = 3
 ) {
@@ -363,7 +371,10 @@ export function buildContentForClassinizable(
 
   // parameters
   const itemParam = item as ApiParameterListMixin
-  if ((type === 'constrcutor' || type === 'method') && itemParam.parameters) {
+  if (
+    (type === 'constructor' || type === 'method' || type === 'function') &&
+    itemParam.parameters
+  ) {
     builder.pushline(`*Parameters*`)
     builder.newline()
     builder.pushline(`| Parameter | Type | Description |`)
@@ -392,7 +403,7 @@ export function buildContentForClassinizable(
   }
 
   // returns
-  if (type === 'method' && docs.returnsBlock) {
+  if ((type === 'method' || type === 'function') && docs.returnsBlock) {
     builder.pushline(`${'#'.repeat(base)} Returns`)
     builder.newline()
     builder.pushline(
@@ -413,7 +424,10 @@ export function buildContentForClassinizable(
   // throws
   // @ts-ignore TODO:
   const throws = findCustomTags(docs.customBlocks, '@throws')
-  if ((type === 'constructor' || type === 'method') && throws.length > 0) {
+  if (
+    (type === 'constructor' || type === 'method' || type === 'function') &&
+    throws.length > 0
+  ) {
     builder.pushline(`${'#'.repeat(base)} Throws`)
     builder.newline()
     for (const t of throws) {
@@ -505,45 +519,75 @@ export function buildInterfaceContent(
   )
   builder.newline()
 
-  const methods = item.members.filter(m => m.kind === 'MethodSignature')
-  builder.pushline(`${'#'.repeat(base + 1)} Methods`)
-  builder.newline()
-  for (const method of methods) {
-    builder.pushline(`${'#'.repeat(base + 2)} ${method.displayName}`)
+  const functions = item.members.filter(m => m.kind === 'CallSignature')
+  if (functions.length) {
+    builder.pushline(`${'#'.repeat(base + 1)} Functions`)
     builder.newline()
-    buildContentForClassinizable(
-      style,
-      model,
-      pkg,
-      resolver,
-      builder,
-      method,
-      'method',
-      customTags,
-      base + 1
-    )
+    for (const func of functions) {
+      const itemDeclared = func as ApiDeclaredItem
+      const display = itemDeclared.excerptTokens
+        .map(token => token.text)
+        .join('')
+      builder.pushline(`${'#'.repeat(base + 2)} ${escapeTextForTable(display)}`)
+      builder.newline()
+      buildContentForClassinizable(
+        style,
+        model,
+        pkg,
+        resolver,
+        builder,
+        func,
+        'function',
+        customTags,
+        base + 1
+      )
+    }
+    builder.newline()
   }
-  builder.newline()
+
+  const methods = item.members.filter(m => m.kind === 'MethodSignature')
+  if (methods.length) {
+    builder.pushline(`${'#'.repeat(base + 1)} Methods`)
+    builder.newline()
+    for (const method of methods) {
+      builder.pushline(`${'#'.repeat(base + 2)} ${method.displayName}`)
+      builder.newline()
+      buildContentForClassinizable(
+        style,
+        model,
+        pkg,
+        resolver,
+        builder,
+        method,
+        'method',
+        customTags,
+        base + 1
+      )
+    }
+    builder.newline()
+  }
 
   const properties = item.members.filter(m => m.kind === 'PropertySignature')
-  builder.pushline(`${'#'.repeat(base + 1)} Properties`)
-  builder.newline()
-  for (const property of properties) {
-    builder.pushline(`${'#'.repeat(base + 2)} ${property.displayName}`)
+  if (properties.length) {
+    builder.pushline(`${'#'.repeat(base + 1)} Properties`)
     builder.newline()
-    buildContentForClassinizable(
-      style,
-      model,
-      pkg,
-      resolver,
-      builder,
-      property,
-      'property',
-      customTags,
-      base + 1
-    )
+    for (const property of properties) {
+      builder.pushline(`${'#'.repeat(base + 2)} ${property.displayName}`)
+      builder.newline()
+      buildContentForClassinizable(
+        style,
+        model,
+        pkg,
+        resolver,
+        builder,
+        property,
+        'property',
+        customTags,
+        base + 1
+      )
+    }
+    builder.newline()
   }
-  builder.newline()
 }
 
 export function buildClassContent(
@@ -587,44 +631,48 @@ export function buildClassContent(
   builder.newline()
 
   const methods = item.members.filter(m => m.kind === 'Method')
-  builder.pushline(`${'#'.repeat(base + 1)} Methods`)
-  builder.newline()
-  for (const method of methods) {
-    builder.pushline(`${'#'.repeat(base + 2)} ${method.displayName}`)
+  if (methods.length) {
+    builder.pushline(`${'#'.repeat(base + 1)} Methods`)
     builder.newline()
-    buildContentForClassinizable(
-      style,
-      model,
-      pkg,
-      resolver,
-      builder,
-      method,
-      'method',
-      customTags,
-      base + 1
-    )
+    for (const method of methods) {
+      builder.pushline(`${'#'.repeat(base + 2)} ${method.displayName}`)
+      builder.newline()
+      buildContentForClassinizable(
+        style,
+        model,
+        pkg,
+        resolver,
+        builder,
+        method,
+        'method',
+        customTags,
+        base + 1
+      )
+    }
+    builder.newline()
   }
-  builder.newline()
 
   const properties = item.members.filter(m => m.kind === 'Property')
-  builder.pushline(`${'#'.repeat(base + 1)} Properties`)
-  builder.newline()
-  for (const property of properties) {
-    builder.pushline(`${'#'.repeat(base + 2)} ${property.displayName}`)
+  if (properties.length) {
+    builder.pushline(`${'#'.repeat(base + 1)} Properties`)
     builder.newline()
-    buildContentForClassinizable(
-      style,
-      model,
-      pkg,
-      resolver,
-      builder,
-      property,
-      'property',
-      customTags,
-      base + 1
-    )
+    for (const property of properties) {
+      builder.pushline(`${'#'.repeat(base + 2)} ${property.displayName}`)
+      builder.newline()
+      buildContentForClassinizable(
+        style,
+        model,
+        pkg,
+        resolver,
+        builder,
+        property,
+        'property',
+        customTags,
+        base + 1
+      )
+    }
+    builder.newline()
   }
-  builder.newline()
 }
 
 export function buildTypeAliasContent(
