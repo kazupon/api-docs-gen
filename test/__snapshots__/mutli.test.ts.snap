@@ -36,6 +36,12 @@ Conssutructor of usage
 constructor(type: string);
 \`\`\`
 
+*Parameters*
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| type | string | calculator type |
+
 
 ### Methods
 
@@ -389,6 +395,12 @@ Conssutructor of usage
 constructor(type: string);
 \`\`\`
 
+*Parameters*
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| type | string | calculator type |
+
 
 ### Methods
 
@@ -554,6 +566,59 @@ export declare function undumbify<T>(dummy: DumbType<T>): T;
 exports[`multi: interface.md 1`] = `
 "# Interface
 
+## AddCallable
+
+Add Callable interface
+
+**Signature:**
+\`\`\`typescript
+export interface AddCallable 
+\`\`\`
+
+
+### Functions
+
+#### &lt;A extends number = number, B extends number = number&gt;(a: A, b: B): number;
+
+add callable object
+
+**Signature:**
+\`\`\`typescript
+<A extends number = number, B extends number = number>(a: A, b: B): number;
+\`\`\`
+
+*Parameters*
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| a | A | target 1 |
+| b | B | target 2 |
+
+### Returns
+
+ added value
+
+#### &lt;A extends number = number, B extends number = number&gt;(a: A, b: B): string;
+
+add callable object
+
+**Signature:**
+\`\`\`typescript
+<A extends number = number, B extends number = number>(a: A, b: B): string;
+\`\`\`
+
+*Parameters*
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| a | A | target 1 |
+| b | B | target 2 |
+
+### Returns
+
+ added string value
+
+
 ## Calculatable
 
 Calculatable interface
@@ -582,6 +647,10 @@ add(a: number, b: number): number;
 | a | number | target 1 |
 | b | number | target 2 |
 
+### Returns
+
+ added value
+
 
 ### Properties
 
@@ -603,9 +672,6 @@ My Options
 \`\`\`typescript
 export interface MyOptions 
 \`\`\`
-
-
-### Methods
 
 
 ### Properties
