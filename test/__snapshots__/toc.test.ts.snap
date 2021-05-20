@@ -164,7 +164,7 @@ export interface AddCallable
 
 #### Functions
 
-##### <A extends number = number, B extends number = number>(a: A, b: B): number;
+##### &lt;A extends number = number, B extends number = number&gt;(a: A, b: B): number;
 
 add callable object
 
@@ -184,7 +184,7 @@ add callable object
 
  added value
 
-##### <A extends number = number, B extends number = number>(a: A, b: B): string;
+##### &lt;A extends number = number, B extends number = number&gt;(a: A, b: B): string;
 
 add callable object
 
