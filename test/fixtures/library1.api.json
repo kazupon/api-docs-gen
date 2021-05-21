@@ -268,7 +268,7 @@
             {
               "kind": "CallSignature",
               "canonicalReference": "library1!AddCallable:call(1)",
-              "docComment": "/**\n * add callable object\n *\n * @param a - target 1\n *\n * @param b - target 2\n *\n * @returns added value\n *\n * @public\n */\n",
+              "docComment": "/**\n * add callable object\n *\n * @param a - target 1\n *\n * @param b - target 2\n *\n * @typeParam A - a target 1 Type\n *\n * @typeParam B - a target 2 Type\n *\n * @returns added value\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -623,11 +623,11 @@
         {
           "kind": "Class",
           "canonicalReference": "library1!Calculator:class",
-          "docComment": "/**\n * Calculator class\n *\n * @remarks\n *\n * This is remarks of Calculator class\n *\n * @example\n * ```javascript\n * const c = new Calculator()\n * const v1 = c.add(1, 1)\n * const v2 = c.sub(1, 1)\n * ```\n *\n * @public\n */\n",
+          "docComment": "/**\n * Calculator class\n *\n * @remarks\n *\n * This is remarks of Calculator class\n *\n * @typeParam T - A type of calcualator class\n *\n * @example\n * ```javascript\n * const c = new Calculator()\n * const v1 = c.add(1, 1)\n * const v2 = c.sub(1, 1)\n * ```\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare class Calculator implements "
+              "text": "export declare class Calculator<T> implements "
             },
             {
               "kind": "Reference",
@@ -640,6 +640,19 @@
             }
           ],
           "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
           "name": "Calculator",
           "members": [
             {
@@ -653,7 +666,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "string"
+                  "text": "T"
                 },
                 {
                   "kind": "Content",
@@ -830,7 +843,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "string"
+                  "text": "T"
                 },
                 {
                   "kind": "Content",
@@ -878,7 +891,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "library1!DumbType:type",
-          "docComment": "/**\n * A dumb type\n */\n",
+          "docComment": "/**\n * A dumb type\n *\n * @typeParam T - a type template\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1179,7 +1192,7 @@
         {
           "kind": "Function",
           "canonicalReference": "library1!undumbify:function(1)",
-          "docComment": "/**\n * un dummy\n *\n * @param dummy - A dummy\n */\n",
+          "docComment": "/**\n * un dummy\n *\n * @param dummy - A dummy\n *\n * @typeParam T - a type template\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

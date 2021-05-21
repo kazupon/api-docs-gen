@@ -14,6 +14,8 @@ export type B = number
 
 /**
  * A dumb type
+ *
+ * @typeParam T - a type template
  */
 export type DumbType<T> = { foo: T }
 
@@ -124,6 +126,7 @@ export function add(a: number, b: number): number {
  * un dummy
  *
  * @param dummy - A dummy
+ * @typeParam T - a type template
  */
 export function undumbify<T>(dummy: DumbType<T>): T {
   return dummy.foo
@@ -140,7 +143,7 @@ export interface Calculatable {
    * @param a target 1
    * @param b target 2
    * @returns added value
-   * 
+   *
    * @public
    */
   add(a: number, b: number): number
@@ -152,7 +155,7 @@ export interface Calculatable {
 
 /**
  * Add Callable interface
- * 
+ *
  * @public
  */
 export interface AddCallable {
@@ -161,7 +164,10 @@ export interface AddCallable {
    * @param a target 1
    * @param b target 2
    * @returns added value
-   * 
+   *
+   * @typeParam A - a target 1 Type
+   * @typeParam B - a target 2 Type
+   *
    * @public
    */
   <A extends number = number, B extends number = number>(a: A, b: B): number
@@ -170,10 +176,10 @@ export interface AddCallable {
    * @param a target 1
    * @param b target 2
    * @returns added string value
-   * 
+   *
    * @public
    */
-   <A extends number = number, B extends number = number>(a: A, b: B): string
+  <A extends number = number, B extends number = number>(a: A, b: B): string
 }
 
 /**
@@ -196,6 +202,8 @@ export interface MyOptions {
  * @remarks
  * This is remarks of Calculator class
  *
+ * @typeParam T - A type of calcualator class
+ *
  * @example
  * ```javascript
  * const c = new Calculator()
@@ -205,18 +213,18 @@ export interface MyOptions {
  *
  * @public
  */
-export class Calculator implements Calculatable {
+export class Calculator<T> implements Calculatable {
   /**
    * calcurator types
    */
-  type: string
+  type: T
 
   /**
    * Conssutructor of usage
    *
    * @param type calculator type
    */
-  constructor(type: string) {
+  constructor(type: T) {
     this.type = type
   }
 
