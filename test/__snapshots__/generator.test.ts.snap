@@ -32,6 +32,12 @@ export declare type DumbType<T> = {
 };
 \`\`\`
 
+**Type parameters**
+
+| Parameter | Description |
+| --- | --- |
+| T | a type template |
+
 ## FallbackLocale
 
 Falback Locale
@@ -119,6 +125,12 @@ un dummy
 export declare function undumbify<T>(dummy: DumbType<T>): T;
 \`\`\`
 
+**Type parameters**
+
+| Parameter | Description |
+| --- | --- |
+| T | a type template |
+
 ### Parameters
 
 | Parameter | Type | Description |
@@ -151,6 +163,13 @@ add callable object
 \`\`\`typescript
 <A extends number = number, B extends number = number>(a: A, b: B): number;
 \`\`\`
+
+**Type parameters**
+
+| Parameter | Description |
+| --- | --- |
+| A | a target 1 Type |
+| B | a target 2 Type |
 
 *Parameters*
 
@@ -263,8 +282,14 @@ Calculator class
 
 **Signature:**
 \`\`\`typescript
-export declare class Calculator implements Calculatable 
+export declare class Calculator<T> implements Calculatable 
 \`\`\`
+
+**Type parameters**
+
+| Parameter | Description |
+| --- | --- |
+| T | A type of calcualator class |
 
 ### Remarks
 
@@ -287,14 +312,14 @@ Conssutructor of usage
 
 **Signature:**
 \`\`\`typescript
-constructor(type: string);
+constructor(type: T);
 \`\`\`
 
 *Parameters*
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| type | string | calculator type |
+| type | T | calculator type |
 
 
 ### Methods
@@ -349,7 +374,7 @@ calcurator types
 
 **Signature:**
 \`\`\`typescript
-type: string;
+type: T;
 \`\`\`
 
 
@@ -607,6 +632,12 @@ export declare type DumbType<T> = {
 };
 \`\`\`
 
+**Type parameters**
+
+| Parameter | Description |
+| --- | --- |
+| T | a type template |
+
 ## FallbackLocale
 
 Falback Locale
@@ -694,6 +725,12 @@ un dummy
 export declare function undumbify<T>(dummy: DumbType<T>): T;
 \`\`\`
 
+**Type parameters**
+
+| Parameter | Description |
+| --- | --- |
+| T | a type template |
+
 ### Parameters
 
 | Parameter | Type | Description |
@@ -726,6 +763,13 @@ add callable object
 \`\`\`typescript
 <A extends number = number, B extends number = number>(a: A, b: B): number;
 \`\`\`
+
+**Type parameters**
+
+| Parameter | Description |
+| --- | --- |
+| A | a target 1 Type |
+| B | a target 2 Type |
 
 *Parameters*
 
@@ -838,8 +882,14 @@ Calculator class
 
 **Signature:**
 \`\`\`typescript
-export declare class Calculator implements Calculatable 
+export declare class Calculator<T> implements Calculatable 
 \`\`\`
+
+**Type parameters**
+
+| Parameter | Description |
+| --- | --- |
+| T | A type of calcualator class |
 
 ### Remarks
 
@@ -862,14 +912,14 @@ Conssutructor of usage
 
 **Signature:**
 \`\`\`typescript
-constructor(type: string);
+constructor(type: T);
 \`\`\`
 
 *Parameters*
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| type | string | calculator type |
+| type | T | calculator type |
 
 
 ### Methods
@@ -924,7 +974,7 @@ calcurator types
 
 **Signature:**
 \`\`\`typescript
-type: string;
+type: T;
 \`\`\`
 
 
@@ -1182,6 +1232,12 @@ export declare type DumbType<T> = {
 };
 \`\`\`
 
+**Type parameters**
+
+| Parameter | Description |
+| --- | --- |
+| T | a type template |
+
 ## FallbackLocale
 
 Falback Locale
@@ -1269,6 +1325,12 @@ un dummy
 export declare function undumbify<T>(dummy: DumbType<T>): T;
 \`\`\`
 
+**Type parameters**
+
+| Parameter | Description |
+| --- | --- |
+| T | a type template |
+
 ### Parameters
 
 | Parameter | Type | Description |
@@ -1301,6 +1363,13 @@ add callable object
 \`\`\`typescript
 <A extends number = number, B extends number = number>(a: A, b: B): number;
 \`\`\`
+
+**Type parameters**
+
+| Parameter | Description |
+| --- | --- |
+| A | a target 1 Type |
+| B | a target 2 Type |
 
 *Parameters*
 
@@ -1413,8 +1482,14 @@ Calculator class
 
 **Signature:**
 \`\`\`typescript
-export declare class Calculator implements Calculatable 
+export declare class Calculator<T> implements Calculatable 
 \`\`\`
+
+**Type parameters**
+
+| Parameter | Description |
+| --- | --- |
+| T | A type of calcualator class |
 
 ### Remarks
 
@@ -1437,14 +1512,14 @@ Conssutructor of usage
 
 **Signature:**
 \`\`\`typescript
-constructor(type: string);
+constructor(type: T);
 \`\`\`
 
 *Parameters*
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| type | string | calculator type |
+| type | T | calculator type |
 
 
 ### Methods
@@ -1499,7 +1574,7 @@ calcurator types
 
 **Signature:**
 \`\`\`typescript
-type: string;
+type: T;
 \`\`\`
 
 

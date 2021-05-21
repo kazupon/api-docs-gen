@@ -72,6 +72,33 @@ export function buildFunctionContent(
     builder.newline()
   }
 
+  // type params
+  if (docs.typeParams && docs.typeParams.count > 0) {
+    builder.pushline(`**Type parameters**`)
+    builder.newline()
+    builder.pushline(`| Parameter | Description |`)
+    builder.pushline(`| --- | --- |`)
+    for (const p of docs.typeParams.blocks) {
+      builder.pushline(
+        `| ${p.parameterName} | ${
+          p.content
+            ? getDocSectionContent(
+                model,
+                pkg,
+                // @ts-ignore TODO:
+                p.content,
+                item,
+                style,
+                resolver,
+                customTags
+              )
+            : ''
+        } |`
+      )
+    }
+    builder.newline()
+  }
+
   // parameters
   const itemParam = item as ApiParameterListMixin
   if (itemParam.parameters) {
@@ -366,6 +393,33 @@ export function buildContentForClassinizable(
       itemDeclared.excerptTokens.map(token => token.text).join('')
     )
     builder.pushline('```')
+    builder.newline()
+  }
+
+  // type params
+  if (docs.typeParams && docs.typeParams.count > 0) {
+    builder.pushline(`**Type parameters**`)
+    builder.newline()
+    builder.pushline(`| Parameter | Description |`)
+    builder.pushline(`| --- | --- |`)
+    for (const p of docs.typeParams.blocks) {
+      builder.pushline(
+        `| ${p.parameterName} | ${
+          p.content
+            ? getDocSectionContent(
+                model,
+                pkg,
+                // @ts-ignore TODO:
+                p.content,
+                item,
+                style,
+                resolver,
+                customTags
+              )
+            : ''
+        } |`
+      )
+    }
     builder.newline()
   }
 
@@ -719,6 +773,33 @@ export function buildTypeAliasContent(
       itemDeclared.excerptTokens.map(token => token.text).join('')
     )
     builder.pushline('```')
+    builder.newline()
+  }
+
+  // type params
+  if (docs.typeParams && docs.typeParams.count > 0) {
+    builder.pushline(`**Type parameters**`)
+    builder.newline()
+    builder.pushline(`| Parameter | Description |`)
+    builder.pushline(`| --- | --- |`)
+    for (const p of docs.typeParams.blocks) {
+      builder.pushline(
+        `| ${p.parameterName} | ${
+          p.content
+            ? getDocSectionContent(
+                model,
+                pkg,
+                // @ts-ignore TODO:
+                p.content,
+                item,
+                style,
+                resolver,
+                customTags
+              )
+            : ''
+        } |`
+      )
+    }
     builder.newline()
   }
 
