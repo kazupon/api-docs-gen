@@ -1,6 +1,7 @@
 coverage
 node_modules
 .DS_Store
+.env
 lib
 *.log
 *.swp
