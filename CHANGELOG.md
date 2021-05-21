@@ -1,4 +1,18 @@
 
+## v0.3.0 (2021-05-21)
+
+#### :star: Features
+* [#71](https://github.com/kazupon/api-docs-gen/pull/71) feat: generics parameter docs ([@kazupon](https://github.com/kazupon))
+* [#70](https://github.com/kazupon/api-docs-gen/pull/70) feat: call signature for interfaces ([@kazupon](https://github.com/kazupon))
+
+#### :boom: Breaking Change
+* [#69](https://github.com/kazupon/api-docs-gen/pull/69) breaking: change to caml from kebab ([@kazupon](https://github.com/kazupon))
+* [#68](https://github.com/kazupon/api-docs-gen/pull/68) fix: drop Node v10 ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v0.2.6 (2020-11-30)
 
 #### :bug: Bug Fixes
