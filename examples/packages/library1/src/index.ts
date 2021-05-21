@@ -143,7 +143,7 @@ export interface Calculatable {
    * @param a target 1
    * @param b target 2
    * @returns added value
-   *
+   * 
    * @public
    */
   add(a: number, b: number): number
@@ -155,7 +155,7 @@ export interface Calculatable {
 
 /**
  * Add Callable interface
- *
+ * 
  * @public
  */
 export interface AddCallable {
@@ -176,10 +176,9 @@ export interface AddCallable {
    * @param a target 1
    * @param b target 2
    * @returns added string value
-   *
    * @public
    */
-  <A extends number = number, B extends number = number>(a: A, b: B): string
+   <A extends number = number, B extends number = number>(a: A, b: B): string
 }
 
 /**
