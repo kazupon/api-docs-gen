@@ -7126,6 +7126,13 @@ hosted-git-info@^3.0.6:
   dependencies:
     lru-cache "^6.0.0"
 
+hosted-git-info@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-3.0.8.tgz#6e35d4cc87af2c5f816e4cb9ce350ba87a3f370d"
+  integrity sha512-aXpmwoOhRBrw6X3j0h5RloK4x1OzsxMPyxqIHyNfSe2pypkVTZFpEiRoSipPEPlMrh0HW/XsjkJ5WgnCirpNUw==
+  dependencies:
+    lru-cache "^6.0.0"
+
 hosted-git-info@^4.0.1:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-4.0.2.tgz#5e425507eede4fea846b7262f0838456c4209961"
@@ -8778,16 +8785,16 @@ latest-version@^5.0.0:
   dependencies:
     package-json "^6.3.0"
 
-lerna-changelog@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/lerna-changelog/-/lerna-changelog-1.0.1.tgz#53090ab7f047730ec88d32087762164626269d3a"
-  integrity sha512-E7ewsfQknBmQcUspCqd5b8Hbbp5SX768y6vEiIdXXui9pPhZS1WlrKtiAUPs0CeGd8Pv4gtIC/h3wSWIZuvqaA==
+lerna-changelog@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/lerna-changelog/-/lerna-changelog-2.0.0.tgz#d55d350525e181a1b9bda9c72116bd458d3bb33d"
+  integrity sha512-fVDp1fONWMIUY4lpOig6kjf4S6jPMnDGcr3wKnHMKdC1IzFk0vp77ep4hcqtpG3rXpuJuUBvWrH0FBdxblHMHA==
   dependencies:
     chalk "^2.4.1"
     cli-highlight "^2.1.4"
     execa "^1.0.0"
+    hosted-git-info "^3.0.8"
     make-fetch-happen "^7.1.1"
-    normalize-git-url "^3.0.2"
     p-map "^3.0.0"
     progress "^2.0.0"
     yargs "^13.0.0"
@@ -9888,11 +9895,6 @@ nopt@^5.0.0:
   integrity sha512-Tbj67rffqceeLpcRXrT7vKAN8CwfPeIBgM7E6iBkmKLV7bEMwpGgYLGv0jACUsECaa/vuxP0IjEont6umdMgtQ==
   dependencies:
     abbrev "1"
-
-normalize-git-url@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/normalize-git-url/-/normalize-git-url-3.0.2.tgz#8e5f14be0bdaedb73e07200310aa416c27350fc4"
-  integrity sha1-jl8Uvgva7bc+ByADEKpBbCc1D8Q=
 
 normalize-package-data@^2.0.0, normalize-package-data@^2.3.0, normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-data@^2.5.0:
   version "2.5.0"
