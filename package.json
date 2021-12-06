@@ -62,7 +62,16 @@
   "engines": {
     "node": ">= 12"
   },
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./lib/index.js"
+    },
+    "./lib/*": "./lib/*",
+    "./package.json": "./package.json"
+  },
   "files": [
+    "index.mjs",
     "bin/*.js",
     "dist/*.d.ts",
     "lib/**/*.js"
