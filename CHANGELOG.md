@@ -1,4 +1,13 @@
 
+## v0.4.0 (2021-12-06)
+
+#### :star: Features
+* [#94](https://github.com/kazupon/api-docs-gen/pull/94) feat: support ESM ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v0.3.0 (2021-05-21)
 
 #### :star: Features
