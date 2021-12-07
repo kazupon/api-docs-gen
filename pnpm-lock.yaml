@@ -25,7 +25,7 @@ importers:
       eslint-config-prettier: ^8.3.0
       eslint-plugin-prettier: ^4.0.0
       jest: ^27.0.0
-      jest-watch-typeahead: ^0.6.3
+      jest-watch-typeahead: ^1.0.0
       meow: ^9.0.0
       npm-run-all: ^4.1.5
       opener: ^1.5.2
@@ -54,7 +54,7 @@ importers:
       eslint-config-prettier: 8.3.0_eslint@8.4.0
       eslint-plugin-prettier: 4.0.0_14354588a145aaef8cc0e524e93c2ca4
       jest: 27.4.3
-      jest-watch-typeahead: 0.6.5_jest@27.4.3
+      jest-watch-typeahead: 1.0.0_jest@27.4.3
       npm-run-all: 4.1.5
       opener: 1.5.2
       prettier: 2.5.1
@@ -2693,6 +2693,11 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /ansi-regex/6.0.1:
+    resolution: {integrity: sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==}
+    engines: {node: '>=12'}
+    dev: true
+
   /ansi-styles/2.2.1:
     resolution: {integrity: sha1-tDLdM1i2NM914eRmQ2gkBTPB3b4=}
     engines: {node: '>=0.10.0'}
@@ -3086,6 +3091,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -3550,6 +3556,11 @@ packages:
   /char-regex/1.0.2:
     resolution: {integrity: sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==}
     engines: {node: '>=10'}
+    dev: true
+
+  /char-regex/2.0.0:
+    resolution: {integrity: sha512-oGu2QekBMXgyQNWPDRQ001bjvDnZe4/zBTz37TMbiKz1NbNiyiH5hRkobe7npRN6GfbGbxMYFck/vQ1r9c1VMA==}
+    engines: {node: '>=12.20'}
     dev: true
 
   /chardet/0.7.0:
@@ -5490,6 +5501,7 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -7461,20 +7473,20 @@ packages:
       pretty-format: 27.4.2
     dev: true
 
-  /jest-watch-typeahead/0.6.5_jest@27.4.3:
-    resolution: {integrity: sha512-GIbV6h37/isatMDtqZlA8Q5vC6T3w+5qdvtF+3LIkPc58zEWzbKmTHvlUIp3wvBm400RzrQWcVPcsAJqKWu7XQ==}
-    engines: {node: '>=10'}
+  /jest-watch-typeahead/1.0.0_jest@27.4.3:
+    resolution: {integrity: sha512-jxoszalAb394WElmiJTFBMzie/RDCF+W7Q29n5LzOPtcoQoHWfdUtHFkbhgf5NwWe8uMOxvKb/g7ea7CshfkTw==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
-      jest: ^26.0.0 || ^27.0.0
+      jest: ^27.0.0
     dependencies:
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       jest: 27.4.3
       jest-regex-util: 27.4.0
       jest-watcher: 27.4.2
-      slash: 3.0.0
-      string-length: 4.0.2
-      strip-ansi: 6.0.1
+      slash: 4.0.0
+      string-length: 5.0.1
+      strip-ansi: 7.0.1
     dev: true
 
   /jest-watcher/27.4.2:
@@ -8398,6 +8410,7 @@ packages:
 
   /nan/2.15.0:
     resolution: {integrity: sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -10421,6 +10434,11 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /slash/4.0.0:
+    resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
+    engines: {node: '>=12'}
+    dev: true
+
   /smart-buffer/4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
@@ -10734,6 +10752,14 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
+  /string-length/5.0.1:
+    resolution: {integrity: sha512-9Ep08KAMUn0OadnVaBuRdE2l615CQ508kr0XMadjClfYpdCyvrbFp6Taebo8yyxokQ4viUd/xPPUA4FGgUa0ow==}
+    engines: {node: '>=12.20'}
+    dependencies:
+      char-regex: 2.0.0
+      strip-ansi: 7.0.1
+    dev: true
+
   /string-width/3.1.0:
     resolution: {integrity: sha512-vafcv6KjVZKSgz06oM/H6GDBrAtz8vdhQakGjFIvNrHA6y3HCF1CInLy+QLq8dTJPQ1b+KDUqDFctkdRW44e1w==}
     engines: {node: '>=6'}
@@ -10806,6 +10832,13 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       ansi-regex: 5.0.1
+    dev: true
+
+  /strip-ansi/7.0.1:
+    resolution: {integrity: sha512-cXNxvT8dFNRVfhVME3JAe98mkXDYN2O1l7jmcwMnOslDeESg1rF/OZMtK0nRAhiari1unG5cD4jG3rapUAkLbw==}
+    engines: {node: '>=12'}
+    dependencies:
+      ansi-regex: 6.0.1
     dev: true
 
   /strip-bom-string/1.0.0:
