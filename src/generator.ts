@@ -1,12 +1,13 @@
 import path from 'path'
 import { ApiModel } from '@microsoft/api-extractor-model'
-import { debug as Debug } from 'debug'
+import createDebug from 'debug'
 import { loadPackage, loadTSDocConfig, mergeTSDocTagDefinition } from './tsdoc'
-import { isString, mkdir, writeFile } from './utils'
+import { mkdir, writeFile } from './utils'
+import { isString } from '@intlify/shared'
 
 import type { Config, GenerateStyle } from './config'
 
-const debug = Debug('api-docs-gen:generator')
+const debug = createDebug('api-docs-gen:generator')
 
 /**
  * Generate Options for Generate API
@@ -77,8 +78,8 @@ export async function generate(
       customTags = mergeTSDocTagDefinition(tsdocConfig.tagDefinitions)
       debug('TSDoc custom tags:', customTags)
     } catch (e) {
-      debug('error on TSDoc Configration', e.message)
-      errorOnTSDocConfig && errorOnTSDocConfig(e.message)
+      debug('error on TSDoc Configration', (e as Error).message)
+      errorOnTSDocConfig && errorOnTSDocConfig((e as Error).message)
     }
   }
 
@@ -123,7 +124,7 @@ export async function generate(
         await mkdir(parsedPath.dir)
       } catch (e) {
         throw new Error(
-          `Cannot make '${parsedPath.dir} directory: ${e.message}`
+          `Cannot make '${parsedPath.dir} directory: ${(e as Error).message}`
         )
       }
       await writeFile(filepath, body)

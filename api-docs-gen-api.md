@@ -40,9 +40,6 @@ export interface Config
 ```
 
 
-#### Methods
-
-
 #### Properties
 
 ##### linkReferencer
@@ -186,9 +183,6 @@ export interface ContentBuilderOptions
 options that creating a [ContentBuilder](#contentbuilder)
 
 
-#### Methods
-
-
 #### Properties
 
 ##### indentLevel
@@ -209,9 +203,6 @@ Generate Options for Generate API
 ```typescript
 export interface GenerateOptions 
 ```
-
-
-#### Methods
 
 
 #### Properties
@@ -290,9 +281,6 @@ Markdown content
 ```typescript
 export interface MarkdownContent 
 ```
-
-
-#### Methods
 
 
 #### Properties

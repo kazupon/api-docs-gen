@@ -1,9 +1,13 @@
-const execa = require(require.resolve('execa'))
-const { promisify } = require('util')
-const fs = require('fs')
-const path = require('path')
-const read = promisify(fs.readFile)
-const write = fs.writeFileSync
+import execa from 'execa'
+import path from 'path'
+import { promises as fs, readFileSync } from 'fs'
+
+const dirname = path.dirname(new URL(import.meta.url).pathname)
+
+async function readJson(target) {
+  const file = await fs.readFile(target, 'utf8')
+  return JSON.parse(file)
+}
 
 function extractSpecificChangelog(changelog, version) {
   if (!changelog) {
@@ -31,18 +35,22 @@ async function commitChangelog(current, next) {
   )
   const matches = regex.exec(stdout.toString())
   const head = matches ? matches[1] : stdout
-  const changelog = await read('./CHANGELOG.md', 'utf8')
-  return write('./CHANGELOG.md', `${head}\n\n${changelog}`)
+  const changelog = await fs.readFile('./CHANGELOG.md', 'utf8')
+  return fs.writeFile('./CHANGELOG.md', `${head}\n\n${changelog}`)
 }
 
-module.exports = {
+export default {
   mergeStrategy: { toSameBranch: ['master'] },
   monorepo: undefined,
   updateChangelog: false,
-  beforeCommitChanges: ({ nextVersion, exec, dir }) => {
-    return new Promise(resolve => {
-      const pkg = require('./package.json')
-      commitChangelog(pkg.version, nextVersion).then(resolve)
+  installCommand: () => 'pnpm install --silent',
+  buildCommand: ({ isYarn, version }) => 'pnpm build',
+  beforeCommitChanges: async ({ nextVersion, exec, dir }) => {
+    return new Promise(async resolve => {
+      const pkg = await readJson(path.resolve(dirname, './package.json'))
+      await commitChangelog(pkg.version, nextVersion)
+      await exec('pnpm fix')
+      resolve()
     })
   },
   formatCommitMessage: ({ version, releaseType, mergeStrategy, baseBranch }) =>
@@ -54,7 +62,7 @@ module.exports = {
     extractChangelog: ({ version, dir }) => {
       const changelogPath = path.resolve(dir, 'CHANGELOG.md')
       try {
-        const changelogFile = fs.readFileSync(changelogPath, 'utf-8').toString()
+        const changelogFile = readFileSync(changelogPath, 'utf8')
         const ret = extractSpecificChangelog(changelogFile, version)
         return ret
       } catch (err) {

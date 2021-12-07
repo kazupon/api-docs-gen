@@ -1,5 +1,6 @@
 import { TSDocConfigFile } from '@microsoft/tsdoc-config'
 import { AedocDefinitions } from '@microsoft/api-extractor-model'
+
 import type { ApiModel, ApiPackage } from '@microsoft/api-extractor-model'
 import type { TSDocTagDefinition } from '@microsoft/tsdoc'
 
@@ -7,7 +8,9 @@ export function loadPackage(modelPath: string, model: ApiModel): ApiPackage {
   try {
     return model.loadPackage(modelPath)
   } catch (e) {
-    throw new Error(`Cannot load package model from ${modelPath}: ${e.message}`)
+    throw new Error(
+      `Cannot load package model from ${modelPath}: ${(e as Error).message}`
+    )
   }
 }
 

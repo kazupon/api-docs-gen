@@ -19,11 +19,11 @@ import {
 } from '@microsoft/tsdoc'
 import type { DeclarationReference } from '@microsoft/tsdoc/lib/beta/DeclarationReference'
 import { ReferenceResolver, GenerateStyle } from '../config'
-import { debug as Debug } from 'debug'
+import createDebug from 'debug'
 import { ContentBuilder } from '../builder'
 import { escapeText, escapeTextForTable } from '../utils'
 
-const debug = Debug('api-docs-gen:processor:utils')
+const debug = createDebug('api-docs-gen:processor:utils')
 
 export function buildFunctionContent(
   style: GenerateStyle,
