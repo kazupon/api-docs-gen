@@ -1,15 +1,16 @@
 import path from 'path'
 import fs from 'fs'
+import createDebug from 'debug'
+import { multi as multiResolver } from './resolver'
+import { multi as multiProcessor } from './processor'
+
 import type {
   ApiModel,
   ApiPackage,
   ApiItem
 } from '@microsoft/api-extractor-model'
-import { debug as Debug } from 'debug'
-import { multi as multiResolver } from './resolver'
-import { multi as multiProcessor } from './processor'
 
-const debug = Debug('api-docs-gen:config')
+const debug = createDebug('api-docs-gen:config')
 
 /**
  * Configuration
@@ -139,7 +140,7 @@ export function resolveConfig(configPath?: string | null): Config {
       fs.accessSync(configPath, fs.constants.F_OK)
       resolvedPath = configPath
     } catch (e) {
-      debug(`config access error: ${e.message}`)
+      debug(`config access error: ${(e as Error).message}`)
     }
   }
 
@@ -153,7 +154,9 @@ export function resolveConfig(configPath?: string | null): Config {
       debug('processor importing', resolvedPath, config)
     } catch (e) {
       if (
-        !/Cannot use import statement|Unexpected token 'export'/.test(e.message)
+        !/Cannot use import statement|Unexpected token 'export'/.test(
+          (e as Error).message
+        )
       ) {
         throw e
       }
@@ -166,6 +169,8 @@ export function resolveConfig(configPath?: string | null): Config {
       return DefaultConfig
     }
   } catch (e) {
-    throw new Error(`Failed to load config from ${resolvedPath}: ${e.message}`)
+    throw new Error(
+      `Failed to load config from ${resolvedPath}: ${(e as Error).message}`
+    )
   }
 }

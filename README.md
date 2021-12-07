@@ -1,4 +1,4 @@
-# :book: api-docs-gen
+# 📔 api-docs-gen
 
 ![Test](https://github.com/kazupon/api-docs-gen/workflows/Test/badge.svg)
 [![npm](https://img.shields.io/npm/v/api-docs-gen.svg)](https://www.npmjs.com/package/api-docs-gen)
@@ -6,12 +6,12 @@
 API Documentation generator from `api-extractor` doc model
 
 
-## :hammer: Requirement
+## 🔨 Requirement
 
 You need to generate **doc model** with using [`api-extractor`](https://api-extractor.com/)
 
 
-## :cd: Installation
+## 💿 Installation
 
 ### npm
 
@@ -24,8 +24,13 @@ $ npm install -g api-docs-gen
 yarn global api-docs-gen
 ```
 
+### pnpm
+```sh
+pnpm add -g api-docs-gen
+```
 
-## :rocket: Usage
+
+## 🚀 Usage
 
 ### CLI
 ```
@@ -42,7 +47,7 @@ Options
 ```
 
 
-### API
+### 🤝 API
 ```javascript
 const path = require('path')
 const { genereate, DefaultConfig } = require('api-docs-gen')
@@ -60,24 +65,22 @@ await generate(input, output, { style: 'prefix', config: DefaultConfig })
 About details, See the [API References](https://github.com/kazupon/api-docs-gen/blob/master/api-docs-gen-api.md)
 
 
-## :lollipop: Examples
+## 🍭 Examples
 You can play API docs generation that have [multi packages](https://github.com/kazupon/api-docs-gen/tree/master/examples/packages).
 
 You can play with the following command:
 
 ```sh
-$ yarn example:setup # module installing on each package
+$ pnpm example:build # build on each package
 
-$ yarn example:build # build on each package
+$ pnpm example:extract # generate doc model with `api-extractor` on each package
 
-$ yarn example:extract # generate doc model with `api-extractor` on each package
+$ pnpm example:gen # genearte API docs with `api-docs-gen`
 
-$ yarn example:gen # genearte API docs with `api-docs-gen`
-
-$ yarn example:docs # run vuepress
+$ pnpm example:docs # run vuepress
 ```
 
-## :bookmark: TSDoc custom tags
+## 🔖 TSDoc custom tags
 
 `api-docs-gen` allows TSDoc custom tags to be processed using [tsdoc-config](https://github.com/microsoft/tsdoc/tree/master/tsdoc-config).
 
@@ -93,7 +96,7 @@ For the `MarkdownProcessor`, see the [API References](https://github.com/kazupon
 
 See how to configure it in the following configration.
 
-## :wrench: Configration
+## 🔧 Configration
 You can fully customize the generation of api docs using the config offered by `api-docs-gen`.
 
 Here is the schema (typescript type definition) of the config:
@@ -120,16 +123,16 @@ If you want to customize your api docs, these will be helpful.
 It's recommended to refer to the [API References](https://github.com/kazupon/api-docs-gen/blob/master/api-docs-gen-api.md) for customization.
 
 
-## :scroll: Changelog
+## 📜 Changelog
 Details changes for each release are documented in the [CHANGELOG.md](https://github.com/kazupon/api-docs-gen/blob/master/CHANGELOG.md).
 
 
-## :exclamation: Issues
+## ❗ Issues
 Please make sure to read the [Issue Reporting Checklist](https://github.com/kazupon/api-docs-gen/blob/master/.github/CONTRIBUTING.md#issue-reporting-guidelines) before opening an issue. Issues not conforming to the guidelines may be closed immediately.
 
-## :white_check_mark: TODO
+## ✅ TODO
 Managed with [GitHub Projects](https://github.com/kazupon/api-docs-gen/projects/2)
 
-## :copyright: License
+## ©️ License
 
 [MIT](http://opensource.org/licenses/MIT)

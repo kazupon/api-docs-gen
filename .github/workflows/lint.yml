@@ -1,33 +1,37 @@
-name: Test
+name: Lint
 on:
   push:
     branches-ignore:
       - gh-pages
   pull_request:
+    branches-ignore:
+      - gh-pages
+    types:
+      - opened
+      - synchronize
+      - reopened
+permissions:
+  contents: read
 env:
   CI: true
 
 jobs:
-  test:
-    name: 'Test on Node.js ${{ matrix.node }} OS: ${{matrix.os}}'
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [12, 14, 16]
+  lint:
+    name: 'Lint'
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.17.0
-      - name: Setup Node.js ${{ matrix.node }}
+          version: 6.20.0
+      - name: Setup Node.js v14.x
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 14
           cache: 'pnpm'
       - name: Install
         run: pnpm install
-      - name: Test
-        run: pnpm test
+      - name: Lint
+        run: pnpm lint

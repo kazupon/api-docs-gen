@@ -4,11 +4,6 @@ import {
   ApiPackage,
   ApiItem
 } from '@microsoft/api-extractor-model'
-import type {
-  MarkdownContent,
-  ReferenceResolver,
-  GenerateStyle
-} from '../config'
 import { ContentBuilder, createContentBuilder } from '../builder'
 import {
   buildClassContent,
@@ -18,6 +13,12 @@ import {
   buildTypeAliasContent,
   buildVariableContent
 } from './utils'
+
+import type {
+  MarkdownContent,
+  ReferenceResolver,
+  GenerateStyle
+} from '../config'
 
 /**
  * Process of API doc model

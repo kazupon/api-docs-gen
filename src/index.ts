@@ -4,14 +4,7 @@ export {
   escapeTextForTable
 } from './utils'
 export * from './builder'
-export {
-  Config,
-  DefaultConfig,
-  GenerateStyle,
-  MarkdownContent,
-  ReferenceResolver,
-  MarkdownProcessor
-} from './config'
+export { DefaultConfig, GenerateStyle } from './config'
 export {
   multi as multiProcessor,
   toc as tocProcessor,
@@ -19,4 +12,13 @@ export {
   getDocSectionContent
 } from './processor'
 export { multi as multiResolver, toc as tocResolver } from './resolver'
-export { generate, GenerateOptions } from './generator'
+export { generate } from './generator'
+
+export type {
+  Config,
+  MarkdownContent,
+  ReferenceResolver,
+  MarkdownProcessor
+} from './config'
+
+export type { GenerateOptions } from './generator'
