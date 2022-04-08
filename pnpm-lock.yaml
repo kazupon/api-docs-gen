@@ -13,7 +13,7 @@ importers:
       '@microsoft/api-extractor': ^7.18.21
       '@microsoft/api-extractor-model': ^7.12.0
       '@microsoft/tsdoc': ^0.14.0
-      '@microsoft/tsdoc-config': ^0.15.0
+      '@microsoft/tsdoc-config': ^0.16.0
       '@types/debug': ^4.1.5
       '@types/jest': ^26.0.23
       '@types/node': ^16.11.0
@@ -38,7 +38,7 @@ importers:
       '@intlify/shared': 9.1.9
       '@microsoft/api-extractor-model': 7.12.0
       '@microsoft/tsdoc': 0.14.0
-      '@microsoft/tsdoc-config': 0.15.2
+      '@microsoft/tsdoc-config': 0.16.0
       chalk: 4.1.2
       debug: 4.3.3
       meow: 9.0.0
@@ -1591,6 +1591,16 @@ packages:
       ajv: 6.12.6
       jju: 1.4.0
       resolve: 1.19.0
+    dev: true
+
+  /@microsoft/tsdoc-config/0.16.0:
+    resolution: {integrity: sha512-Xvoh97qbYMsDK5TETcIu+uLeiwU5vtqXhyIkhCQ4GWooEt08qsXGu5F5SPdcwA0ox2EVukYnY5flF26wpFnMjw==}
+    dependencies:
+      '@microsoft/tsdoc': 0.14.0
+      ajv: 6.12.6
+      jju: 1.4.0
+      resolve: 1.19.0
+    dev: false
 
   /@microsoft/tsdoc/0.12.19:
     resolution: {integrity: sha512-IpgPxHrNxZiMNUSXqR1l/gePKPkfAmIKoDRP9hp7OwjU29ZR8WCJsOJ8iBKgw0Qk+pFwR+8Y1cy8ImLY6e9m4A==}
@@ -1598,6 +1608,7 @@ packages:
 
   /@microsoft/tsdoc/0.13.2:
     resolution: {integrity: sha512-WrHvO8PDL8wd8T2+zBGKrMwVL5IyzR3ryWUsl0PXgEV0QHup4mTLi0QcATefGI6Gx9Anu7vthPyyyLpY0EpiQg==}
+    dev: true
 
   /@microsoft/tsdoc/0.14.0:
     resolution: {integrity: sha512-AXrYOAL5I2sZlYO/1JOGa5hCUemJ396OgMYR40t7gEjQtMJdJ28kbwJuQdRTKo/bmGFZuq4RsmG13I4L74xNbw==}
