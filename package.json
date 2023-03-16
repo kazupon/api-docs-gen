@@ -31,7 +31,7 @@
     "@microsoft/api-extractor-model": "^7.12.0",
     "@microsoft/tsdoc": "^0.14.0",
     "@microsoft/tsdoc-config": "^0.16.0",
-    "chalk": "^4.1.1",
+    "chalk": "^5.0.0",
     "debug": "^4.3.3",
     "meow": "^9.0.0"
   },
