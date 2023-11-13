@@ -29,7 +29,7 @@ importers:
       meow: ^9.0.0
       npm-run-all: ^4.1.5
       opener: ^1.5.2
-      prettier: ^2.5.0
+      prettier: ^3.0.0
       shipjs: ^0.26.0
       ts-jest: ^27.0.0
       typescript: ^4.5.2
@@ -52,12 +52,12 @@ importers:
       '@typescript-eslint/parser': 5.6.0_eslint@8.4.0+typescript@4.5.2
       eslint: 8.4.0
       eslint-config-prettier: 8.3.0_eslint@8.4.0
-      eslint-plugin-prettier: 4.0.0_14354588a145aaef8cc0e524e93c2ca4
+      eslint-plugin-prettier: 4.0.0_2cdfa945c3182041e70ff6cc44597bab
       jest: 27.4.3
       jest-watch-typeahead: 1.0.0_jest@27.4.3
       npm-run-all: 4.1.5
       opener: 1.5.2
-      prettier: 2.5.1
+      prettier: 3.0.0
       shipjs: 0.26.0_debug@4.3.3
       ts-jest: 27.1.0_d967a5c71b36617f9eaef12c091f7695
       typescript: 4.5.2
@@ -5475,7 +5475,7 @@ packages:
       eslint: 8.4.0
     dev: true
 
-  /eslint-plugin-prettier/4.0.0_14354588a145aaef8cc0e524e93c2ca4:
+  /eslint-plugin-prettier/4.0.0_2cdfa945c3182041e70ff6cc44597bab:
     resolution: {integrity: sha512-98MqmCJ7vJodoQK359bqQWaxOE0CS8paAz/GgjaZLyex4TTk3g9HugoO89EqWCrFiOqn9EVvcoo7gZzONCWVwQ==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
@@ -5488,7 +5488,7 @@ packages:
     dependencies:
       eslint: 8.4.0
       eslint-config-prettier: 8.3.0_eslint@8.4.0
-      prettier: 2.5.1
+      prettier: 3.0.0
       prettier-linter-helpers: 1.0.0
     dev: true
 
@@ -6131,7 +6131,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
@@ -9991,6 +9991,12 @@ packages:
   /prettier/2.5.1:
     resolution: {integrity: sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==}
     engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
+
+  /prettier/3.0.0:
+    resolution: {integrity: sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
