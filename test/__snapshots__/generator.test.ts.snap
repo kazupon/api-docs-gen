@@ -451,8 +451,8 @@ export declare enum TokenChars
 
 | Member | Value| Description |
 | --- | --- | --- |
-| Modulo | \\"%\\" | Modulo charactor |
-| Plus | \\"+\\" | Plus charactor |
+| Modulo | &quot;%&quot; | Modulo charactor |
+| Plus | &quot;+&quot; | Plus charactor |
 
 ### Remarks
 
@@ -1051,8 +1051,8 @@ export declare enum TokenChars
 
 | Member | Value| Description |
 | --- | --- | --- |
-| Modulo | \\"%\\" | Modulo charactor |
-| Plus | \\"+\\" | Plus charactor |
+| Modulo | &quot;%&quot; | Modulo charactor |
+| Plus | &quot;+&quot; | Plus charactor |
 
 ### Remarks
 
@@ -1651,8 +1651,8 @@ export declare enum TokenChars
 
 | Member | Value| Description |
 | --- | --- | --- |
-| Modulo | \\"%\\" | Modulo charactor |
-| Plus | \\"+\\" | Plus charactor |
+| Modulo | &quot;%&quot; | Modulo charactor |
+| Plus | &quot;+&quot; | Plus charactor |
 
 ### Remarks
 

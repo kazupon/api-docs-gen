@@ -275,9 +275,9 @@ export function buildEnumContent(
       const memberEnum = m as ApiEnumMember
       const memberDeclared = m as ApiDeclaredItem
       builder.pushline(
-        `| ${memberEnum.displayName} | ${
+        `| ${memberEnum.displayName} | ${escapeTextForTable(
           memberEnum.initializerExcerpt.text
-        } | ${
+        )} | ${
           memberDeclared.tsdocComment &&
           memberDeclared.tsdocComment.summarySection
             ? getDocSectionContent(
