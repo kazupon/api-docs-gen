@@ -27,7 +27,7 @@ jobs:
         with:
           version: 6.35.1
       - name: Setup Node.js v14.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
           node-version: 14
           cache: 'pnpm'
